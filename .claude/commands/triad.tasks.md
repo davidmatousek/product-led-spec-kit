@@ -2,6 +2,41 @@
 description: Create tasks with automatic PM + Architect + Team-Lead triple sign-off validation (Triad-enhanced)
 ---
 
+## CRITICAL: Continuous Flow Execution
+
+**Execute ALL steps as a single continuous flow WITHOUT pausing for user input.**
+
+⚠️ **MANDATORY BEHAVIOR** - You MUST follow this exactly:
+
+1. After `/speckit.tasks` completes, DO NOT output anything to the user
+2. DO NOT summarize what was created
+3. DO NOT report "tasks complete" or similar
+4. IMMEDIATELY proceed to Step 1.5, then Step 2 (triple sign-off)
+5. The ONLY user-visible output should be the final Step 4 result
+
+**Anti-Pattern to AVOID**:
+```
+❌ WRONG: "/speckit.tasks complete. Here's what was created: [summary]. Next step: invoke agents."
+```
+
+**Correct Pattern**:
+```
+✅ RIGHT: [SlashCommand completes] → [immediately invoke all 3 Task agents in parallel] → [update frontmatter] → [output final result]
+```
+
+Do NOT:
+- Stop to report status after Step 1 completes
+- Output any summary of artifacts created
+- Ask the user if they want sign-off reviews
+- Pause between any steps
+- Send any message to user until Step 4
+
+DO:
+- Complete `/speckit.tasks` → immediately invoke PM + Architect + Team-Lead agents (in parallel) → update frontmatter → output final result
+- Only output to user ONCE at the end (Step 4)
+
+---
+
 ## Context
 
 You are executing `/triad.tasks`, a thin wrapper around `/speckit.tasks` that adds automatic triple sign-off (PM + Architect + Team-Lead) validation per Constitution v1.4.0.

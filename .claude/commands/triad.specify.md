@@ -2,6 +2,41 @@
 description: Create specification with automatic PM sign-off validation (Triad-enhanced)
 ---
 
+## CRITICAL: Continuous Flow Execution
+
+**Execute ALL steps as a single continuous flow WITHOUT pausing for user input.**
+
+⚠️ **MANDATORY BEHAVIOR** - You MUST follow this exactly:
+
+1. After `/speckit.specify` completes, DO NOT output anything to the user
+2. DO NOT summarize what was created
+3. DO NOT report "specification complete" or similar
+4. IMMEDIATELY proceed to Step 1.5, then Step 2 (PM sign-off)
+5. The ONLY user-visible output should be the final Step 4 result
+
+**Anti-Pattern to AVOID**:
+```
+❌ WRONG: "/speckit.specify complete. Here's what was created: [summary]. Next step: invoke PM."
+```
+
+**Correct Pattern**:
+```
+✅ RIGHT: [SlashCommand completes] → [immediately invoke Task agent] → [update frontmatter] → [output final result]
+```
+
+Do NOT:
+- Stop to report status after Step 1 completes
+- Output any summary of artifacts created
+- Ask the user if they want PM sign-off
+- Pause between any steps
+- Send any message to user until Step 4
+
+DO:
+- Complete `/speckit.specify` → immediately invoke PM agent → update frontmatter → output final result
+- Only output to user ONCE at the end (Step 4)
+
+---
+
 ## Context
 
 You are executing `/triad.specify`, a thin wrapper around `/speckit.specify` that adds automatic PM sign-off validation per Constitution v1.4.0.
