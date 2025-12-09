@@ -1,7 +1,7 @@
 ---
 name: triad.prd
 description: >
-  Create a Product Requirements Document (PRD) using the head-honcho Product Manager
+  Create a Product Requirements Document (PRD) using the product-manager Product Manager
   agent and prd-create skill. PRDs are stored in docs/product/02_PRD/ with sequential
   numbering and date stamps for chronological tracking.
 
@@ -27,7 +27,7 @@ You are executing the `/triad.prd` command to create a Product Requirements Docu
 Per Constitution v1.4.0:
 - **Principle X**: Product-Spec Alignment - ALWAYS create PRD before spec.md (NON-NEGOTIABLE)
 - **Principle XI**: SDLC Triad Collaboration - PRD must have Triad validation (Architect + Tech-Lead + PM)
-- PRD creation is the responsibility of the Product Manager (head-honcho)
+- PRD creation is the responsibility of the Product Manager (product-manager)
 - PRDs must use industry-standard format via prd-create skill
 - **NEW**: Auto-invoke Triad workflow for all PRDs starting PRD-005 (effective 2025-11-22)
 
@@ -84,9 +84,9 @@ ls docs/product/02_PRD/*.md | grep -E "^[0-9]" | sort | tail -1
 - Date: 2025-11-19
 - Filename: `004-task-locking-api-2025-11-19.md`
 
-### Step 3: Invoke head-honcho Agent
+### Step 3: Invoke product-manager Agent
 
-You must now spawn the head-honcho agent to create the PRD. The agent will:
+You must now spawn the product-manager agent to create the PRD. The agent will:
 
 1. Use the `prd-create` skill to generate an industry-standard PRD
 2. Follow the comprehensive PRD structure from `.claude/skills/prd-create/skill.md`
@@ -100,7 +100,7 @@ You must now spawn the head-honcho agent to create the PRD. The agent will:
 **Agent Invocation**:
 
 ```
-Invoking head-honcho agent to create PRD for: {{topic}}
+Invoking product-manager agent to create PRD for: {{topic}}
 
 Agent Task:
 1. Use prd-create skill to generate comprehensive PRD
@@ -331,7 +331,7 @@ Your choice:
 
 ## PRD Quality Standards
 
-The head-honcho agent must ensure the PRD includes:
+The product-manager agent must ensure the PRD includes:
 
 **Minimum Required Sections**:
 - ✅ Executive Summary (problem, solution, success criteria)
@@ -395,12 +395,12 @@ source_prd: docs/product/02_PRD/004-task-locking-api-2025-11-19.md
 
 ## Related Skills
 
-- `prd-create` - Industry-standard PRD generation (invoked by head-honcho)
+- `prd-create` - Industry-standard PRD generation (invoked by product-manager)
 - `kb-query` - Search for similar features before creating PRD
 
 ## Related Agents
 
-- `head-honcho` - Product Manager responsible for PRD creation
+- `product-manager` - Product Manager responsible for PRD creation
 
 ## Success Criteria
 

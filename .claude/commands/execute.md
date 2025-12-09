@@ -20,7 +20,7 @@ Execute any user-requested task by intelligently breaking it down into subtasks,
 **Intelligence**: Analyzes task and automatically determines optimal agent assignments
 **Parallelism**: Maximizes concurrent execution wherever dependencies allow
 **Quality**: Architect reviews all technical decisions; debugger documents bugs in KB
-**Compliance**: Head-honcho must approve changes to plans; architect updates architecture docs
+**Compliance**: Product-Manager must approve changes to plans; architect updates architecture docs
 
 ## Execution Flow
 
@@ -117,7 +117,7 @@ Subtasks:
 | Agent | Responsibilities | Typical Tasks |
 |-------|-----------------|---------------|
 | **senior-backend-engineer** | API, database, models, services, business logic | Backend features, bug fixes, API endpoints |
-| **code-monkey** | Frontend UI, React/Next.js components, client code | UI components, forms, dashboards |
+| **frontend-developer** | Frontend UI, React/Next.js components, client code | UI components, forms, dashboards |
 | **tester** | Tests, validation, quality assurance | Unit tests, integration tests, E2E tests |
 | **devops** | Infrastructure, deployment, CI/CD, Docker | Deployment, configuration, infrastructure |
 | **architect** | Technical architecture, design decisions, documentation | Architecture reviews, tech decisions, ADRs |
@@ -126,7 +126,7 @@ Subtasks:
 | **web-researcher** | External research, best practices, library evaluation | Technology research, pattern discovery |
 | **code-reviewer** | Code quality review, security review | Code reviews, security audits |
 | **debugger** | Complex bug investigation, root cause analysis | Bug fixes (>30min), performance issues |
-| **head-honcho** | Product management, requirements, sign-offs | Product decisions, plan approvals |
+| **product-manager** | Product management, requirements, sign-offs | Product decisions, plan approvals |
 | **team-lead** | Multi-agent orchestration (this agent) | Workflow coordination |
 | **general-purpose** | Flexible support, miscellaneous tasks | Tasks not matching other patterns |
 
@@ -143,7 +143,7 @@ def assign_agent(subtask):
 
     # Frontend patterns
     if any(word in keywords for word in ['component', 'ui', 'react', 'next.js', 'frontend', 'dashboard']):
-        return 'code-monkey'
+        return 'frontend-developer'
 
     # Testing patterns
     if any(word in keywords for word in ['test', 'validation', 'e2e', 'integration test']):
@@ -214,7 +214,7 @@ Wave 1 (Parallel - No dependencies):
 
 Wave 2 (Sequential - Depends on Wave 1):
 - Subtask 4: Add tests for logging (tester)
-- Subtask 5: Create log viewer component (code-monkey)
+- Subtask 5: Create log viewer component (frontend-developer)
 
 Wave 3 (Review - After implementation):
 - Subtask 6: Architect review of logging architecture (architect)
@@ -521,9 +521,9 @@ Follow the 3-step validation (Definition of Done):
 )
 ```
 
-#### C. Head-Honcho Approves Changes to Plans
+#### C. Product-Manager Approves Changes to Plans
 
-**AUTOMATIC Head-Honcho Approval Trigger**:
+**AUTOMATIC Product-Manager Approval Trigger**:
 - Changes to `.specify/spec.md` (product requirements)
 - Changes to `.specify/plan.md` (technical architecture)
 - Changes to `.specify/tasks.md` (task breakdown)
@@ -534,7 +534,7 @@ Follow the 3-step validation (Definition of Done):
 ```python
 # If changes to .specify/ detected
 Task(
-    subagent_type="head-honcho",
+    subagent_type="product-manager",
     description="Approve changes to product/planning artifacts",
     prompt="""Review and approve proposed changes to planning artifacts.
 
@@ -578,9 +578,9 @@ Task(
 ```
 
 **Blocking Behavior**:
-- If head-honcho status = **REJECTED** → halt execution, report to user
-- If head-honcho status = **CHANGES REQUESTED** → halt, present feedback to user
-- If head-honcho status = **APPROVED** → proceed with changes
+- If product-manager status = **REJECTED** → halt execution, report to user
+- If product-manager status = **CHANGES REQUESTED** → halt, present feedback to user
+- If product-manager status = **APPROVED** → proceed with changes
 
 ### 9. Final Validation and Reporting
 
@@ -589,7 +589,7 @@ Task(
 - [ ] **All subtasks completed**: Verify all agents finished successfully
 - [ ] **Architect reviewed**: Technical decisions validated and docs updated
 - [ ] **KB documented**: Any bugs documented in Knowledge Base (if applicable)
-- [ ] **Plan approved**: Head-honcho approved any .specify/ changes (if applicable)
+- [ ] **Plan approved**: Product-Manager approved any .specify/ changes (if applicable)
 - [ ] **Files committed**: Changes ready for git commit (verify with `git status`)
 - [ ] **No constitutional violations**: `.specify/` unchanged unless approved
 
@@ -615,7 +615,7 @@ Task(
 - ✅ Architect reviewed and approved
 - ✅ Architecture docs updated
 - ✅ Knowledge Base updated (if bugs fixed)
-- ✅ Plan changes approved by head-honcho (if applicable)
+- ✅ Plan changes approved by product-manager (if applicable)
 - ✅ Constitutional compliance verified
 
 **Agent Breakdown**:
@@ -697,14 +697,14 @@ Investigate:
 - If modify approach → go back to step 3 (break down into subtasks)
 - If abort → clean up partial work, report status
 
-#### C. Head-Honcho Rejects Plan Changes
+#### C. Product-Manager Rejects Plan Changes
 
 **Detection**:
-- Head-honcho approval status = **REJECTED** or **CHANGES REQUESTED**
+- Product-Manager approval status = **REJECTED** or **CHANGES REQUESTED**
 
 **Recovery**:
 1. Report rejection/feedback to user
-2. Present head-honcho's concerns and recommendations
+2. Present product-manager's concerns and recommendations
 3. Ask user: "Would you like to modify the plan or abort?"
    - Option A: Revise .specify/ changes per feedback
    - Option B: Abort changes to .specify/
@@ -751,7 +751,7 @@ if 'docs' in task_scope:
 
 **Prefer specialization**:
 - Use **senior-backend-engineer** for complex backend work (>1 file, >30 min)
-- Use **code-monkey** for UI components and frontend logic
+- Use **frontend-developer** for UI components and frontend logic
 - Use **architect** for cross-cutting concerns and reviews
 - Use **general-purpose** only for simple, generic tasks
 
@@ -781,11 +781,11 @@ if 'docs' in task_scope:
 - Architect reviews are **mandatory**, not optional
 - Documentation updates are **mandatory**, not optional
 - KB documentation is **mandatory** for bugs
-- Head-honcho approval is **mandatory** for plan changes
+- Product-Manager approval is **mandatory** for plan changes
 
 **Block execution if quality gates fail**:
 - Architect BLOCKED → halt until resolved
-- Head-honcho REJECTED → halt until addressed
+- Product-Manager REJECTED → halt until addressed
 - Tests failing → halt until fixed
 - Constitution violated → halt immediately
 
@@ -863,7 +863,7 @@ Wave 3 (Review):
 
 **Analysis**:
 - Complexity: Complex (15+ subtasks, 5 waves, 7 agents)
-- Agents: ux-ui-designer, code-monkey, senior-backend-engineer, tester, devops, architect, web-researcher
+- Agents: ux-ui-designer, frontend-developer, senior-backend-engineer, tester, devops, architect, web-researcher
 - Waves: 5 (Wave 1: design, Wave 2: backend API, Wave 3: frontend, Wave 4: tests, Wave 5: review)
 
 **Execution Plan**:
@@ -877,8 +877,8 @@ Wave 2 (Sequential):
 - Add real-time endpoint (senior-backend-engineer)
 
 Wave 3 (Sequential):
-- Build dashboard component (code-monkey)
-- Integrate real-time updates (code-monkey)
+- Build dashboard component (frontend-developer)
+- Integrate real-time updates (frontend-developer)
 
 Wave 4 (Parallel):
 - Backend API tests (tester)

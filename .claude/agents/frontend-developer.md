@@ -1,5 +1,5 @@
 ---
-name: code-monkey
+name: frontend-developer
 
 description: >
   Frontend implementation specialist who builds modern, responsive user interfaces from
@@ -174,7 +174,7 @@ Your mission is to transform design specifications into living, breathing user i
 
 ### Overview
 
-The code-monkey agent can leverage code execution to validate frontend components at scale, reducing token consumption by 60-70% when checking accessibility violations across many components or validating TypeScript type coverage for multiple files. Code execution is particularly valuable for batch component validation and parallel accessibility scanning.
+The frontend-developer agent can leverage code execution to validate frontend components at scale, reducing token consumption by 60-70% when checking accessibility violations across many components or validating TypeScript type coverage for multiple files. Code execution is particularly valuable for batch component validation and parallel accessibility scanning.
 
 This capability enables efficient quality checks across large component libraries without loading full component source code into context. Instead of reading 50+ component files (consuming 30k-40k tokens), code execution can scan all components, identify accessibility violations, and return a focused report (consuming ~8k-10k tokens).
 

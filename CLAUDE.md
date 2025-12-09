@@ -83,7 +83,7 @@
 ## SDLC Triad Workflow
 
 The SDLC Triad ensures Product-Architecture-Engineering alignment:
-- **head-honcho (PM)**: Defines **What** & **Why** (user value, business goals)
+- **product-manager (PM)**: Defines **What** & **Why** (user value, business goals)
 - **architect**: Defines **How** (technical approach, infrastructure baseline)
 - **team-lead**: Defines **When** & **Who** (timeline, agent assignments)
 
@@ -127,23 +127,23 @@ cat .specify/tasks.md     # Work items
 
 | Artifact | Required Sign-offs | Agents to Invoke |
 |----------|-------------------|------------------|
-| spec.md | PM | head-honcho |
-| plan.md | PM + Architect | head-honcho, architect |
-| tasks.md | PM + Architect + Team-Lead | head-honcho, architect, team-lead |
+| spec.md | PM | product-manager |
+| plan.md | PM + Architect | product-manager, architect |
+| tasks.md | PM + Architect + Team-Lead | product-manager, architect, team-lead |
 
 ### After `/speckit.specify` Completes:
-1. **Automatically** invoke head-honcho agent for PM review using Task tool
+1. **Automatically** invoke product-manager agent for PM review using Task tool
 2. Present review results (APPROVED or CHANGES REQUESTED)
 3. If CHANGES REQUESTED: Address issues, re-submit for review
 4. Do NOT declare "ready for planning" until PM sign-off: APPROVED
 
 ### After `/speckit.plan` Completes:
-1. Invoke head-honcho for PM review
+1. Invoke product-manager for PM review
 2. Invoke architect for technical review
 3. Require **both approvals** before declaring ready
 
 ### After `/speckit.tasks` Completes:
-1. Invoke head-honcho, architect, and team-lead
+1. Invoke product-manager, architect, and team-lead
 2. Team-lead generates `agent-assignments.md` with parallel execution waves
 3. Require **all three approvals** before implementation
 

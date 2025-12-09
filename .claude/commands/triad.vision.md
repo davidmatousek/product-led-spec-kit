@@ -25,7 +25,7 @@ You are executing the `/triad.vision` command to help the user define their prod
 **The user is the creative source.** Your job is to:
 1. Ask the right questions to extract their vision
 2. Structure their answers into professional documents
-3. Have head-honcho review for completeness
+3. Have product-manager review for completeness
 
 You are NOT generating ideas - you are capturing and formatting THEIR ideas.
 
@@ -339,18 +339,18 @@ Only create if they discussed competitors:
 *Generated from Product Vision Workshop on [date]*
 ```
 
-### Phase 6: Review with Head-Honcho
+### Phase 6: Review with Product-Manager
 
-After generating documents, invoke head-honcho for review:
-
-```
-📋 Documents generated! Now reviewing with head-honcho (PM)...
-```
-
-Invoke head-honcho agent:
+After generating documents, invoke product-manager for review:
 
 ```
-You are head-honcho reviewing the product vision documents just created.
+📋 Documents generated! Now reviewing with product-manager (PM)...
+```
+
+Invoke product-manager agent:
+
+```
+You are product-manager reviewing the product vision documents just created.
 
 Review these files:
 - docs/product/01_Product_Vision/product-vision.md
@@ -381,8 +381,8 @@ Documents Created:
 - docs/product/01_Product_Vision/target-users.md
 - docs/product/01_Product_Vision/competitive-landscape.md [if created]
 
-Head-Honcho Review: [APPROVED / SUGGESTIONS]
-[Include any feedback from head-honcho]
+Product-Manager Review: [APPROVED / SUGGESTIONS]
+[Include any feedback from product-manager]
 
 Next Steps:
 1. Review the generated documents
@@ -463,5 +463,5 @@ The command succeeds when:
 1. ✅ User answered at least Questions 1-4 (5 is ideal)
 2. ✅ product-vision.md created with their content
 3. ✅ target-users.md created with their persona
-4. ✅ head-honcho reviewed and provided feedback
+4. ✅ product-manager reviewed and provided feedback
 5. ✅ User knows the next step (/triad.prd)

@@ -1,7 +1,7 @@
 # PRD Index - {{PROJECT_NAME}}
 
 **Last Updated**: {{CURRENT_DATE}}
-**Owner**: Product Manager (head-honcho)
+**Owner**: Product Manager (product-manager)
 **Total PRDs**: 0
 
 ---
@@ -16,7 +16,7 @@ This directory contains Product Requirements Documents (PRDs) for {{PROJECT_NAME
 
 | ID | Title | Status | Created | Owner | Related Spec |
 |----|-------|--------|---------|-------|--------------|
-| 000 | Example Feature PRD | Example | {{CURRENT_DATE}} | head-honcho | N/A |
+| 000 | Example Feature PRD | Example | {{CURRENT_DATE}} | product-manager | N/A |
 | <!-- Add new PRDs here --> |
 
 ---
@@ -101,7 +101,7 @@ All approved PRDs must have:
 - `docs/SPEC_KIT_TRIAD.md` - Triad workflow guide
 - `docs/core_principles/PRODUCT_SPEC_ALIGNMENT.md` - Sign-off requirements
 - `.claude/skills/prd-create/` - PRD creation skill
-- `.claude/agents/head-honcho.md` - Product Manager agent
+- `.claude/agents/product-manager.md` - Product Manager agent
 
 ---
 

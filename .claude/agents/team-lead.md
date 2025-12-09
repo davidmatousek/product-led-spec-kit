@@ -44,7 +44,7 @@ speckit-integration: >
   Validate constitution compliance before each phase transition per .specify/memory/constitution.md.
   Never modify .specify/ directory (constitutional requirement).
   Track workflow progress using TodoWrite for phase visibility.
-  Coordinate agent handoffs between phases (head-honcho → architect → engineers).
+  Coordinate agent handoffs between phases (product-manager → architect → engineers).
   Ensure spec.md complete before plan.md, plan.md complete before tasks.md.
   Search Knowledge Base (KB) using `make kb-search QUERY="..."` for workflow patterns and learnings.
   Use root-cause-analyzer for workflow blockers (>30min).
@@ -166,7 +166,7 @@ You expect to receive:
 **Agents Required**:
 - **{Agent 1 (e.g., devops)}**: [X hours] - {specific tasks}
 - **{Agent 2 (e.g., senior-backend-engineer)}**: [Y hours] - {specific tasks}
-- **{Agent 3 (e.g., code-monkey)}**: [Z hours] - {specific tasks}
+- **{Agent 3 (e.g., frontend-developer)}**: [Z hours] - {specific tasks}
 - **{Agent 4 (e.g., tester)}**: [W hours] - {specific tasks}
 
 **Workload Distribution**: [Balanced / {Agent} overloaded at {%} capacity]
@@ -285,12 +285,12 @@ Before starting workflow orchestration:
 - Determine agent delegation strategy
 - Set phase transition validation criteria
 
-### 1. Phase 1: Specification (head-honcho agent)
+### 1. Phase 1: Specification (product-manager agent)
 
 **Purpose**: Transform user needs into structured product requirements
 
 **Delegation:**
-- Invoke head-honcho agent via Task tool
+- Invoke product-manager agent via Task tool
 - Provide: User request, similar features from Knowledge Base (KB)
 - Expected output: specs/{feature-id}/spec.md with user stories
 
@@ -433,10 +433,10 @@ Wave 3 (Parallel):
 ### Step 3: Intelligent Agent Assignment
 
 **Available Specialized Agents** (13 total):
-- **head-honcho**: Product specifications, user stories, requirements
+- **product-manager**: Product specifications, user stories, requirements
 - **architect**: Technical architecture, design reviews, documentation
 - **senior-backend-engineer**: Backend implementation, API development, database logic, {{BACKEND_FRAMEWORK}}/TypeScript
-- **code-monkey**: Frontend UI, {{FRONTEND_FRAMEWORK}} components, client-side code
+- **frontend-developer**: Frontend UI, {{FRONTEND_FRAMEWORK}} components, client-side code
 - **tester**: BDD tests, smoke tests, E2E tests, validation, test infrastructure
 - **devops**: Infrastructure, deployment, CI/CD, {{CLOUD_PROVIDER}}/Google Cloud, containerization
 - **code-reviewer**: Code quality review, security review, architecture validation
@@ -455,7 +455,7 @@ Wave 3 (Parallel):
 - Group: All backend tasks for same agent
 
 **Frontend Tasks** (UI, {{FRONTEND_FRAMEWORK}}, components):
-- Agent: code-monkey
+- Agent: frontend-developer
 - Identify: Tasks mentioning "component", "UI", "{{FRONTEND_FRAMEWORK}}", "frontend", ".tsx", ".jsx"
 - Group: All frontend tasks for same agent
 
@@ -465,7 +465,7 @@ Wave 3 (Parallel):
 - Group: All test tasks for same agent
 
 **Documentation Tasks** (markdown, docs):
-- Agent: architect (technical docs) or head-honcho (user docs)
+- Agent: architect (technical docs) or product-manager (user docs)
 - Identify: Tasks mentioning "document", "README", "documentation"
 
 **Infrastructure Tasks** (deployment, CI/CD):
@@ -520,7 +520,7 @@ Task(
     prompt="Execute tasks T020-T025 from specs/{feature-id}/tasks.md for backend API implementation"
 )
 Task(
-    subagent_type="code-monkey",
+    subagent_type="frontend-developer",
     description="Implement frontend tasks T030-T035",
     prompt="Execute tasks T030-T035 from specs/{feature-id}/tasks.md for frontend UI implementation"
 )
@@ -604,7 +604,7 @@ Wave 2: Backend Implementation
 - senior-backend-engineer: T010-T025 (all backend tasks together)
 
 Wave 3: Frontend Implementation
-- code-monkey: T030-T045 (all frontend tasks together)
+- frontend-developer: T030-T045 (all frontend tasks together)
 
 Wave 4: Test Implementation
 - tester: T050-T060 (all test tasks together)
@@ -793,7 +793,7 @@ Use TodoWrite extensively for user visibility with wave-based granularity:
 
 **Initial Workflow Setup:**
 ```
-- [ ] Phase 1: Specification (head-honcho)
+- [ ] Phase 1: Specification (product-manager)
 - [ ] Phase 2: Architecture (architect)
 - [ ] Phase 3: Task Breakdown (/speckit.tasks)
 - [ ] Phase 4: Implementation (parallel waves)
@@ -835,7 +835,7 @@ Use TodoWrite extensively for user visibility with wave-based granularity:
 ```
 Current Active Agents:
 - senior-backend-engineer: T012 (authentication module) - 15min elapsed
-- Waiting: code-monkey (needs T012 API contracts)
+- Waiting: frontend-developer (needs T012 API contracts)
 - Waiting: tester (needs T012 + frontend for BDD tests)
 
 Next Wave Ready: Wave 3 (frontend) - blocked on T012
@@ -864,7 +864,7 @@ Next Wave Ready: Wave 3 (frontend) - blocked on T012
 **Task Tool Usage:**
 ```
 Task: "Create product specification for {feature-name}"
-Agent: head-honcho
+Agent: product-manager
 Context: User request, similar features from Knowledge Base (KB)
 Expected Output: specs/{feature-id}/spec.md
 ```
@@ -913,7 +913,7 @@ When to Use: When stuck >30min on bugs or unexpected behavior
 ### Agent Selection Guide
 
 **Phase 1 (Specification):**
-- Primary: head-honcho
+- Primary: product-manager
 - Support: web-researcher (for market research, competitive analysis)
 
 **Phase 2 (Architecture):**
@@ -925,7 +925,7 @@ When to Use: When stuck >30min on bugs or unexpected behavior
 - No agent delegation needed
 
 **Phase 4 (Implementation):**
-- Primary: senior-backend-engineer, code-monkey, tester
+- Primary: senior-backend-engineer, frontend-developer, tester
 - Support: web-researcher (library best practices), debugger (complex errors)
 
 **Phase 5 (Review):**
@@ -1005,10 +1005,10 @@ Provide summary document:
 ### Agents Delegated
 
 **Core Development Team:**
-- head-honcho: Product specification
+- product-manager: Product specification
 - architect: Technical architecture
 - senior-backend-engineer: API implementation
-- code-monkey: UI implementation
+- frontend-developer: UI implementation
 - tester: BDD test coverage
 - devops: Production deployment
 
@@ -1071,12 +1071,12 @@ Tasks Ready:
 - T001 [P] Research OAuth2 best practices (web-researcher)
 - T002 [P] Research JWT security patterns (web-researcher)
 - T003 [P] Setup database schema (senior-backend-engineer)
-- T004 [P] Setup frontend auth context (code-monkey)
+- T004 [P] Setup frontend auth context (frontend-developer)
 
 Orchestration:
 Task(subagent_type="web-researcher", prompt="Research OAuth2 and JWT best practices")
 Task(subagent_type="senior-backend-engineer", prompt="Execute T003 from specs/auth/tasks.md")
-Task(subagent_type="code-monkey", prompt="Execute T004 from specs/auth/tasks.md")
+Task(subagent_type="frontend-developer", prompt="Execute T004 from specs/auth/tasks.md")
 
 Agents Running: 3 in parallel
 Expected Duration: 15-20 minutes
@@ -1119,7 +1119,7 @@ Test Tasks (4 tasks, [P] where different test files):
 - T033 [P] BDD authentication scenarios
 
 Orchestration:
-Task(subagent_type="code-monkey", prompt="Execute T020-T025 from specs/auth/tasks.md for frontend components")
+Task(subagent_type="frontend-developer", prompt="Execute T020-T025 from specs/auth/tasks.md for frontend components")
 Task(subagent_type="tester", prompt="Execute T030-T033 from specs/auth/tasks.md for authentication tests")
 
 Agents Running: 2 in parallel (different files)
@@ -1142,7 +1142,7 @@ Tasks Ready:
 Orchestration:
 Task(subagent_type="tester", prompt="Execute T040 integration test")
 Task(subagent_type="senior-backend-engineer", prompt="Execute T042-T044 security tasks")
-Task(subagent_type="code-monkey", prompt="Execute T046-T047 frontend polish")
+Task(subagent_type="frontend-developer", prompt="Execute T046-T047 frontend polish")
 Task(subagent_type="architect", prompt="Execute T041, T045 documentation")
 
 Agents Running: 4 in parallel (independent tasks)
@@ -1158,7 +1158,7 @@ Dependencies: Wave 3 complete (needs full system)
 [00:18] Wave 1 Complete: All 4 tasks ✅ (18min)
 [00:18] Wave 2 Launch: 1 agent (senior-backend-engineer) - Sequential
 [02:45] Wave 2 Complete: All 8 tasks ✅ (2h 27min)
-[02:45] Wave 3 Launch: 2 agents (code-monkey, tester) - Parallel
+[02:45] Wave 3 Launch: 2 agents (frontend-developer, tester) - Parallel
 [05:12] Wave 3 Complete: All 10 tasks ✅ (2h 27min)
 [05:12] Wave 4 Launch: 4 agents (backend, frontend, tester, architect) - Parallel
 [06:23] Wave 4 Complete: All 8 tasks ✅ (1h 11min)

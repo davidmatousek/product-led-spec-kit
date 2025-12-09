@@ -79,7 +79,7 @@ Every PRD created by this skill follows this proven structure:
 
 **Status**: [Draft / Review / Approved]
 **Created**: YYYY-MM-DD
-**Author**: head-honcho
+**Author**: product-manager
 **Reviewers**: [architect, team-lead, etc.]
 **Phase**: [Phase 1 / Phase 2 / etc.]
 **Priority**: [P0 / P1 / P2]
@@ -463,13 +463,13 @@ Relationships:
 
 | Milestone | Target Date | Owner | Status |
 |-----------|-------------|-------|--------|
-| PRD Approval | YYYY-MM-DD | head-honcho | 🟡 In Review |
+| PRD Approval | YYYY-MM-DD | product-manager | 🟡 In Review |
 | Spec Complete | YYYY-MM-DD | architect | 📋 Pending |
 | Design Mockups | YYYY-MM-DD | designer | 📋 Pending |
 | Dev Complete | YYYY-MM-DD | team-lead | 📋 Pending |
 | Testing Complete | YYYY-MM-DD | tester | 📋 Pending |
 | Production Deploy | YYYY-MM-DD | devops | 📋 Pending |
-| User Validation | YYYY-MM-DD | head-honcho | 📋 Pending |
+| User Validation | YYYY-MM-DD | product-manager | 📋 Pending |
 
 Legend: ✅ Complete | 🟢 On Track | 🟡 In Review | 📋 Pending | 🔴 Blocked
 
@@ -562,7 +562,7 @@ Legend: ✅ Complete | 🟢 On Track | 🟡 In Review | 📋 Pending | 🔴 Bloc
 
 ### PRD Review Checklist
 
-**Product Manager** (head-honcho):
+**Product Manager** (product-manager):
 - [ ] Problem statement is clear and user-focused
 - [ ] User stories have measurable acceptance criteria
 - [ ] Success metrics are defined and measurable
@@ -592,7 +592,7 @@ Legend: ✅ Complete | 🟢 On Track | 🟡 In Review | 📋 Pending | 🔴 Bloc
 
 | Role | Name | Status | Date | Comments |
 |------|------|--------|------|----------|
-| Product Manager | head-honcho | 📋 Pending | - | - |
+| Product Manager | product-manager | 📋 Pending | - | - |
 | Architect | architect | 📋 Pending | - | - |
 | Engineering Lead | team-lead | 📋 Pending | - | - |
 
@@ -604,7 +604,7 @@ Legend: ✅ Approved | 🟡 Approved with Comments | ❌ Rejected | 📋 Pending
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
-| 1.0 | YYYY-MM-DD | head-honcho | Initial PRD |
+| 1.0 | YYYY-MM-DD | product-manager | Initial PRD |
 
 ---
 

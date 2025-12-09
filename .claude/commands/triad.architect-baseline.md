@@ -331,7 +331,7 @@ Infrastructure PRD Workflow (Sequential):
 ## Related Agents
 
 - `architect` - Creates baseline report and technical reviews
-- `head-honcho` - Uses baseline to draft accurate PRD
+- `product-manager` - Uses baseline to draft accurate PRD
 - `team-lead` - Uses baseline for timeline estimates
 
 ## Success Criteria

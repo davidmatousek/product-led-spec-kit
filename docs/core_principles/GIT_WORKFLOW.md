@@ -413,7 +413,7 @@ CONTRIBUTING.md @architect
 # Example PR with agent assignments
 title: "feat(tasks): implement concurrent task claiming"
 assignees:
-  - code-monkey      # Implementation lead
+  - frontend-developer      # Implementation lead
   - architect        # Design review
   - code-reviewer    # Quality check
   - tester           # QA sign-off
@@ -422,7 +422,7 @@ labels:
   - type/feature
   - component/api
   - priority/high
-  - agent/code-monkey
+  - agent/frontend-developer
 ```
 
 ### Parallel Development with Git Worktrees

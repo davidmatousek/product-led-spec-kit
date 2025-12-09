@@ -10,7 +10,7 @@
 **Spec Kit Triad** is a lightweight collaboration framework ensuring Product-Architecture-Engineering alignment for all PRDs and specs.
 
 **The Three Roles**:
-1. **PM (head-honcho)**: Defines **What** & **Why** (user value, business goals)
+1. **PM (product-manager)**: Defines **What** & **Why** (user value, business goals)
 2. **Architect**: Defines **How** (technical approach, infrastructure baseline)
 3. **Tech-Lead (team-lead)**: Defines **When** & **Who** (timeline, agent assignments)
 
@@ -381,7 +381,7 @@ cat docs/product/02_PRD/INDEX.md | grep {NNN}
 - [PRODUCT_SPEC_ALIGNMENT.md](core_principles/PRODUCT_SPEC_ALIGNMENT.md) - Dual sign-off requirements
 
 **Agent Documentation**:
-- [head-honcho agent](.claude/agents/head-honcho.md) - PM responsibilities
+- [product-manager agent](.claude/agents/product-manager.md) - PM responsibilities
 - [architect agent](.claude/agents/architect.md) - Baseline + review responsibilities
 - [team-lead agent](.claude/agents/team-lead.md) - Feasibility + execution
 

@@ -43,7 +43,7 @@ You are executing `/triad.plan`, a thin wrapper around `/speckit.plan` that adds
 
 **Wrapper Responsibilities**:
 1. Call vanilla `/speckit.plan` to create plan.md
-2. Auto-invoke head-honcho agent for PM feasibility review
+2. Auto-invoke product-manager agent for PM feasibility review
 3. Auto-invoke architect agent for technical design review
 4. Update plan.md frontmatter with both verdicts
 5. Block progression if either agent requests changes
@@ -100,7 +100,7 @@ Wait for the command to complete.
 
 ```python
 Task(
-    subagent_type="head-honcho",
+    subagent_type="product-manager",
     description="PM sign-off for plan feasibility",
     prompt="""Review the technical plan for product and feasibility alignment per Constitution v1.4.0.
 

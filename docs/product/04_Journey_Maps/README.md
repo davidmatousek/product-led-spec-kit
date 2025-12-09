@@ -1,7 +1,7 @@
 # Customer Journey Maps - {{PROJECT_NAME}}
 
 **Last Updated**: {{CURRENT_DATE}}
-**Owner**: Product Manager (head-honcho)
+**Owner**: Product Manager (product-manager)
 **Status**: Template - Complete after MVP launch
 
 ---

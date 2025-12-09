@@ -26,7 +26,7 @@ analyze: ## Run /speckit.analyze
 
 # Governance shortcuts
 review-spec: ## Review spec.md with PM
-	@echo "Use head-honcho agent or /triad.specify for auto-review"
+	@echo "Use product-manager agent or /triad.specify for auto-review"
 
 review-plan: ## Review plan.md with PM + Architect
-	@echo "Use head-honcho + architect agents or /triad.plan for auto-review"
+	@echo "Use product-manager + architect agents or /triad.plan for auto-review"

@@ -2,7 +2,7 @@
 
 **Status**: Example
 **Created**: {{CURRENT_DATE}}
-**PM**: head-honcho
+**PM**: product-manager
 **Related Spec**: N/A
 
 ---

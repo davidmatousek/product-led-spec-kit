@@ -1,7 +1,7 @@
 # Product Vision - {{PROJECT_NAME}}
 
 **Last Updated**: {{CURRENT_DATE}}
-**Owner**: Product Manager (head-honcho)
+**Owner**: Product Manager (product-manager)
 **Status**: Template - Customize for your project
 
 ---
@@ -117,7 +117,7 @@ All PRDs in `docs/product/02_PRD/` must reference this vision:
 
 ### Spec Validation
 When creating `spec.md` with `/speckit.specify`:
-- head-honcho validates spec aligns with product vision
+- product-manager validates spec aligns with product vision
 - Architect ensures technical approach serves user needs
 - Team-lead prioritizes work based on persona value
 
@@ -194,7 +194,7 @@ docs/product/01_Product_Vision/
 - `docs/SPEC_KIT_TRIAD.md` - PM-Architect-TechLead collaboration
 
 **Agent Tools**:
-- `.claude/agents/head-honcho.md` - Product Manager agent
+- `.claude/agents/product-manager.md` - Product Manager agent
 - `.claude/skills/prd-create/` - PRD creation skill
 
 ---
@@ -214,4 +214,4 @@ docs/product/01_Product_Vision/
 **Template Instructions**: Delete this section after customization. Replace all `{{TEMPLATE_VARIABLES}}` throughout this directory. The vision you define here will guide all product decisions for {{PROJECT_NAME}}.
 
 **Last Updated**: {{CURRENT_DATE}}
-**Maintained By**: Product Manager (head-honcho)
+**Maintained By**: Product Manager (product-manager)

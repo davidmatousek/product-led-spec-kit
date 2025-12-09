@@ -204,7 +204,7 @@ ALL development work MUST use feature branches. Direct commits to main branch ar
 ### X. Product-Spec Alignment & Architecture Review (NON-NEGOTIABLE)
 
 ALL Spec Kit artifacts (spec.md, plan.md, tasks.md) MUST receive dual sign-off before implementation begins:
-1. **Product Manager (head-honcho)** validates product alignment and user value
+1. **Product Manager (product-manager)** validates product alignment and user value
 2. **Architect** validates technical soundness and architectural consistency
 
 Product artifacts in docs/product/ are the strategic foundation, and project architecture in docs/architecture/ is the technical foundation that specifications must serve.
@@ -226,7 +226,7 @@ Product artifacts in docs/product/ are the strategic foundation, and project arc
 
 **Product Manager Authority**:
 
-The Product Manager (head-honcho) has **VETO AUTHORITY** over:
+The Product Manager (product-manager) has **VETO AUTHORITY** over:
 1. **Spec Creation**: Can reject spec.md that doesn't align with product vision
 2. **Plan Approval**: Can reject plan.md that doesn't fit roadmap or user value
 3. **Task Prioritization**: Can reorder tasks.md to align with product priorities
@@ -419,7 +419,7 @@ Product Manager is responsible for maintaining alignment between:
 
 **Tools & Skills**:
 - **prd-create skill**: Generate industry-standard PRDs
-- **head-honcho agent**: Product Manager with alignment validation expertise
+- **product-manager agent**: Product Manager with alignment validation expertise
 - **architect agent**: Architect with technical design and review expertise
 - **/speckit.prd**: Create PRD documents
 - **/speckit.specify**: Create specifications from PRD inputs
@@ -427,7 +427,7 @@ Product Manager is responsible for maintaining alignment between:
 - **/speckit.tasks**: Create implementation tasks from plans
 - **/speckit.analyze**: Validate consistency across artifacts
 
-**Reference**: See `.claude/agents/head-honcho.md` for PM responsibilities, `.claude/agents/architect.md` for Architect responsibilities, and `docs/core_principles/PRODUCT_SPEC_ALIGNMENT.md` for comprehensive alignment guide
+**Reference**: See `.claude/agents/product-manager.md` for PM responsibilities, `.claude/agents/architect.md` for Architect responsibilities, and `docs/core_principles/PRODUCT_SPEC_ALIGNMENT.md` for comprehensive alignment guide
 
 ---
 
@@ -437,7 +437,7 @@ Product Manager is responsible for maintaining alignment between:
 
 #### The Triad
 
-1. **Head-Honcho (Product Manager)**: Defines **What** and **Why**
+1. **Product-Manager (Product Manager)**: Defines **What** and **Why**
 2. **Architect (System Architect)**: Defines **How** (Strategic/Technical)
 3. **Tech-Lead (Engineering Manager)**: Defines **When** and **Who** (Tactical/Resourcing)
 

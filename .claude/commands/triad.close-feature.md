@@ -12,7 +12,7 @@ You are executing `/triad.close-feature`, which orchestrates the closure of a co
 5. Auto-committing and pushing to main
 
 **Agents Involved**:
-- `head-honcho` (PM): Product documentation (Section 1 of checklist)
+- `product-manager` (PM): Product documentation (Section 1 of checklist)
 - `architect`: Architecture documentation (Section 2 of checklist)
 - `devops`: DevOps/deployment documentation (Section 3 of checklist)
 - Main orchestrator: Cleanup, validation, commit (Sections 4-10)
@@ -124,11 +124,11 @@ Extract key metrics:
 
 Launch all three agents IN PARALLEL using a single message with multiple Task tool calls:
 
-### Agent 1: head-honcho (Product Documentation)
+### Agent 1: product-manager (Product Documentation)
 
 ```python
 Task(
-    subagent_type="head-honcho",
+    subagent_type="product-manager",
     description="Update product docs for feature closure",
     prompt="""## Task: Update Product Documentation for Feature {NUMBER} Closure
 
@@ -301,7 +301,7 @@ If any agent fails:
 
 | Agent | Status | Summary |
 |-------|--------|---------|
-| head-honcho | {SUCCESS/FAILED} | {summary} |
+| product-manager | {SUCCESS/FAILED} | {summary} |
 | architect | {SUCCESS/FAILED} | {summary} |
 | devops | {SUCCESS/FAILED} | {summary} |
 
@@ -447,7 +447,7 @@ git push origin main
 
 | Domain | Agent | Files Updated | Status |
 |--------|-------|---------------|--------|
-| Product | head-honcho | {count} | ✅ |
+| Product | product-manager | {count} | ✅ |
 | Architecture | architect | {count} | ✅ |
 | DevOps | devops | {count} | ✅ |
 | System | orchestrator | {count} | ✅ |

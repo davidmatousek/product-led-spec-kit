@@ -22,7 +22,7 @@ Successfully copied and templatized the complete agent orchestration infrastruct
 
 ### Core Development Team (6 Agents)
 
-1. **head-honcho.md** (Product Manager)
+1. **product-manager.md** (Product Manager)
    - Product specifications, user stories, requirements
    - PM sign-off on spec.md, plan.md, tasks.md
 
@@ -38,7 +38,7 @@ Successfully copied and templatized the complete agent orchestration infrastruct
    - API implementation, business logic, database design
    - Implements backend tasks from tasks.md
 
-5. **code-monkey.md** (Frontend Developer)
+5. **frontend-developer.md** (Frontend Developer)
    - UI components, client-side logic, design system
    - Implements frontend tasks from tasks.md
 
@@ -288,7 +288,7 @@ All agents include 7 template variables for project customization:
 ✅ **Templatization Accuracy**
 - 7 unique template variables found in agents
 - Verified in senior-backend-engineer.md (backend)
-- Verified in code-monkey.md (frontend)
+- Verified in frontend-developer.md (frontend)
 - Verified in devops.md (infrastructure)
 
 ✅ **Documentation Completeness**

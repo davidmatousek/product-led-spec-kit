@@ -12,7 +12,7 @@ The SDLC Triad is a structured collaboration framework ensuring Product, Archite
 
 ### The Triad
 
-1. **Head-Honcho (Product Manager)**: Defines **What** and **Why**
+1. **Product-Manager (Product Manager)**: Defines **What** and **Why**
 2. **Architect (System Architect)**: Defines **How** (Strategic/Technical)
 3. **Tech-Lead (Engineering Manager)**: Defines **When** and **Who** (Tactical/Resourcing)
 
@@ -20,7 +20,7 @@ The SDLC Triad is a structured collaboration framework ensuring Product, Archite
 
 ## Role Responsibilities
 
-### Head-Honcho (Product Manager)
+### Product-Manager (Product Manager)
 
 **MUST Do**:
 - ✅ Define user problems and pain points
@@ -444,4 +444,4 @@ A: Domain-specific: PM for product priorities, Architect for technical feasibili
 
 **Version**: 1.0
 **Last Updated**: 2025-11-22
-**Maintained By**: SDLC Triad (head-honcho, architect, team-lead)
+**Maintained By**: SDLC Triad (product-manager, architect, team-lead)

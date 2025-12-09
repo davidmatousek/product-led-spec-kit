@@ -62,7 +62,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **IF EXISTS**: Read quickstart.md for integration scenarios
 
    **CHECK FOR AGENT ASSIGNMENTS**:
-   - Look for agent assignment document in docs/agents/head-honcho/*Agent-Assignment-Plan*.md
+   - Look for agent assignment document in docs/agents/product-manager/*Agent-Assignment-Plan*.md
    - If found: Use the documented agent assignments and wave execution plan
    - If not found: Proceed with automatic agent assignment based on task analysis
 
@@ -98,10 +98,10 @@ You **MUST** consider the user input before proceeding (if not empty).
    **Automatic agent assignment** (if no assignment plan found):
 
    **Available Specialized Agents** (13 total):
-   - **head-honcho**: Product specifications, user stories, requirements
+   - **product-manager**: Product specifications, user stories, requirements
    - **architect**: Technical architecture, design reviews, documentation
    - **senior-backend-engineer**: API, database, models, services, business logic
-   - **code-monkey**: Frontend UI, React components, client-side code
+   - **frontend-developer**: Frontend UI, React components, client-side code
    - **tester**: BDD tests, smoke tests, E2E tests, validation, test infrastructure
    - **devops**: Infrastructure, deployment, CI/CD, Docker, Cloud services
    - **code-reviewer**: Code quality review, security review, architecture validation
@@ -117,7 +117,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    | Task Pattern | Agent | Examples |
    |--------------|-------|----------|
    | API, database, models, services, `.py`, `.java` | senior-backend-engineer | "Create UserService", "Add API endpoint" |
-   | UI, React, components, `.tsx`, `.jsx` | code-monkey | "Create LoginForm component" |
+   | UI, React, components, `.tsx`, `.jsx` | frontend-developer | "Create LoginForm component" |
    | Tests, BDD, validation, `tests/`, `spec/` | tester | "Write integration tests" |
    | Deployment, CI/CD, Docker, `deployment/` | devops | "Deploy to staging" |
    | Architecture, design docs, `.md` files in `docs/` | architect | "Update architecture docs" |
@@ -143,7 +143,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    Wave 1 (Parallel):
    - T002 [P] → senior-backend-engineer
    - T003 [P] → senior-backend-engineer
-   - T004 [P] → code-monkey
+   - T004 [P] → frontend-developer
 
    Wave 2 (Sequential):
    - T005 → senior-backend-engineer (depends on Wave 1)
@@ -152,7 +152,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    Wave 3 (Parallel):
    - T010 [P] [US1] → tester
    - T015 [P] [US2] → tester
-   - T020 [P] [US3] → code-monkey
+   - T020 [P] [US3] → frontend-developer
    ```
 
 6. **Execute parallel wave orchestration**:
@@ -177,7 +177,7 @@ You **MUST** consider the user input before proceeding (if not empty).
           prompt="Execute tasks T001-T007 from specs/{feature-id}/tasks.md..."
       )
       Task(
-          subagent_type="code-monkey",
+          subagent_type="frontend-developer",
           description="Execute frontend tasks T020-T025",
           prompt="Execute tasks T020-T025 from specs/{feature-id}/tasks.md..."
       )
@@ -370,7 +370,7 @@ You **MUST** consider the user input before proceeding (if not empty).
        "activeForm": "Launching Wave 2 backend services"
      },
      {
-       "content": "Wave 3: Frontend components (T072-T075) [P] - code-monkey",
+       "content": "Wave 3: Frontend components (T072-T075) [P] - frontend-developer",
        "status": "pending",
        "activeForm": "Launching Wave 3 frontend components"
      },

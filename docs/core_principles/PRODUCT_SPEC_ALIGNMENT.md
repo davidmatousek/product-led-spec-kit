@@ -1,7 +1,7 @@
 <!--
 File: PRODUCT_SPEC_ALIGNMENT.md
 Description: Product-Spec Alignment requirements and Product Manager sign-off procedures
-Author/Agent: head-honcho
+Author/Agent: product-manager
 Created: 2025-11-19
 Last Updated: 2025-11-19
 Constitutional Reference: Constitution v1.2.0, Principle X
@@ -15,7 +15,7 @@ Constitutional Reference: Constitution v1.2.0, Principle X
 
 Per **Constitution v1.2.0, Principle X: Product-Spec Alignment (NON-NEGOTIABLE)**:
 
-> ALL Spec Kit artifacts (spec.md, plan.md, tasks.md) MUST receive Product Manager (head-honcho) sign-off before implementation begins. Product artifacts in docs/product/ are the strategic foundation that technical specifications must serve.
+> ALL Spec Kit artifacts (spec.md, plan.md, tasks.md) MUST receive Product Manager (product-manager) sign-off before implementation begins. Product artifacts in docs/product/ are the strategic foundation that technical specifications must serve.
 
 ## Rationale
 
@@ -184,7 +184,7 @@ Product Manager adds this section to spec.md, plan.md, or tasks.md after validat
 ## Product Manager Sign-Off
 
 **Artifact**: [spec.md / plan.md / tasks.md]
-**PM**: head-honcho
+**PM**: product-manager
 **Date**: YYYY-MM-DD
 **Status**: [✅ Approved / 🟡 Approved with Comments / ❌ Rejected]
 
@@ -261,7 +261,7 @@ When exercising veto, Product Manager documents:
 ## Product Manager Veto - YYYY-MM-DD
 
 **Artifact**: [spec.md / plan.md / tasks.md]
-**PM**: head-honcho
+**PM**: product-manager
 **Reason**: [Clear explanation of misalignment]
 
 ### Required Changes
@@ -401,7 +401,7 @@ Spec Kit commands enforce PM sign-off:
 PRs without PM approval are blocked from merge:
 - PR checklist includes "PM Sign-Off: ✅"
 - CI/CD checks for PM approval section in artifacts
-- CODEOWNERS includes head-honcho for product docs
+- CODEOWNERS includes product-manager for product docs
 
 ### 4. Artifact Metadata
 
@@ -412,7 +412,7 @@ All Spec Kit artifacts include metadata:
 source_prd: docs/product/02_PRD/NNN-topic-YYYY-MM-DD.md
 pm_approved: true
 pm_approval_date: YYYY-MM-DD
-pm_approver: head-honcho
+pm_approver: product-manager
 ---
 ```
 
@@ -439,7 +439,7 @@ Use `/speckit.analyze` to validate product-spec consistency:
 - `/speckit.clarify` - Ask clarifying questions
 
 **Agents**:
-- `head-honcho` - Product Manager with alignment validation expertise
+- `product-manager` - Product Manager with alignment validation expertise
 
 ## Common Alignment Issues
 
@@ -515,7 +515,7 @@ Product-Spec Alignment is successful when:
 - [Constitution v1.2.0, Principle X](./.specify/memory/constitution.md#x-product-spec-alignment-non-negotiable)
 
 ### Product Manager Documentation
-- [head-honcho Agent](./.claude/agents/head-honcho.md)
+- [product-manager Agent](./.claude/agents/product-manager.md)
 - [prd-create Skill](./.claude/skills/prd-create/skill.md)
 
 ### Related Core Principles

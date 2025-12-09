@@ -1,7 +1,7 @@
 # Product Roadmap - {{PROJECT_NAME}}
 
 **Last Updated**: {{CURRENT_DATE}}
-**Owner**: Product Manager (head-honcho)
+**Owner**: Product Manager (product-manager)
 **Status**: Template - Complete after MVP launch
 
 ---
@@ -146,4 +146,4 @@ docs/product/03_Product_Roadmap/
 
 **Template Instructions**: Choose phase-based OR time-based structure. Delete this message and create your first roadmap document.
 
-**Maintained By**: Product Manager (head-honcho)
+**Maintained By**: Product Manager (product-manager)

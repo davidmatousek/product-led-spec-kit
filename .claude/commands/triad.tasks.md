@@ -43,7 +43,7 @@ You are executing `/triad.tasks`, a thin wrapper around `/speckit.tasks` that ad
 
 **Wrapper Responsibilities**:
 1. Call vanilla `/speckit.tasks` to create tasks.md
-2. Auto-invoke head-honcho agent for PM prioritization review
+2. Auto-invoke product-manager agent for PM prioritization review
 3. Auto-invoke architect agent for technical approach review
 4. Auto-invoke team-lead agent for agent assignment and parallel optimization
 5. Update tasks.md frontmatter with all three verdicts
@@ -104,7 +104,7 @@ Wait for the command to complete.
 
 ```python
 Task(
-    subagent_type="head-honcho",
+    subagent_type="product-manager",
     description="PM sign-off for task prioritization",
     prompt="""Review the task breakdown for prioritization and product alignment per Constitution v1.4.0.
 

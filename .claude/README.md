@@ -18,11 +18,11 @@ The infrastructure is organized into three main components:
 
 | Agent | Role | Primary Responsibilities |
 |-------|------|-------------------------|
-| **head-honcho** | Product Manager | Product specifications, user stories, requirements gathering, stakeholder communication |
+| **product-manager** | Product Manager | Product specifications, user stories, requirements gathering, stakeholder communication |
 | **architect** | Technical Architect | System design, architecture review, technical decision documentation, baseline infrastructure analysis |
 | **team-lead** | Development Lead | Multi-agent orchestration, parallel task coordination, workflow management, progress tracking |
 | **senior-backend-engineer** | Backend Developer | API implementation, business logic, database design, server-side code |
-| **code-monkey** | Frontend Developer | UI components, client-side logic, design system implementation |
+| **frontend-developer** | Frontend Developer | UI components, client-side logic, design system implementation |
 | **tester** | QA Engineer | BDD tests, integration tests, test coverage, quality assurance |
 
 ### Specialized Support Team (6 agents)
@@ -186,7 +186,7 @@ For rapid prototyping without automatic governance:
 # Example orchestration:
 # Wave 1: web-researcher (research best practices)
 # Wave 2: senior-backend-engineer (API implementation)
-# Wave 3: code-monkey + tester (UI + tests in parallel)
+# Wave 3: frontend-developer + tester (UI + tests in parallel)
 # Wave 4: code-reviewer (quality gates)
 ```
 
@@ -250,7 +250,7 @@ Expected Output: .specify/tasks.md with dependency-ordered tasks
 ```python
 # Launch 3 agents in parallel (SINGLE message)
 Task(subagent_type="senior-backend-engineer", prompt="Implement T010-T020")
-Task(subagent_type="code-monkey", prompt="Implement T030-T040")
+Task(subagent_type="frontend-developer", prompt="Implement T030-T040")
 Task(subagent_type="tester", prompt="Implement T050-T060")
 ```
 
@@ -261,11 +261,11 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 ```
 .claude/
 ├── agents/           → 12 specialized agents
-│   ├── head-honcho.md
+│   ├── product-manager.md
 │   ├── architect.md
 │   ├── team-lead.md
 │   ├── senior-backend-engineer.md
-│   ├── code-monkey.md
+│   ├── frontend-developer.md
 │   ├── tester.md
 │   ├── devops.md
 │   ├── code-reviewer.md

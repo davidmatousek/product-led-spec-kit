@@ -318,7 +318,7 @@ The team-lead agent should follow this template from `.claude/agents/team-lead.m
 **Agents Required**:
 - **{Agent 1 (e.g., devops)}**: [X hours] - {specific tasks}
 - **{Agent 2 (e.g., senior-backend-engineer)}**: [Y hours] - {specific tasks}
-- **{Agent 3 (e.g., code-monkey)}**: [Z hours] - {specific tasks}
+- **{Agent 3 (e.g., frontend-developer)}**: [Z hours] - {specific tasks}
 - **{Agent 4 (e.g., tester)}**: [W hours] - {specific tasks}
 
 **Workload Distribution**: [Balanced / {Agent} overloaded at {%} capacity]
@@ -410,7 +410,7 @@ Feature PRD Workflow (Parallel):
 ## Related Agents
 
 - `team-lead` - Performs feasibility checks and timeline estimates
-- `head-honcho` - Uses feasibility check to finalize PRD timeline
+- `product-manager` - Uses feasibility check to finalize PRD timeline
 - `architect` - Provides baseline data for accurate estimates
 
 ## Success Criteria

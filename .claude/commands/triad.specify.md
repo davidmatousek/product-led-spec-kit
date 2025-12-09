@@ -43,7 +43,7 @@ You are executing `/triad.specify`, a thin wrapper around `/speckit.specify` tha
 
 **Wrapper Responsibilities**:
 1. Call vanilla `/speckit.specify` to create spec.md
-2. Auto-invoke head-honcho agent for PM sign-off
+2. Auto-invoke product-manager agent for PM sign-off
 3. Update spec.md frontmatter with PM verdict
 4. Block progression if PM requests changes
 
@@ -92,13 +92,13 @@ Wait for the command to complete.
 
 ## Step 2: Auto-Invoke PM Sign-Off
 
-**CRITICAL**: Automatically invoke the head-honcho agent for PM review. Do NOT wait for user to request this.
+**CRITICAL**: Automatically invoke the product-manager agent for PM review. Do NOT wait for user to request this.
 
 Use the Task tool with the following parameters:
 
 ```python
 Task(
-    subagent_type="head-honcho",
+    subagent_type="product-manager",
     description="PM sign-off for specification",
     prompt="""Review the specification for product alignment per Constitution v1.4.0.
 

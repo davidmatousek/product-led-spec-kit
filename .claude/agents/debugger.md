@@ -39,7 +39,7 @@ use-cases:
   - "Prevent recurring issues"
   - "Document debugging learnings"
 
-boundaries: "Focuses on debugging and fixing issues - for new features, delegate to implementation agents (senior-backend-engineer, code-monkey)"
+boundaries: "Focuses on debugging and fixing issues - for new features, delegate to implementation agents (senior-backend-engineer, frontend-developer)"
 
 speckit-integration: >
   Read specs/{feature-id}/spec.md and plan.md for context on expected behavior.
