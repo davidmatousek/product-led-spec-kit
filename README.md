@@ -397,19 +397,8 @@ Improvements to core Spec Kit (benefits all users):
 
 ---
 
-**Version**: 1.1.0
-**Last Updated**: 2025-12-15
+**Version**: 2.0.0
+**Last Updated**: 2026-01-24
 **Maintainer**: Architect Agent
 
-### Changelog
-
-**v1.1.0** (2025-12-15) - Modular Rules System
-- Added `.claude/rules/` directory with 6 topic-specific governance files
-- Refactored CLAUDE.md from 192 to 70 lines using @-references
-- Added MIGRATION.md guide for customization
-- Instant context loading (<1 second vs 5-10 seconds)
-
-**v1.0.0** (2025-12-04) - Initial Release
-- Product-led governance template
-- SDLC Triad collaboration framework
-- Templatized constitution
+See [CHANGELOG.md](CHANGELOG.md) for full version history.
