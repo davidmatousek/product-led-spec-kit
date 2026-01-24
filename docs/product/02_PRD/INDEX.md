@@ -1,14 +1,14 @@
-# PRD Index - {{PROJECT_NAME}}
+# PRD Index - Product-Led-Spec-Kit
 
-**Last Updated**: {{CURRENT_DATE}}
+**Last Updated**: 2026-01-24
 **Owner**: Product Manager (product-manager)
-**Total PRDs**: 0
+**Total PRDs**: 2
 
 ---
 
 ## Overview
 
-This directory contains Product Requirements Documents (PRDs) for {{PROJECT_NAME}}. Each PRD defines the **What** and **Why** for a feature or initiative.
+This directory contains Product Requirements Documents (PRDs) for Product-Led-Spec-Kit. Each PRD defines the **What** and **Why** for a feature or initiative.
 
 ---
 
@@ -16,8 +16,9 @@ This directory contains Product Requirements Documents (PRDs) for {{PROJECT_NAME
 
 | ID | Title | Status | Created | Owner | Related Spec |
 |----|-------|--------|---------|-------|--------------|
-| 000 | Example Feature PRD | Example | {{CURRENT_DATE}} | product-manager | N/A |
-| <!-- Add new PRDs here --> |
+| 000 | Example Feature PRD | Example | 2025-12-15 | product-manager | N/A |
+| 001 | [Claude Code Memory Features Enhancement](001-claude-code-memory-features-2025-12-15.md) | Approved | 2025-12-15 | product-manager | TBD |
+| 002 | [Anthropic Claude Code Updates Integration](002-anthropic-updates-integration-2026-01-24.md) | ✅ Approved | 2026-01-24 | product-manager | specs/002-anthropic-updates-integration/ |
 
 ---
 

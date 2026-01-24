@@ -27,7 +27,17 @@ This template is ideal for teams building SaaS products, multi-agent systems, or
 ### Directory Structure
 ```
 product-led-spec-kit/
-├── .claude/                    # Spec Kit agents, skills, commands (from upstream)
+├── .claude/
+│   ├── agents/                 # 13 specialized agents
+│   ├── skills/                 # 8 automation capabilities
+│   ├── commands/               # Spec Kit + Triad commands
+│   └── rules/                  # Modular governance rules (NEW)
+│       ├── governance.md       # Sign-off requirements, Triad workflow
+│       ├── git-workflow.md     # Branch naming, PR policies
+│       ├── deployment.md       # DevOps agent policy
+│       ├── scope.md            # Project boundaries
+│       ├── commands.md         # Triad + Vanilla commands
+│       └── context-loading.md  # Context loading guide
 ├── .specify/
 │   └── memory/
 │       └── constitution.md     # Templatized governance (CUSTOMIZE THIS)
@@ -41,6 +51,8 @@ product-led-spec-kit/
 │       └── FORK_SETUP.md       # How to sync with upstream spec-kit
 ├── specs/                      # Feature specifications (.specify/ artifacts)
 ├── scripts/                    # Automation scripts
+├── CLAUDE.md                   # AI agent context (70 lines with @-references)
+├── MIGRATION.md                # Migration guide for modular rules
 └── README.md                   # This file
 ```
 
@@ -185,6 +197,41 @@ git push -u origin main
 
 ---
 
+## Modular Rules System
+
+CLAUDE.md uses **@-references** to load governance rules from modular files, enabling:
+
+- **Instant context loading** - Rules load automatically when agents read CLAUDE.md (<1 second vs 5-10 seconds with manual `cat` commands)
+- **Topic-specific editing** - Edit `.claude/rules/git-workflow.md` without touching deployment or governance rules
+- **No merge conflicts** - Team members can edit different rule files simultaneously
+- **Concise overview** - CLAUDE.md is 70 lines (reduced from 192) with clear topic summaries
+
+### How @-references Work
+
+When an agent reads CLAUDE.md, lines like:
+```markdown
+@.claude/rules/governance.md
+```
+
+Are automatically expanded inline by Claude Code - no manual commands needed.
+
+### Customizing Rules
+
+Edit any rule file in `.claude/rules/` to customize governance for your team:
+
+```bash
+# Example: Customize git branch naming
+vim .claude/rules/git-workflow.md
+
+# Example: Add custom security rules
+vim .claude/rules/security.md  # Create new file
+# Then add @.claude/rules/security.md to CLAUDE.md
+```
+
+See [MIGRATION.md](MIGRATION.md) for detailed customization guide.
+
+---
+
 ## How It Works
 
 ### SDLC Triad Collaboration
@@ -309,6 +356,7 @@ See `docs/planning/FORK_SETUP.md` for detailed sync instructions.
 ## Documentation
 
 - **Constitution**: `.specify/memory/constitution.md` - Governance principles
+- **Migration Guide**: `MIGRATION.md` - How to customize modular rules
 - **Fork Setup**: `docs/planning/FORK_SETUP.md` - How to sync with upstream
 - **Triad Workflow**: `docs/core_principles/TRIAD_COLLABORATION.md` - Detailed collaboration guide (from upstream)
 - **Product-Spec Alignment**: `docs/core_principles/PRODUCT_SPEC_ALIGNMENT.md` - PM sign-off process (from upstream)
@@ -349,6 +397,19 @@ Improvements to core Spec Kit (benefits all users):
 
 ---
 
-**Version**: 1.0.0
-**Last Updated**: 2025-12-04
+**Version**: 1.1.0
+**Last Updated**: 2025-12-15
 **Maintainer**: Architect Agent
+
+### Changelog
+
+**v1.1.0** (2025-12-15) - Modular Rules System
+- Added `.claude/rules/` directory with 6 topic-specific governance files
+- Refactored CLAUDE.md from 192 to 70 lines using @-references
+- Added MIGRATION.md guide for customization
+- Instant context loading (<1 second vs 5-10 seconds)
+
+**v1.0.0** (2025-12-04) - Initial Release
+- Product-led governance template
+- SDLC Triad collaboration framework
+- Templatized constitution

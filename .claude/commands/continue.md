@@ -201,15 +201,15 @@ npm test
 
 **For Spec Kit workflows** (when `specs/NNN-feature/tasks.md` exists):
 ```
-/team-lead.implement specs/NNN-feature/NEXT-SESSION.md
+/triad.implement [Brief task description] per specs/NNN-feature/NEXT-SESSION.md
 ```
 
 **For non-Spec Kit workflows** (general development):
 ```
-/execute read docs/prompts/NEXT-SESSION.md
+/execute [Brief task description] per docs/prompts/NEXT-SESSION.md
 ```
 
-**The "Next Action" section MUST look like this**:
+**The "Next Action" section MUST include agent assignments**:
 
 ```markdown
 ## Next Action
@@ -219,14 +219,36 @@ npm test
 **To Continue This Session**:
 
 ```
-/team-lead.implement specs/002-frontend-mvp/NEXT-SESSION.md
+/triad.implement [Brief task description] per specs/NNN-feature/NEXT-SESSION.md
 ```
 
 **What This Will Do**:
-- Read the full context from NEXT-SESSION.md
-- Execute the planned next steps
-- [Additional details]
+1. Auto-assign agents to tasks based on patterns
+2. Execute in parallel waves with architect checkpoints
+3. [Specific step 1]
+4. [Specific step 2]
+
+**Agent Assignments**:
+| Task | Agent |
+|------|-------|
+| [Task category 1] | `[agent-name]` |
+| [Task category 2] | `[agent-name]` |
+| [Task category 3] | `[agent-name]` |
+| Final sign-off | `product-manager` |
+| Architecture checkpoint | `architect` |
 ```
+
+**Available Agents for Assignment**:
+- `tester` - E2E tests, validation, test infrastructure
+- `debugger` - Bug investigation, root cause analysis
+- `senior-backend-engineer` - API, database, services, backend code
+- `frontend-developer` - Frontend UI, React components, client-side code
+- `devops` - Infrastructure, deployment, CI/CD
+- `architect` - Technical reviews, architecture decisions
+- `product-manager` - Product sign-off, requirements validation
+- `security-analyst` - Security analysis, vulnerability assessment
+- `web-researcher` - External research, best practices
+- `code-reviewer` - Code quality review
 
 ### Step 7: Special Cases
 
@@ -265,7 +287,7 @@ npm test
 Before writing the file, verify:
 - [ ] File path is correct (specs/NNN-* or docs/prompts/)
 - [ ] Handoff command uses correct path
-- [ ] Handoff command is appropriate for workflow type (/team-lead.implement vs /execute)
+- [ ] Handoff command is appropriate for workflow type (/triad.implement vs /execute)
 - [ ] All context is accurate (git status matches reality)
 - [ ] Next steps are clear and actionable
 - [ ] File paths referenced exist
@@ -290,7 +312,7 @@ Before writing the file, verify:
    **Quick Summary**:
    - Current Status: [brief status]
    - Next Action: [1-line goal]
-   - Handoff Command: `/team-lead.implement specs/002-frontend-mvp/NEXT-SESSION.md`
+   - Handoff Command: `/triad.implement [description] per specs/002-frontend-mvp/NEXT-SESSION.md`
 
    The full detailed context is in the file above.
    Use the handoff command in your next session to continue! 🚀
@@ -315,7 +337,7 @@ Before writing the file, verify:
 **Result**:
 - Detects feature branch `002-frontend-mvp`
 - Saves to `specs/002-frontend-mvp/NEXT-SESSION.md`
-- Generates handoff: `/team-lead.implement specs/002-frontend-mvp/NEXT-SESSION.md`
+- Generates handoff: `/triad.implement [description] per specs/002-frontend-mvp/NEXT-SESSION.md`
 - Shows brief summary in chat
 
 ## Implementation Notes
@@ -336,8 +358,18 @@ Before writing the file, verify:
 
 **Handoff Command Selection**:
 - Check if `specs/NNN-feature/tasks.md` exists
-- If yes: Use `/team-lead.implement [path]`
-- If no: Use `/execute read [path]`
+- If yes: Use `/triad.implement [task description] per [path]`
+- If no: Use `/execute [task description] per [path]`
+
+**Agent Assignment Logic**:
+Based on the tasks/milestones in NEXT-SESSION.md, assign agents using these patterns:
+- Testing tasks → `tester`
+- Bug investigation → `debugger`
+- Backend code changes → `senior-backend-engineer`
+- Frontend code changes → `frontend-developer`
+- Deployment/infra → `devops`
+- Always include `product-manager` for sign-off
+- Always include `architect` for checkpoints
 
 **Keep It Simple**:
 - File has ALL the context (can be long, detailed)
