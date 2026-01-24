@@ -894,6 +894,122 @@ Wave 5 (Review):
 
 ---
 
+### 11. Auto-Generate Session Continuation (MANDATORY)
+
+**CRITICAL**: After completing execution (or when blocked/interrupted), ALWAYS generate a NEXT-SESSION.md file to enable seamless handoff.
+
+**When to Generate**:
+- ✅ Task completed successfully with recommended next steps
+- ✅ Task partially completed (capture progress + remaining work)
+- ✅ Task blocked (capture blocker details + resolution steps)
+- ✅ User interrupts execution (capture current state)
+- ❌ Only skip if task is 100% complete with NO follow-up work
+
+**File Location Detection**:
+1. Get current branch: `git branch --show-current`
+2. Extract feature number if present (e.g., `002` from `002-mvp-e2e-testing`)
+3. Check if `specs/NNN-*/` exists
+4. **If yes**: Write to `specs/NNN-feature/NEXT-SESSION.md`
+5. **If no**: Write to `docs/prompts/NEXT-SESSION.md`
+
+**Content to Include**:
+```markdown
+# Continue Session: [Feature/Topic] - [Phase/Status]
+
+**Feature**: [NNN-feature-name or N/A]
+**Phase**: [Current phase or topic]
+**Branch**: [current branch]
+**Last Updated**: [timestamp]
+
+---
+
+## Context
+
+**What Was Completed** (This Session):
+- ✅ [Completed task 1]
+- ✅ [Completed task 2]
+- ⚠️ [Partial/blocked task if any]
+
+**Git Status**:
+- Branch: `[branch]`
+- Last commit: `[hash]` - [message]
+- Uncommitted changes: [list if any]
+
+---
+
+## Current State
+
+**Workflow**: [Spec Kit / Debugging / Development]
+**Status**: [1-2 sentence summary]
+
+**Test Results** (if applicable):
+- Passed: X
+- Failed: Y
+- Pass Rate: Z%
+
+---
+
+## Next Action
+
+**Immediate Goal**: [Clear objective based on recommended next steps]
+
+**To Continue This Session**:
+
+```
+/execute [brief description] per specs/NNN-feature/NEXT-SESSION.md
+```
+
+**What This Will Do**:
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+**Agent Assignments**:
+| Task | Agent |
+|------|-------|
+| [Task 1] | `[agent]` |
+| [Task 2] | `[agent]` |
+| Quality checkpoint | `architect` |
+
+---
+
+## Detailed Execution Plan
+
+[Include specific files to modify, commands to run, acceptance criteria]
+
+---
+
+**Session Type**: [type]
+**Prerequisites**: ✅ All ready / ⚠️ Some blockers / ❌ Blocked
+```
+
+**Final Output to User**:
+After writing NEXT-SESSION.md, display:
+
+```markdown
+---
+
+## ✅ Session Complete - Next Session Prepared
+
+**Saved to**: `specs/NNN-feature/NEXT-SESSION.md`
+
+**Summary**:
+- Completed: [X tasks]
+- Remaining: [Y tasks]
+- Next Goal: [1-line objective]
+
+**To continue in next session**:
+```
+/execute [description] per specs/NNN-feature/NEXT-SESSION.md
+```
+
+---
+```
+
+**IMPORTANT**: This step is NOT optional. Every `/execute` invocation MUST end with a NEXT-SESSION.md unless the task is 100% complete with zero follow-up work.
+
+---
+
 ## Context
 
 $ARGUMENTS

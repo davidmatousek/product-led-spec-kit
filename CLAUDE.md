@@ -9,174 +9,53 @@
 - **Local-First**: Always supports local `.specify/` file workflows
 
 ## Git Workflow
-**Always use feature branches**: `git checkout -b NNN-feature-name`
-- Never commit to main directly
-- Create PR for review before merge
-- Branch naming: `NNN-descriptive-name` (e.g., `001-initial-feature`)
+Feature branches required. Never commit to main directly.
+@.claude/rules/git-workflow.md
 
 ## Project Structure
 ```
 {{PROJECT_NAME}}/
-├── .claude/
-│   ├── agents/        → 13 specialized agents
-│   ├── skills/        → 8 automation capabilities
-│   └── commands/      → Spec Kit + Triad commands
-├── .specify/
-│   ├── spec.md        → Feature requirements (source of truth)
-│   ├── plan.md        → Technical architecture
-│   ├── tasks.md       → Ordered work items
-│   └── memory/
-│       └── constitution.md → Governance principles
-├── docs/
-│   ├── product/       → PRDs and product specs
-│   ├── architecture/  → Architecture specifications
-│   ├── devops/        → Deployment & environment guides
-│   ├── core_principles/ → Methodology and standards
-│   ├── testing/       → Testing strategy guidance
-│   └── planning/      → Historical planning docs
-├── scripts/
-│   ├── init.sh        → Project initialization
-│   └── check.sh       → Setup verification
-├── CLAUDE.md          → AI agent context
-├── Makefile           → Common commands
-└── README.md          → Getting started
+├── .claude/           → Agents, skills, commands
+├── .specify/          → spec.md, plan.md, tasks.md (source of truth)
+├── docs/              → Product, architecture, devops docs
+├── scripts/           → init.sh, check.sh
+└── CLAUDE.md          → AI agent context
 ```
 
-**Note**: This template provides **methodology and governance only**. Users bring their own code structure (backend/, frontend/, etc.) based on their project needs.
-
+**Note**: Template provides methodology only. Users bring their own code (backend/, frontend/, etc.).
 
 ## Scope Boundaries
-**WHAT THIS IS:**
-- {{PROJECT_DESCRIPTION}}
-- Product-led development with clear governance
-- Works with any agent workflow or framework
-
-**WHAT THIS IS NOT:**
-- NOT a quick prototype (we follow proper process)
-- NOT limited to a single AI agent
-- NOT skipping governance for speed
+Defines what this project is and is not.
+@.claude/rules/scope.md
 
 ## Commands
-
-### Triad Commands (Automatic Governance - RECOMMENDED)
-```bash
-/triad.vision              # Interactive product vision workshop (START HERE)
-/triad.prd <topic>         # Create PRD with Triad validation
-/triad.specify             # Create spec.md with auto PM sign-off
-/triad.plan                # Create plan.md with auto PM + Architect sign-off
-/triad.tasks               # Create tasks.md with auto triple sign-off
-/triad.implement           # Execute with auto architect checkpoints
-/triad.close-feature {NNN} # Close feature with parallel doc updates
-```
-
-### Vanilla Commands (No Governance - Fast Prototyping)
-```bash
-/speckit.specify           # Create spec.md
-/speckit.plan              # Create plan.md
-/speckit.tasks             # Create tasks.md
-/speckit.implement         # Execute tasks
-/speckit.clarify           # Ask clarification questions
-/speckit.analyze           # Verify consistency
-/team-lead.implement       # Execute with parallel agent orchestration
-```
+Triad (governance) and Vanilla (fast) command sets.
+@.claude/rules/commands.md
 
 ## SDLC Triad Workflow
+PM defines What/Why, Architect defines How, Team-Lead defines When/Who.
+@.claude/rules/governance.md
 
-The SDLC Triad ensures Product-Architecture-Engineering alignment:
-- **product-manager (PM)**: Defines **What** & **Why** (user value, business goals)
-- **architect**: Defines **How** (technical approach, infrastructure baseline)
-- **team-lead**: Defines **When** & **Who** (timeline, agent assignments)
-
-**Infrastructure PRD Workflow** (sequential):
-1. PM analyzes need → architect provides baseline → PM drafts PRD
-2. Tech-lead feasibility → architect review → PM finalizes
-
-**Feature PRD Workflow** (parallel):
-1. PM drafts PRD → architect + tech-lead review in parallel → PM finalizes
-
-## Context Loading (READ AS NEEDED)
-
-### Start of Session - Read These First
-```bash
-cat docs/SPEC_KIT_TRIAD.md                    # SDLC Triad quick reference
-cat .specify/memory/constitution.md           # Governance principles
-```
-
-### By Domain
-| Domain | Read This | When Needed |
-|--------|-----------|-------------|
-| **Triad Workflow** | `docs/core_principles/TRIAD_COLLABORATION.md` | Creating specs, plans, tasks |
-| **Product/PRDs** | `docs/product/02_PRD/INDEX.md` | PRD work, product decisions |
-| **Architecture** | `docs/architecture/README.md` | Technical design, system decisions |
-| **DevOps/Deploy** | `docs/devops/README.md` | Any deployment task |
-| **Agents/Skills** | `.claude/README.md` | Using agents or skills |
-| **Methodology** | `docs/core_principles/DEFINITION_OF_DONE.md` | Completing features |
-| **Debugging** | `docs/core_principles/FIVE_WHYS_METHODOLOGY.md` | Root cause analysis |
-| **KB/Memory** | `docs/INSTITUTIONAL_KNOWLEDGE.md` | Project history, lessons learned |
-
-### Current Feature Context
-```bash
-cat .specify/spec.md      # Requirements
-cat .specify/plan.md      # Technical design
-cat .specify/tasks.md     # Work items
-```
+## Context Loading
+Load governance context by domain using @-references.
+@.claude/rules/context-loading.md
 
 ## Governance Workflow (MANDATORY)
-
-**CRITICAL**: After creating specs/plans/tasks, you MUST auto-trigger reviews. Do not wait for user request.
-
-| Artifact | Required Sign-offs | Agents to Invoke |
-|----------|-------------------|------------------|
-| spec.md | PM | product-manager |
-| plan.md | PM + Architect | product-manager, architect |
-| tasks.md | PM + Architect + Team-Lead | product-manager, architect, team-lead |
-
-### After `/speckit.specify` Completes:
-1. **Automatically** invoke product-manager agent for PM review using Task tool
-2. Present review results (APPROVED or CHANGES REQUESTED)
-3. If CHANGES REQUESTED: Address issues, re-submit for review
-4. Do NOT declare "ready for planning" until PM sign-off: APPROVED
-
-### After `/speckit.plan` Completes:
-1. Invoke product-manager for PM review
-2. Invoke architect for technical review
-3. Require **both approvals** before declaring ready
-
-### After `/speckit.tasks` Completes:
-1. Invoke product-manager, architect, and team-lead
-2. Team-lead generates `agent-assignments.md` with parallel execution waves
-3. Require **all three approvals** before implementation
-
-### Review Outcomes:
-- **APPROVED**: Proceed to next phase, document sign-off
-- **CHANGES REQUESTED**: Address issues, re-submit (repeat until approved)
-- **BLOCKED**: Critical issues, escalate to user
+Specs require PM sign-off. Plans require PM + Architect. Tasks require triple sign-off.
+@.claude/rules/governance.md
 
 ## Deployment Policy (MANDATORY)
-
-**ALL deployments MUST go through the devops agent.**
-
-Before deploying:
-1. Invoke devops agent (never run deploy commands directly)
-2. DevOps reads: `docs/architecture/04_deployment_environments/{env}.md`
-3. DevOps reads: `docs/devops/{01_Local|02_Staging|03_Production}/README.md`
-4. DevOps outputs verification summary
-5. Only then proceed with deployment
-
-**Never deploy without verification** - Mismatched targets can cause data loss or service disruption.
+All deployments must go through the devops agent.
+@.claude/rules/deployment.md
 
 ## Key Principles
-- **Clean Root**: Features in `specs/NNN-name/`, docs in `docs/{domain}/`
-- **Vision First**: Define product vision using `/triad.vision` before PRDs
-- **PRD First**: Create PRD before spec using `/triad.prd`
-- **Triple Sign-off**: Get PM + Architect + Team-Lead approval on tasks.md
-- **Checkpoints**: Use implementation-checkpoint skill at milestones
+- **Vision First**: `/triad.vision` → PRD → spec → plan → tasks
+- **Triple Sign-off**: PM + Architect + Team-Lead approval on tasks.md
 - **Definition of Done**: 3-step validation before marking complete
 
 ## Tips
-- Wrapper architecture keeps commands upgrade-safe. See `.claude/commands/WRAPPER_COMMANDS.md`
 - Use `make review-spec` or `make review-plan` for manual governance checks
-- Review `agent-assignments.md` for workload distribution after team-lead optimization
+- Review `agent-assignments.md` for workload distribution
 
 ## Tech Stack
 <!-- Configure based on your project needs -->
@@ -185,6 +64,12 @@ Before deploying:
 
 ## Recent Changes
 <!-- Add feature summaries here as you build -->
+- **v2.0.0**: Anthropic Claude Code v2.1.16 Integration
+  - Parallel Triad reviews (PM + Architect run simultaneously)
+  - Context forking for isolated agent contexts
+  - Version detection with graceful degradation
+  - See [MIGRATION.md](docs/devops/MIGRATION.md) for upgrade guide
+- **v1.1.0**: Modular rules system - CLAUDE.md reduced from 192→70 lines with @-references
 - Initial project setup from Product-Led-Spec-Kit template
 
 ## Active Technologies
