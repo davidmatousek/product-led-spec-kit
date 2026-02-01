@@ -18,8 +18,6 @@ triggers:
 
 allowed-tools: [Read, Grep, Glob, TodoWrite]
 
-model: claude-sonnet-4-5-20250929
-
 color: "#8B5CF6"
 
 expertise:

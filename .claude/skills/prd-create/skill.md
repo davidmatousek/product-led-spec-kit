@@ -19,8 +19,6 @@ triggers:
 
 allowed-tools: [Bash, Write, Read, Edit, Grep, Glob, WebFetch]
 
-model: claude-sonnet-4-5-20250929
-
 color: "#9333EA"
 
 expertise:

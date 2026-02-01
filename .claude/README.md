@@ -1,26 +1,27 @@
 # Claude Agent Infrastructure
 
-This directory contains the complete agent orchestration infrastructure for product-led spec kit development, including 12 specialized agents, 9 automation skills, and 19 slash commands for streamlined feature development.
+This directory contains the complete agent orchestration infrastructure for product-led spec kit development, including 13 specialized agents, 10 automation skills, and 16 slash commands for streamlined feature development.
 
 ## Overview
 
 The infrastructure is organized into three main components:
 
-1. **Agents** (`agents/`) - 12 specialized AI agents for different development roles
+1. **Agents** (`agents/`) - 13 specialized AI agents for different development roles
 2. **Skills** (`skills/`) - 9 reusable automation capabilities
-3. **Commands** (`commands/`) - 19 slash commands for workflow automation
+3. **Commands** (`commands/`) - 16 slash commands for workflow automation
 
 ---
 
 ## Agents (`agents/`)
 
-### Core Development Team (6 agents)
+### Core Development Team (7 agents)
 
 | Agent | Role | Primary Responsibilities |
 |-------|------|-------------------------|
 | **product-manager** | Product Manager | Product specifications, user stories, requirements gathering, stakeholder communication |
 | **architect** | Technical Architect | System design, architecture review, technical decision documentation, baseline infrastructure analysis |
-| **team-lead** | Development Lead | Multi-agent orchestration, parallel task coordination, workflow management, progress tracking |
+| **team-lead** | Development Lead | Governance sign-offs, feasibility validation, capacity management, agent assignments |
+| **orchestrator** | Workflow Executor | Multi-agent coordination, parallel wave execution, progress monitoring, task dispatch |
 | **senior-backend-engineer** | Backend Developer | API implementation, business logic, database design, server-side code |
 | **frontend-developer** | Frontend Developer | UI components, client-side logic, design system implementation |
 | **tester** | QA Engineer | BDD tests, integration tests, test coverage, quality assurance |
@@ -91,6 +92,12 @@ Skills are reusable automation capabilities that agents can invoke to perform sp
 | **code-execution-helper** | Execute code for quota checks, API validation | Pre-flight quota checks, resource validation |
 | **git-workflow-helper** | Git workflow automation (commits, PRs, branches) | Creating commits, managing branches, PR creation |
 
+### Thinking & Analysis Skills
+
+| Skill | Purpose | When to Use |
+|-------|---------|-------------|
+| **thinking-lens** | Apply structured thinking methodologies | Systematic analysis, risk assessment, decision-making |
+
 **Skills are domain-agnostic** and require minimal customization beyond `{{PROJECT_NAME}}` substitution.
 
 ---
@@ -109,10 +116,6 @@ The **SDLC Triad** ensures Product-Architecture-Engineering alignment with autom
 | `/triad.tasks` | Create tasks.md with triple sign-off | 3-way (PM, Architect, Tech-Lead) |
 | `/triad.implement` | Execute with architect checkpoints | Architect checkpoints at milestones |
 | `/triad.close-feature {NNN}` | Close feature with parallel doc updates | Automatic documentation |
-
-**Supporting Triad Commands:**
-- `/triad.architect-baseline` - Architect provides infrastructure baseline for PRDs
-- `/triad.feasibility` - Tech-Lead provides timeline estimates before PM finalizes PRD
 
 ### Vanilla Commands (Fast Prototyping - No Governance)
 
@@ -133,7 +136,6 @@ For rapid prototyping without automatic governance:
 
 | Command | Purpose | Use Case |
 |---------|---------|----------|
-| `/team-lead.implement` | Execute with parallel agent orchestration | Multi-wave implementation with 3+ agents |
 | `/execute` | Execute any task with optimal agent orchestration | General-purpose task execution |
 | `/continue` | Generate session continuation prompt | Long features spanning multiple sessions |
 
@@ -172,23 +174,10 @@ For rapid prototyping without automatic governance:
 /speckit.specify
 /speckit.plan
 /speckit.tasks
-/team-lead.implement
+/speckit.implement
 ```
 
 **No Automatic Sign-offs**: Faster but requires manual validation.
-
-### Example 3: Parallel Multi-Agent Implementation
-
-```bash
-# Tech-Lead coordinates 3+ agents working in parallel
-/team-lead.implement
-
-# Example orchestration:
-# Wave 1: web-researcher (research best practices)
-# Wave 2: senior-backend-engineer (API implementation)
-# Wave 3: frontend-developer + tester (UI + tests in parallel)
-# Wave 4: code-reviewer (quality gates)
-```
 
 ---
 
@@ -260,10 +249,11 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 
 ```
 .claude/
-├── agents/           → 12 specialized agents
+├── agents/           → 13 specialized agents
 │   ├── product-manager.md
 │   ├── architect.md
 │   ├── team-lead.md
+│   ├── orchestrator.md
 │   ├── senior-backend-engineer.md
 │   ├── frontend-developer.md
 │   ├── tester.md
@@ -274,7 +264,7 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 │   ├── ux-ui-designer.md
 │   └── security-analyst.md
 │
-├── skills/           → 9 automation capabilities
+├── skills/           → 10 automation capabilities
 │   ├── prd-create/
 │   ├── implementation-checkpoint/
 │   ├── architecture-validator/
@@ -283,12 +273,11 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 │   ├── kb-query/
 │   ├── root-cause-analyzer/
 │   ├── code-execution-helper/
-│   └── git-workflow-helper/
+│   ├── git-workflow-helper/
+│   └── thinking-lens/
 │
-├── commands/         → 19 slash commands
+├── commands/         → 16 slash commands
 │   ├── triad.prd.md
-│   ├── triad.architect-baseline.md
-│   ├── triad.feasibility.md
 │   ├── triad.specify.md
 │   ├── triad.plan.md
 │   ├── triad.tasks.md
@@ -302,7 +291,6 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 │   ├── speckit.analyze.md
 │   ├── speckit.checklist.md
 │   ├── speckit.constitution.md
-│   ├── team-lead.implement.md
 │   ├── execute.md
 │   └── continue.md
 │
@@ -325,7 +313,7 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 
 - **Start with Triad**: Use `/triad.*` commands for production features (automatic governance)
 - **Use Vanilla for Prototypes**: Use `/speckit.*` commands for quick experiments (no governance overhead)
-- **Parallel Orchestration**: Invoke `/team-lead.implement` for features with 20+ tasks across multiple domains
+- **Parallel Orchestration**: Use `/triad.implement` for features with architect checkpoints
 - **Research First**: Use `web-researcher` agent before implementing with unfamiliar libraries
 - **Checkpoint Long Features**: Use `implementation-checkpoint` skill for features spanning multiple sessions
 - **Review Before Deploy**: Always invoke `code-reviewer` agent in Phase 5 before production deployment
@@ -334,8 +322,9 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 
 ## Recent Changes
 
+- **2026-01-31**: Removed unused commands (_triad-init, team-lead.implement, triad.architect-baseline, triad.feasibility)
 - **2025-12-04**: Initial infrastructure setup for product-led-spec-kit template
-  - Copied 12 agents, 9 skills, 19 commands from spec-kit-ops
+  - Copied 12 agents, 9 skills, 15 commands from spec-kit-ops
   - Applied templatization with 8 template variables
   - Created comprehensive README documentation
 

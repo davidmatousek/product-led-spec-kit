@@ -93,7 +93,7 @@ Generating checkpoint report...
 Updating CHECKPOINTS_README.md...
 ✓ Updated: CHECKPOINTS_README.md
 
-Next: Resume with /team-lead.implement specs/001-{{PROJECT_NAME}} --resume
+Next: Resume with /triad.implement --resume
 ```
 
 ## Directory Structure

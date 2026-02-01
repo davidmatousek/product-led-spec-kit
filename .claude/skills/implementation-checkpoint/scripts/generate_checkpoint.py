@@ -211,7 +211,7 @@ def generate_checkpoint(
 
     # Generate resume command
     feature_id = analysis['feature_id']
-    resume_command = f"/team-lead.implement specs/{feature_id} --resume"
+    resume_command = f"/triad.implement --resume"
 
     # Current date
     date = datetime.now().strftime("%Y-%m-%d")
@@ -345,7 +345,7 @@ def main():
     else:
         print("⚠️  CHECKPOINTS_README.md not found - skipping index update")
 
-    print(f"\nNext: Resume with /team-lead.implement specs/{analysis['feature_id']} --resume")
+    print(f"\nNext: Resume with /triad.implement --resume")
 
 
 if __name__ == "__main__":

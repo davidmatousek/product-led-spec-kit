@@ -1,52 +1,8 @@
 ---
-description: Create plan with automatic PM + Architect dual sign-off validation (Triad-enhanced)
+description: Create implementation plan with dual sign-off (PM + Architect) - Streamlined v2
+compatible_with_speckit: ">=1.0.0"
+last_tested_with_speckit: "2.0.0"
 ---
-
-## CRITICAL: Continuous Flow Execution
-
-**Execute ALL steps as a single continuous flow WITHOUT pausing for user input.**
-
-⚠️ **MANDATORY BEHAVIOR** - You MUST follow this exactly:
-
-1. After `/speckit.plan` completes, DO NOT output anything to the user
-2. DO NOT summarize what was created
-3. DO NOT report "planning complete" or similar
-4. IMMEDIATELY proceed to Step 1.5, then Step 2 (dual sign-off)
-5. The ONLY user-visible output should be the final Step 4 result
-
-**Anti-Pattern to AVOID**:
-```
-❌ WRONG: "/speckit.plan complete. Here's what was created: [summary]. Next step: invoke agents."
-```
-
-**Correct Pattern**:
-```
-✅ RIGHT: [SlashCommand completes] → [immediately invoke both Task agents in parallel] → [update frontmatter] → [output final result]
-```
-
-Do NOT:
-- Stop to report status after Step 1 completes
-- Output any summary of artifacts created
-- Ask the user if they want sign-off reviews
-- Pause between any steps
-- Send any message to user until Step 4
-
-DO:
-- Complete `/speckit.plan` → immediately invoke PM + Architect agents (in parallel) → update frontmatter → output final result
-- Only output to user ONCE at the end (Step 4)
-
----
-
-## Context
-
-You are executing `/triad.plan`, a thin wrapper around `/speckit.plan` that adds automatic dual sign-off (PM + Architect) validation per Constitution v1.4.0.
-
-**Wrapper Responsibilities**:
-1. Call vanilla `/speckit.plan` to create plan.md
-2. Auto-invoke product-manager agent for PM feasibility review
-3. Auto-invoke architect agent for technical design review
-4. Update plan.md frontmatter with both verdicts
-5. Block progression if either agent requests changes
 
 ## User Input
 
@@ -54,269 +10,108 @@ You are executing `/triad.plan`, a thin wrapper around `/speckit.plan` that adds
 $ARGUMENTS
 ```
 
-Accept any arguments provided by user and pass through to vanilla command.
+Consider user input before proceeding (if not empty).
 
-## Step 1: Call Vanilla Spec Kit
+## Overview
 
-Use the SlashCommand tool to execute the vanilla planning command:
+Wraps `/speckit.plan` with automatic PM + Architect dual sign-off.
 
+**Flow**: Validate spec → Generate plan → Dual review (parallel) → Handle blockers → Inject frontmatter
+
+## Step 1: Validate Prerequisites
+
+1. Get branch: `git branch --show-current` → must match `NNN-*` pattern
+2. Find spec: `specs/{NNN}-*/spec.md` → must exist
+3. Parse frontmatter: Verify `triad.pm_signoff.status` is APPROVED (or APPROVED_WITH_CONCERNS/BLOCKED_OVERRIDDEN)
+4. If validation fails: Show error with required workflow order and exit
+
+## Step 2: Generate Plan
+
+1. Invoke `/speckit.plan` using the Skill tool
+2. Verify `plan.md` was created at `specs/{NNN}-*/plan.md`
+3. If not created: Error and exit
+
+## Step 3: Dual Sign-off (Parallel)
+
+Launch **two Task agents in parallel** (single message, two Task tool calls):
+
+| Agent | subagent_type | Focus | Key Criteria |
+|-------|---------------|-------|--------------|
+| PM | product-manager | Product alignment | Spec requirements covered, user stories, acceptance criteria, no scope creep |
+| Architect | architect | Technical | Architecture sound, technology appropriate, security addressed, scalable |
+
+**Prompt template for each** (customize focus area):
 ```
-/speckit.plan $ARGUMENTS
-```
+Review plan.md at {plan_path} for {FOCUS AREA}.
 
-Wait for the command to complete.
+Read the file, then provide sign-off:
 
-## Step 1.5: Validate Output Location & Get Feature Path
-
-**CRITICAL**: Validate plan.md was created in the correct location and get paths for dual review.
-
-1. **Get Feature Directory**:
-   ```bash
-   FEATURE_DIR=$(dirname $(.specify/scripts/bash/get-feature-path.sh plan.md))
-   ```
-
-2. **Validate plan.md Location**:
-   - Check if plan.md exists at `$FEATURE_DIR/plan.md` (CORRECT location)
-   - Check if plan.md exists at `.specify/plan.md` (WRONG location)
-
-3. **Auto-Fix Wrong Location** (Defense-in-Depth):
-   ```bash
-   if [[ -f ".specify/plan.md" ]] && [[ ! -f "$FEATURE_DIR/plan.md" ]]; then
-       # Wrong location detected - move to correct location
-       mv .specify/plan.md "$FEATURE_DIR/plan.md"
-       echo "⚠️ plan.md was created in wrong location and has been moved to $FEATURE_DIR/plan.md"
-   fi
-   ```
-
-4. **Store Paths for Steps 2-3**:
-   - `PLAN_PATH=$FEATURE_DIR/plan.md`
-   - `SPEC_PATH=$FEATURE_DIR/spec.md`
-
-## Step 2: Dual Sign-Off (Parallel)
-
-**CRITICAL**: Automatically invoke BOTH agents in parallel (single message, two Task calls). Do NOT wait for user to request this. Do NOT run sequentially.
-
-### Task 1: PM Feasibility Review
-
-```python
-Task(
-    subagent_type="product-manager",
-    description="PM sign-off for plan feasibility",
-    prompt="""Review the technical plan for product and feasibility alignment per Constitution v1.4.0.
-
-**Context**:
-- Feature Directory: $FEATURE_DIR (from get-feature-path.sh)
-- Plan created: $FEATURE_DIR/plan.md
-- Specification: $FEATURE_DIR/spec.md
-- Workflow: Triad wrapper auto-review (parallel with Architect)
-- Required: PM sign-off before task breakdown
-
-**Review Responsibilities**:
-
-1. **Product-Plan Alignment**:
-   - Does plan deliver spec requirements?
-   - Does plan maintain product vision?
-   - Are trade-offs acceptable from product perspective?
-   - Is scope creep avoided?
-
-2. **Feasibility Assessment**:
-   - Is timeline realistic?
-   - Are resource requirements reasonable?
-   - Are dependencies identified?
-   - Are risks acknowledged?
-
-3. **User Value Validation**:
-   - Does plan prioritize user needs?
-   - Are MVP vs future features clear?
-   - Is technical complexity justified by user value?
-
-**Provide Structured Review**:
-
-**Status**: [APPROVED | CHANGES_REQUESTED]
-
-**Product-Plan Alignment**:
-- ✅ | ⚠️ | ❌ Delivers spec requirements
-- ✅ | ⚠️ | ❌ Maintains product vision
-- ✅ | ⚠️ | ❌ Acceptable trade-offs
-- ✅ | ⚠️ | ❌ No scope creep
-
-**Feasibility**:
-- ✅ | ⚠️ | ❌ Realistic timeline
-- ✅ | ⚠️ | ❌ Reasonable resources
-- ✅ | ⚠️ | ❌ Dependencies identified
-
-**Critical Issues** (if any): [List blocking issues]
-**Concerns** (if any): [List non-blocking concerns]
-**Recommendations** (if any): [List improvements]
-
-**Approval**: [APPROVED | CHANGES_REQUESTED]
-
-**Justification**: [1-2 sentences explaining decision]
-
----
-
-**IMPORTANT**: If status is CHANGES_REQUESTED, user must address issues before proceeding to /triad.tasks.
-"""
-)
+STATUS: [APPROVED | APPROVED_WITH_CONCERNS | CHANGES_REQUESTED | BLOCKED]
+NOTES: [Your detailed feedback]
 ```
 
-### Task 2: Architect Technical Review
+**Parse responses**: Extract STATUS and NOTES from each agent's output.
 
-```python
-Task(
-    subagent_type="architect",
-    description="Architect sign-off for technical design",
-    prompt="""Review the technical plan for architecture quality and consistency per Constitution v1.4.0.
+## Step 4: Handle Review Results
 
-**Context**:
-- Feature Directory: $FEATURE_DIR (from get-feature-path.sh)
-- Plan created: $FEATURE_DIR/plan.md
-- Specification: $FEATURE_DIR/spec.md
-- Workflow: Triad wrapper auto-review (parallel with PM)
-- Required: Architect sign-off before task breakdown
+**All APPROVED/APPROVED_WITH_CONCERNS**: → Proceed to Step 5
 
-**Review Responsibilities**:
+**Any CHANGES_REQUESTED**:
+1. Display feedback from reviewers who requested changes
+2. Use architect agent to update plan addressing the feedback
+3. Re-run reviews only for reviewers who requested changes
+4. Loop until all approved or user aborts
 
-1. **Technical Validation**:
-   - Consistency with existing tech stack (docs/architecture/00_Tech_Stack/tech-stack.md)
-   - Adherence to architecture principles
-   - No anti-patterns or technical debt introduced
-   - Security and performance considerations
-   - Database schema consistency (if applicable)
-   - API contract consistency (if applicable)
+**Any BLOCKED**:
+1. Display blocker with veto domain (PM=product scope, Architect=technical)
+2. Use AskUserQuestion with options:
+   - **Resolve**: Address issues and re-submit to blocked reviewer
+   - **Override**: Provide justification (min 20 chars), mark as BLOCKED_OVERRIDDEN
+   - **Abort**: Cancel plan creation
 
-2. **Design Quality**:
-   - Are design decisions justified?
-   - Are alternatives considered?
-   - Are patterns appropriate?
-   - Is complexity minimized?
+## Step 5: Inject Frontmatter
 
-3. **Architecture Documentation**:
-   - Are new technologies documented?
-   - Are design patterns explained?
-   - Are trade-offs recorded?
-   - Should an ADR be created?
+Add YAML frontmatter to plan.md (prepend to existing content):
 
-**Provide Structured Review**:
-
-**Status**: [APPROVED | APPROVED_WITH_CONCERNS | CHANGES_REQUESTED]
-
-**Technical Validation**:
-- ✅ | ⚠️ | ❌ Consistent with tech stack
-- ✅ | ⚠️ | ❌ Follows architecture principles
-- ✅ | ⚠️ | ❌ No anti-patterns introduced
-- ✅ | ⚠️ | ❌ Security/performance OK
-
-**Design Quality**:
-- ✅ | ⚠️ | ❌ Design decisions justified
-- ✅ | ⚠️ | ❌ Alternatives considered
-- ✅ | ⚠️ | ❌ Appropriate patterns
-- ✅ | ⚠️ | ❌ Complexity minimized
-
-**Documentation Needs**:
-- [ ] Update tech-stack.md (new technology)
-- [ ] Update patterns/ (new pattern)
-- [ ] Create ADR (major decision)
-- [ ] Update deployment docs (infrastructure change)
-
-**Critical Issues** (if any): [List blocking issues]
-**Concerns** (if any): [List non-blocking concerns]
-**Recommendations** (if any): [List improvements]
-
-**Approval**: [APPROVED | APPROVED_WITH_CONCERNS | CHANGES_REQUESTED]
-
-**Justification**: [1-2 sentences explaining decision]
-
----
-
-**IMPORTANT**: If status is CHANGES_REQUESTED, user must address issues before proceeding to /triad.tasks.
-"""
-)
-```
-
-**Execute both Task calls in a SINGLE message** to maximize parallelism.
-
-## Step 3: Update Frontmatter
-
-Read both agent review responses and extract:
-- PM Status: APPROVED or CHANGES_REQUESTED
-- Architect Status: APPROVED, APPROVED_WITH_CONCERNS, or CHANGES_REQUESTED
-- Date: Today's date (2025-11-23)
-- PM Notes: Brief summary (1-2 sentences)
-- Architect Notes: Brief summary (1-2 sentences)
-
-Use the Edit tool to update `$FEATURE_DIR/plan.md` frontmatter (use the PLAN_PATH from Step 1.5):
-
-**Add or update these fields**:
 ```yaml
-pm_signoff: [APPROVED | CHANGES_REQUESTED]
-pm_signoff_date: 2025-11-23
-pm_signoff_notes: [Brief summary from PM review]
-architect_signoff: [APPROVED | APPROVED_WITH_CONCERNS | CHANGES_REQUESTED]
-architect_signoff_date: 2025-11-23
-architect_signoff_notes: [Brief summary from Architect review]
+---
+triad:
+  pm_signoff:
+    agent: product-manager
+    date: {YYYY-MM-DD}
+    status: {pm_status}
+    notes: "{pm_notes}"
+  architect_signoff:
+    agent: architect
+    date: {YYYY-MM-DD}
+    status: {architect_status}
+    notes: "{architect_notes}"
+  techlead_signoff: null  # Added by /triad.tasks
+---
 ```
 
-**Location**: Add immediately after existing frontmatter fields, before the first `---` closing delimiter.
+## Step 6: Report Completion
 
-## Step 4: Validate & Output
+Display summary:
+```
+✅ IMPLEMENTATION PLAN COMPLETE
 
-**If BOTH PM + Architect = APPROVED (or APPROVED_WITH_CONCERNS)**:
-```markdown
-✅ **Plan Approved**
+Feature: {feature_number}
+Spec: {spec_path}
+Plan: {plan_path}
 
-**PM Sign-Off**: APPROVED (2025-11-23)
-- [PM notes]
+Dual Sign-offs:
+- PM: {pm_status}
+- Architect: {architect_status}
 
-**Architect Sign-Off**: [APPROVED | APPROVED_WITH_CONCERNS] (2025-11-23)
-- [Architect notes]
-
-**Architect Concerns** (if any):
-- [List concerns if APPROVED_WITH_CONCERNS]
-
-**Next Step**:
-/triad.tasks
-
-The plan has passed dual review and is ready for task breakdown.
+Next: /triad.tasks
 ```
 
-**If EITHER PM or Architect = CHANGES_REQUESTED**:
-```markdown
-⚠️ **Plan Requires Changes**
+## Quality Checklist
 
-**PM Sign-Off**: [status] (2025-11-23)
-{if CHANGES_REQUESTED:}
-**PM Critical Issues**:
-- [List issues]
-
-**Architect Sign-Off**: [status] (2025-11-23)
-{if CHANGES_REQUESTED:}
-**Architect Critical Issues**:
-- [List issues]
-
-**Recommendations**:
-{from PM if any}
-{from Architect if any}
-
-**Action Required**:
-1. Address all issues listed above
-2. Re-run `/triad.plan` to update plan and get fresh dual review
-
-**Blocked**: Cannot proceed to /triad.tasks until BOTH PM and Architect approve.
-```
-
-## Design Principles
-
-**Keep This Wrapper Thin**:
-- ✅ Call vanilla command
-- ✅ Invoke dual sign-off (parallel)
-- ✅ Update frontmatter
-- ❌ Do NOT add: automatic architecture doc updates (Architect does this separately)
-- ❌ Do NOT add: git operations, linting, formatting
-- ❌ Do NOT add: automatic remediation
-
-**One Governance Concern**: Dual sign-off validation only.
-
-**Parallelism**: Launch both agents simultaneously to save time.
-
-**Upgrade-Safe**: This wrapper calls `/speckit.plan` by name, so upstream updates are automatically inherited.
+- [ ] Spec has approved PM sign-off
+- [ ] plan.md created by /speckit.plan
+- [ ] Dual review executed in parallel
+- [ ] Blockers handled (resolved, overridden, or aborted)
+- [ ] Frontmatter injected with PM + Architect sign-offs
+- [ ] Completion summary displayed
