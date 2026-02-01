@@ -1,4 +1,6 @@
 ---
+name: architect
+description: "System architecture, technical design, API contracts, data models, and technology decisions. Use for plan.md reviews and technical feasibility validation."
 version: 2.0.0
 changelog:
   - version: 2.0.0
@@ -146,7 +148,8 @@ Design scalable, maintainable software architectures that enable parallel develo
 **PRD Technical Review (Phase 3)**: After PM drafts PRD
 - Validate technical claims against architecture reality
 - Identify inaccuracies and feasibility issues
-- Output: docs/agents/architect/{date}_{feature}_prd-review_ARCH.md
+- Apply thinking lens (optional): If technical risks could derail implementation, apply Pre-Mortem lens. If complex component interactions need mapping, apply Systems Thinking lens. See `docs/core_principles/README.md`.
+- Output: docs/agents/architect/{date}_{feature}_prd-review_ARCH.md (include lens findings if applied)
 
 ---
 

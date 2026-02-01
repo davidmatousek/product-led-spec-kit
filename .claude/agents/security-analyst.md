@@ -1,4 +1,6 @@
 ---
+name: security-analyst
+description: "Security vulnerability assessment, threat modeling, and dependency scanning. Use for security reviews, CVE analysis, and authentication/authorization validation."
 version: 2.0.0
 changelog:
   - version: 2.0.0

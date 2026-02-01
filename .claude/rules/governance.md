@@ -19,6 +19,19 @@ This file defines mandatory governance workflows for Product-Led Spec Kit. All a
 | plan.md | PM + Architect | product-manager, architect |
 | tasks.md | PM + Architect + Team-Lead | product-manager, architect, team-lead |
 
+### Before `/speckit.specify` (Research Phase - Triad Only):
+
+When using `/triad.specify`, a **mandatory research phase** runs before spec generation:
+
+1. **Knowledge Base**: Query for similar patterns, lessons learned, past bug fixes
+2. **Codebase**: Explore existing implementations, naming conventions, reusable utilities
+3. **Architecture**: Read relevant architecture docs, constraints, dependencies
+4. **Web Research**: Search for industry best practices, common patterns, existing solutions
+
+**Output**: `specs/{NNN}-*/research.md` summarizing findings to inform spec creation.
+
+**Purpose**: Ground specifications in codebase reality and industry best practices, avoiding reinvention and ensuring alignment with existing patterns.
+
 ### After `/speckit.specify` Completes:
 1. **Automatically** invoke product-manager agent for PM review using Task tool
 2. Present review results (APPROVED or CHANGES REQUESTED)
@@ -43,6 +56,21 @@ This file defines mandatory governance workflows for Product-Led Spec Kit. All a
 - **APPROVED**: Proceed to next phase, document sign-off
 - **CHANGES REQUESTED**: Address issues, re-submit (repeat until approved)
 - **BLOCKED**: Critical issues, escalate to user
+
+### Thinking Lenses During Review (Optional Escalation)
+
+Reviewers may apply structured thinking lenses when encountering complexity, risk, or ambiguity. This is **optional** - standard reviews use role-specific checklists. Escalate to a lens when deeper analysis is warranted.
+
+| Reviewer | Recommended Lens | When to Apply |
+|----------|------------------|---------------|
+| PM | Pre-Mortem | Requirements seem risky or unclear |
+| PM | First Principles | Inherited assumptions need challenging |
+| Architect | Pre-Mortem | Technical risks could derail implementation |
+| Architect | Systems Thinking | Complex component interactions need mapping |
+| Team-Lead | Constraint Analysis | Hidden dependencies or blockers suspected |
+| Team-Lead | Systems Thinking | Task dependencies need validation |
+
+**How to Apply**: Reference `docs/core_principles/README.md` for lens selection and methodology details. Document lens findings in review comments when used.
 
 ---
 

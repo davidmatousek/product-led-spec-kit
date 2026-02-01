@@ -1,4 +1,6 @@
 ---
+name: ux-ui-designer
+description: "UX/UI design, design systems, user flows, and accessibility compliance. Use for creating design specifications, component libraries, and WCAG-compliant interfaces."
 version: 2.0.0
 changelog:
   - version: 2.0.0

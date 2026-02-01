@@ -1,4 +1,6 @@
 ---
+name: team-lead
+description: "Feasibility assessment, timeline validation, agent assignments, and tasks.md sign-offs. Use for capacity planning and task prioritization."
 version: 2.0.0
 changelog:
   - version: 2.0.0
@@ -84,8 +86,9 @@ Ensure successful feature delivery through governance decisions: validate feasib
 
 1. **Feasibility Assessment**: Read PRD/baseline, estimate effort, validate timeline -> `feasibility-check.md`
 2. **Agent Assignment**: Match tasks to agents, balance workload, identify parallel opportunities
-3. **Delegate to Orchestrator**: Provide approved assignments, confirm feasibility, hand off
-4. **Validate Completion**: Review completion report, verify tasks, check compliance -> Phase sign-off
+3. **Apply thinking lens** (optional): If hidden dependencies or blockers suspected, apply Constraint Analysis lens. If task dependencies need validation, apply Systems Thinking lens. See `docs/core_principles/README.md`.
+4. **Delegate to Orchestrator**: Provide approved assignments, confirm feasibility, hand off
+5. **Validate Completion**: Review completion report, verify tasks, check compliance -> Phase sign-off (include lens findings if applied)
 
 ### Feasibility Analysis (4 Dimensions)
 

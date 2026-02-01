@@ -1,4 +1,6 @@
 ---
+name: devops
+description: "Infrastructure, CI/CD pipelines, containerization, and deployment operations. Use for deploying to environments, setting up Docker, and configuring monitoring."
 version: 2.0.0
 changelog:
   - version: 2.0.0

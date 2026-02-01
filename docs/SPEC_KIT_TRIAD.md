@@ -28,12 +28,12 @@
 │              │     │              │     │              │     │              │     │              │
 └──────────────┘     └──────────────┘     └──────────────┘     └──────────────┘     └──────────────┘
       ↓                    ↓                    ↓                    ↓                    ↓
- PM + Arch +           PM sign-off         PM + Arch           PM + Arch +         Arch checkpoints
- Tech-Lead                                 sign-off            Tech-Lead           during execution
+ PM + Arch +           Research +          PM + Arch           PM + Arch +         Arch checkpoints
+ Tech-Lead             PM sign-off         sign-off            Tech-Lead           during execution
  validation                                                    sign-off
 
-Creates PRD         Creates spec.md      Creates plan.md     Creates tasks.md    Executes tasks
-with Triad          with requirements    with architecture   with breakdown      with reviews
+Creates PRD         Research phase →     Creates plan.md     Creates tasks.md    Executes tasks
+with Triad          Creates spec.md      with architecture   with breakdown      with reviews
 ```
 
 **Each step auto-validates before proceeding** ✅
@@ -158,6 +158,32 @@ docs/agents/architect/
 
 ---
 
+## Research Phase (Before Specification)
+
+`/triad.specify` includes a **mandatory research phase** before generating the specification. This ensures specs are grounded in reality rather than assumptions.
+
+### What Gets Researched (in parallel)
+
+| Source | What to Find | Why It Matters |
+|--------|--------------|----------------|
+| **Knowledge Base** | Similar patterns, lessons learned, past bug fixes | Avoid repeating mistakes |
+| **Codebase** | Existing implementations, naming conventions, utilities | Follow established patterns |
+| **Architecture** | Relevant docs, constraints, dependencies | Respect technical boundaries |
+| **Web Research** | Industry best practices, common patterns | Learn from broader ecosystem |
+
+### Output
+
+Creates `specs/{NNN}-*/research.md` with:
+- KB findings and relevant lessons
+- Similar features in codebase (with file paths)
+- Architecture constraints and dependencies
+- Industry best practices and references
+- Recommendations for the spec
+
+**This research informs spec creation** - the spec author uses these findings to write a more accurate, realistic specification.
+
+---
+
 ## Triple Sign-Off Requirements
 
 **After `/triad.prd` completes, you must have**:
@@ -169,8 +195,9 @@ docs/agents/architect/
 - ✅ **PM approval** (marks PRD as "Approved")
 
 ### For Spec.md (after `/triad.specify`)
+- ✅ **Research phase completed**: KB, codebase, architecture, web research
+- ✅ **research.md created**: Findings documented
 - ✅ **PM sign-off**: Product alignment validated
-- ✅ **Architect sign-off**: Technical design validated
 - ✅ **PM approval**: Spec ready for planning
 
 ### For Plan.md (after `/triad.plan`)
