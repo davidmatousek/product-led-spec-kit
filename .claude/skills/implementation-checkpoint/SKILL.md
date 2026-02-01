@@ -162,7 +162,7 @@ The checkpoint report includes auto-generated resume commands:
 
 ```bash
 # For team-lead orchestration
-/team-lead.implement specs/{feature-id} --resume
+/triad.implement --resume
 
 # For direct continuation
 # Continue from task {NEXT_TASK}
@@ -280,7 +280,7 @@ Knowledge base entries: 5
 ✓ Generated: CHECKPOINT-01_Phase1-2-Complete_T001-T030.md
 ✓ Updated: CHECKPOINTS_README.md
 
-Next: Resume with /team-lead.implement specs/001-{{PROJECT_NAME}} --resume
+Next: Resume with /triad.implement --resume
 ```
 
 ### Example 2: After Completing User Story 1

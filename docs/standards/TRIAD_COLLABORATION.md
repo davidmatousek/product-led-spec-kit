@@ -437,11 +437,11 @@ A: Domain-specific: PM for product priorities, Architect for technical feasibili
 ## Related Documents
 
 - **Constitution**: `.specify/memory/constitution.md` Principle XI
-- **Product-Spec Alignment**: `docs/core_principles/PRODUCT_SPEC_ALIGNMENT.md`
-- **Definition of Done**: `docs/core_principles/DEFINITION_OF_DONE.md`
+- **Product-Spec Alignment**: `docs/standards/PRODUCT_SPEC_ALIGNMENT.md`
+- **Definition of Done**: `docs/standards/DEFINITION_OF_DONE.md`
 
 ---
 
-**Version**: 1.0
-**Last Updated**: 2025-11-22
+**Version**: 2.0
+**Last Updated**: 2026-01-31
 **Maintained By**: SDLC Triad (product-manager, architect, team-lead)

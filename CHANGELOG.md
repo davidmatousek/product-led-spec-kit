@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.0] - 2026-01-31
+
+### Added - Agent Refactoring (Feature 003)
+
+**Agent Best Practices Documentation**
+- Created `_AGENT_BEST_PRACTICES.md` with 8 core principles for agent design
+- Created `_README.md` agent directory overview and quick reference
+
+**Agent Refactoring**
+- Refactored all 12 agents to consistent 8-section structure (58% line reduction)
+- Split team-lead into team-lead + orchestrator (13 agents total)
+- Standardized YAML frontmatter across all agents (version, changelog, boundaries, triad-governance)
+
+**New Skill**
+- Added thinking-lens skill for structured analysis methodologies
+
+**Key Metrics**
+- Tasks completed: 140
+- Total agent line reduction: 58% (7,885 → ~3,300 lines)
+- All 12 agents now follow standardized 8-section structure
+- 100% YAML frontmatter standardization
+
+---
+
 ## [2.0.0] - 2026-01-24
 
 ### Added - Anthropic Claude Code v2.1.16 Integration
@@ -110,17 +134,21 @@ See [MIGRATION.md](MIGRATION.md) for detailed upgrade instructions from v1.x to 
 
 ## Version Comparison
 
-| Feature | v1.0.0 | v1.1.0 | v2.0.0 |
-|---------|--------|--------|--------|
-| Triad Governance | Sequential | Sequential | Parallel |
-| CLAUDE.md Size | 192 lines | 70 lines | 70 lines |
-| Context Loading | Manual | @-references | @-references |
-| Version Detection | - | - | Automatic |
-| Feature Flags | - | - | Supported |
-| Degradation | - | - | Graceful |
+| Feature | v1.0.0 | v1.1.0 | v2.0.0 | v2.1.0 |
+|---------|--------|--------|--------|--------|
+| Triad Governance | Sequential | Sequential | Parallel | Parallel |
+| CLAUDE.md Size | 192 lines | 70 lines | 70 lines | 70 lines |
+| Context Loading | Manual | @-references | @-references | @-references |
+| Version Detection | - | - | Automatic | Automatic |
+| Feature Flags | - | - | Supported | Supported |
+| Degradation | - | - | Graceful | Graceful |
+| Agent Count | 13 | 13 | 13 | 13 (refactored) |
+| Agent Line Reduction | - | - | - | 58% |
+| Agent Best Practices | - | - | - | Documented |
 
 ---
 
+[2.1.0]: https://github.com/davidmatousek/product-led-spec-kit/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/davidmatousek/product-led-spec-kit/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/davidmatousek/product-led-spec-kit/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/davidmatousek/product-led-spec-kit/releases/tag/v1.0.0

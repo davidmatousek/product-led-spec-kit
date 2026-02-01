@@ -23,8 +23,6 @@ triggers:
 
 allowed-tools: [Bash, Read, Grep, TodoWrite]
 
-model: claude-sonnet-4-5-20250929
-
 color: "#F59E0B"
 
 expertise:

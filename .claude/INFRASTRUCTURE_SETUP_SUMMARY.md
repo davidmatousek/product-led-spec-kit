@@ -13,7 +13,7 @@ Successfully copied and templatized the complete agent orchestration infrastruct
 **Total Deliverables**:
 - ✅ **12 Agents** - Templatized with 7 template variables
 - ✅ **9 Skills** - Domain-agnostic automation capabilities
-- ✅ **19 Commands** - Complete Triad + Vanilla + Orchestration workflows
+- ✅ **16 Commands** - Complete Triad + Vanilla + Orchestration workflows
 - ✅ **Documentation** - Comprehensive README with customization guide
 
 ---
@@ -148,9 +148,9 @@ All agents include 7 template variables for project customization:
 
 ---
 
-## Deliverable 3: Commands (19 Total)
+## Deliverable 3: Commands (16 Total)
 
-### Triad Commands (8) - Automatic Governance ⭐
+### Triad Commands (6) - Automatic Governance ⭐
 
 **RECOMMENDED for production features**
 
@@ -158,31 +158,23 @@ All agents include 7 template variables for project customization:
    - Create PRD with PM + Architect + Tech-Lead validation
    - 3-way sign-off workflow
 
-2. **triad.architect-baseline.md**
-   - Architect provides infrastructure baseline for PRDs
-   - Used before PM drafts infrastructure-heavy PRDs
-
-3. **triad.feasibility.md**
-   - Tech-Lead provides timeline estimates
-   - Feasibility check before PM finalizes PRD
-
-4. **triad.specify.md**
+2. **triad.specify.md**
    - Create spec.md with automatic PM sign-off
    - 1-way validation (PM approval required)
 
-5. **triad.plan.md**
+3. **triad.plan.md**
    - Create plan.md with PM + Architect sign-off
    - 2-way validation (PM + Architect approval)
 
-6. **triad.tasks.md**
+4. **triad.tasks.md**
    - Create tasks.md with triple sign-off
    - 3-way validation (PM + Architect + Tech-Lead)
 
-7. **triad.implement.md**
+5. **triad.implement.md**
    - Execute with architect checkpoints at milestones
    - Continuous architecture validation
 
-8. **triad.close-feature.md**
+6. **triad.close-feature.md**
    - Close feature with parallel documentation updates
    - Automated cleanup and documentation
 
@@ -190,26 +182,22 @@ All agents include 7 template variables for project customization:
 
 **For rapid prototyping without governance overhead**
 
-9. **speckit.specify.md** - Create spec.md (manual validation)
-10. **speckit.plan.md** - Create plan.md (manual validation)
-11. **speckit.tasks.md** - Create tasks.md (manual validation)
-12. **speckit.implement.md** - Execute tasks (manual validation)
-13. **speckit.clarify.md** - Ask 5 clarification questions
-14. **speckit.analyze.md** - Cross-artifact consistency check
-15. **speckit.checklist.md** - Generate custom task checklist
-16. **speckit.constitution.md** - Create/update project constitution
+7. **speckit.specify.md** - Create spec.md (manual validation)
+8. **speckit.plan.md** - Create plan.md (manual validation)
+9. **speckit.tasks.md** - Create tasks.md (manual validation)
+10. **speckit.implement.md** - Execute tasks (manual validation)
+11. **speckit.clarify.md** - Ask 5 clarification questions
+12. **speckit.analyze.md** - Cross-artifact consistency check
+13. **speckit.checklist.md** - Generate custom task checklist
+14. **speckit.constitution.md** - Create/update project constitution
 
-### Orchestration Commands (3)
+### Orchestration Commands (2)
 
-17. **team-lead.implement.md**
-    - Execute with parallel agent orchestration
-    - Multi-wave implementation (3+ agents simultaneously)
-
-18. **execute.md**
+15. **execute.md**
     - Execute any task with optimal agent orchestration
     - General-purpose task execution with quality gates
 
-19. **continue.md**
+16. **continue.md**
     - Generate session continuation prompt
     - Long features spanning multiple sessions
 
@@ -227,11 +215,10 @@ All agents include 7 template variables for project customization:
 2. **Agent Reference** - All 12 agents with roles and responsibilities
 3. **Agent Customization** - Template variable replacement guide
 4. **Skills Reference** - All 9 skills with use cases
-5. **Commands Reference** - All 19 commands organized by category
-6. **Workflow Examples** - 3 complete examples:
+5. **Commands Reference** - All 15 commands organized by category
+6. **Workflow Examples** - 2 complete examples:
    - Full Feature Development (Triad)
    - Rapid Prototyping (Vanilla)
-   - Parallel Multi-Agent Implementation
 7. **Customization Guide** - Step-by-step instructions
 8. **Agent Invocation Patterns** - Best practices for Task/SlashCommand tools
 9. **Directory Structure** - Visual hierarchy
@@ -248,7 +235,7 @@ All agents include 7 template variables for project customization:
 |----------|-------|---------|
 | Agents | 12 | 6 core development + 6 specialized support |
 | Skills | 9 | 2 product + 2 validation + 2 KB + 3 dev support |
-| Commands | 19 | 8 Triad + 8 Vanilla + 3 Orchestration |
+| Commands | 16 | 6 Triad + 8 Vanilla + 2 Orchestration |
 | Documentation | 2 | README.md + this summary |
 
 ### Lines of Code
@@ -365,7 +352,7 @@ sed -i 's/{{PROJECT_NAME}}/enterprise-app/g' .claude/agents/*.md .claude/skills/
 |--------|--------|--------|--------|
 | Agents Copied | 12 | 12 | ✅ |
 | Skills Copied | 9 | 9 | ✅ |
-| Commands Copied | 19 | 19 | ✅ |
+| Commands Copied | 16 | 16 | ✅ |
 | Template Variables | 7+ | 7 | ✅ |
 | Documentation | Complete | README + Summary | ✅ |
 | Tech Stack Neutrality | 100% | 100% | ✅ |

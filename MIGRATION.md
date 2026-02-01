@@ -203,8 +203,7 @@ Copy "Commands" sections (Triad + Vanilla) to `.claude/rules/commands.md`:
 ## Triad Commands (Automatic Governance - RECOMMENDED)
 
 ```bash
-/triad.vision              # Interactive product vision workshop (START HERE)
-/triad.prd <topic>         # Create PRD with Triad validation
+/triad.prd <topic>         # Create PRD with Triad validation (includes optional vision workshop)
 [... rest of commands ...]
 ```
 

@@ -20,8 +20,6 @@ triggers:
 
 allowed-tools: [Bash, Read, Grep, Glob]
 
-model: claude-sonnet-4-5-20250929
-
 color: "#10B981"
 
 expertise:

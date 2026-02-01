@@ -1,6 +1,6 @@
 # Spec Kit Triad - Quick Reference Guide
 
-**Version**: 1.0.0 (Constitution v1.4.0 Principle XI)
+**Version**: 2.0.0 (Constitution v1.4.0 Principle XI)
 **Status**: Template
 
 ---
@@ -144,41 +144,6 @@ docs/agents/architect/
 
 ---
 
-## Manual Workflow (Advanced)
-
-If you need to run Triad phases manually:
-
-### Infrastructure PRD (Sequential)
-
-```bash
-# Phase 0: Architect creates baseline
-/triad.architect-baseline <topic>
-
-# Phase 1: PM drafts PRD (reads baseline automatically)
-/triad.prd <topic>  # Will detect baseline exists
-
-# Phase 2: Tech-Lead feasibility check
-/triad.feasibility <topic>
-
-# Phase 3: PM incorporates timeline (manual edit of PRD)
-
-# Phase 4: Architect review
-# (Automatically triggered by /triad.prd)
-```
-
-### Feature PRD (Parallel)
-
-```bash
-# Phase 1: PM drafts PRD
-/triad.prd <topic>
-
-# Phase 2a & 2b happen automatically in parallel
-
-# Phase 3: PM incorporates feedback (automatic)
-```
-
----
-
 ## Success Criteria
 
 **Per Constitution v1.4.0, all PRDs should achieve**:
@@ -255,16 +220,6 @@ If you need to run Triad phases manually:
 
 **Trade-off**: Faster (no governance overhead) but no automatic quality gates.
 
-### Manual Commands (Advanced)
-
-**For custom workflows or debugging**:
-```bash
-/triad.architect-baseline <topic>   # Phase 0: Create infrastructure baseline
-/triad.feasibility <topic>          # Phase 2: Tech-Lead feasibility check
-```
-
-**Note**: The manual commands are standalone but `/triad.prd` orchestrates them automatically.
-
 ### When to Use Which
 
 | Situation | Command | Governance | Speed |
@@ -283,9 +238,7 @@ If you need to run Triad phases manually:
 ### Check Triad Artifacts Exist
 ```bash
 # Check if PRD has all Triad artifacts
-ls specs/{NNN}-{topic}/architect-baseline.md  # (if infrastructure PRD)
-ls specs/{NNN}-{topic}/feasibility-check.md   # (always)
-ls docs/agents/architect/*{NNN}*prd-review*   # (always)
+ls docs/agents/architect/*{NNN}*prd-review*   # Architect review
 
 # Verify PRD status
 cat docs/product/02_PRD/INDEX.md | grep {NNN}
@@ -306,7 +259,7 @@ cat docs/product/02_PRD/INDEX.md | grep {NNN}
 
 ### "Timeline estimate unrealistic"
 - **Cause**: Tech-Lead didn't account for dependencies
-- **Fix**: Re-run `/triad.feasibility` after clarifying scope
+- **Fix**: Re-run `/triad.tasks` after clarifying scope
 
 ### "Architect blocked PRD"
 - **Cause**: Technical infeasibility or inaccuracies ≥3
@@ -377,8 +330,8 @@ cat docs/product/02_PRD/INDEX.md | grep {NNN}
 - [Constitution, Principle XI](.specify/memory/constitution.md) - SDLC Triad Collaboration
 
 **Detailed Guides**:
-- [TRIAD_COLLABORATION.md](core_principles/TRIAD_COLLABORATION.md) - Comprehensive guide
-- [PRODUCT_SPEC_ALIGNMENT.md](core_principles/PRODUCT_SPEC_ALIGNMENT.md) - Dual sign-off requirements
+- [TRIAD_COLLABORATION.md](standards/TRIAD_COLLABORATION.md) - Comprehensive guide
+- [PRODUCT_SPEC_ALIGNMENT.md](standards/PRODUCT_SPEC_ALIGNMENT.md) - Dual sign-off requirements
 
 **Agent Documentation**:
 - [product-manager agent](.claude/agents/product-manager.md) - PM responsibilities
@@ -387,11 +340,6 @@ cat docs/product/02_PRD/INDEX.md | grep {NNN}
 
 **Command Reference**:
 - [/triad.prd](.claude/commands/triad.prd.md) - Auto-Triad PRD creation
-- [/triad.architect-baseline](.claude/commands/triad.architect-baseline.md) - Manual baseline
-- [/triad.feasibility](.claude/commands/triad.feasibility.md) - Manual feasibility
-
-**Wrapper Commands**:
-- [Wrapper Architecture Guide](.claude/commands/WRAPPER_COMMANDS.md) - Maintainer guide for wrapper pattern
 - [/triad.specify](.claude/commands/triad.specify.md) - Spec creation with auto PM sign-off
 - [/triad.plan](.claude/commands/triad.plan.md) - Plan creation with auto dual sign-off
 - [/triad.tasks](.claude/commands/triad.tasks.md) - Task creation with auto triple sign-off
@@ -399,6 +347,6 @@ cat docs/product/02_PRD/INDEX.md | grep {NNN}
 
 ---
 
-**Last Updated**: 2025-12-04
+**Last Updated**: 2026-01-31
 **Maintained By**: Team Lead (workflow orchestration)
 **Review Trigger**: After every 5 PRDs or major process change

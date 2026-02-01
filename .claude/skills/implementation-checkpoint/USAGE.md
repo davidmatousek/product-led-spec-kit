@@ -123,7 +123,7 @@ The script will output:
 ✓ Location: specs/001-{{PROJECT_NAME}}/CHECKPOINT-01_Phase1-2-Complete_T001-T030.md
 ✓ Updated: CHECKPOINTS_README.md
 
-Next: Resume with /team-lead.implement specs/001-{{PROJECT_NAME}} --resume
+Next: Resume with /triad.implement --resume
 ```
 
 ### Step 6: Fill in TODO Sections
@@ -328,11 +328,11 @@ cp assets/CHECKPOINTS_README_template.md ../../specs/001-{{PROJECT_NAME}}/CHECKP
 
 ### Standard Implementation Flow
 
-1. **Start implementation**: `/team-lead.implement specs/001-{{PROJECT_NAME}}`
+1. **Start implementation**: `/triad.implement`
 2. **Complete milestone**: Mark tasks [X] in tasks.md
 3. **Create checkpoint**: Run this skill
 4. **Review**: Architect/PM review checkpoint
-5. **Resume**: `/team-lead.implement specs/001-{{PROJECT_NAME}} --resume`
+5. **Resume**: `/triad.implement --resume`
 
 ### Checkpoint Frequency
 

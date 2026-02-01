@@ -6,7 +6,7 @@
 
 ## What Goes Here
 
-- Features identified during `/triad.vision` that are "nice to have"
+- Features identified during `/triad.prd` that are "nice to have"
 - Ideas from `/triad.prd` that were descoped from MVP
 - User requests that align with vision but aren't prioritized yet
 - Technical improvements that aren't urgent
@@ -27,7 +27,7 @@ _backlog/
 # [Feature Name]
 
 **Added**: YYYY-MM-DD
-**Source**: [/triad.vision | /triad.prd | User Request | Team Idea]
+**Source**: [/triad.prd | User Request | Team Idea]
 **Priority**: [High | Medium | Low]
 **Effort Estimate**: [Small | Medium | Large | Unknown]
 

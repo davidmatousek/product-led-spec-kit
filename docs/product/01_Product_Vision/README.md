@@ -190,7 +190,7 @@ docs/product/01_Product_Vision/
 - `docs/product/06_OKRs/` - Objectives and Key Results
 
 **Governance**:
-- `docs/core_principles/PRODUCT_SPEC_ALIGNMENT.md` - PM sign-off requirements
+- `docs/standards/PRODUCT_SPEC_ALIGNMENT.md` - PM sign-off requirements
 - `docs/SPEC_KIT_TRIAD.md` - PM-Architect-TechLead collaboration
 
 **Agent Tools**:

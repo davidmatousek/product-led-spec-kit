@@ -1,431 +1,179 @@
 ---
-name: triad.prd
-description: >
-  Create a Product Requirements Document (PRD) using the product-manager Product Manager
-  agent and prd-create skill. PRDs are stored in docs/product/02_PRD/ with sequential
-  numbering and date stamps for chronological tracking.
-
-usage: /triad.prd <topic>
-
-examples:
-  - /triad.prd task-locking-api
-  - /triad.prd rag-search-implementation
-  - /triad.prd user-authentication
-
-expertise:
-  - product-management
-  - prd-creation
-  - requirements-gathering
-
-model: claude-sonnet-4-5-20250929
+description: Create PRD with Triad governance (PM + Architect + Team-Lead sign-offs) - Streamlined v2
+compatible_with_speckit: ">=1.0.0"
+last_tested_with_speckit: "2.0.0"
 ---
 
-You are executing the `/triad.prd` command to create a Product Requirements Document (PRD) with automatic SDLC Triad validation.
+## User Input
 
-## Constitutional Authority
-
-Per Constitution v1.4.0:
-- **Principle X**: Product-Spec Alignment - ALWAYS create PRD before spec.md (NON-NEGOTIABLE)
-- **Principle XI**: SDLC Triad Collaboration - PRD must have Triad validation (Architect + Tech-Lead + PM)
-- PRD creation is the responsibility of the Product Manager (product-manager)
-- PRDs must use industry-standard format via prd-create skill
-- **NEW**: Auto-invoke Triad workflow for all PRDs starting PRD-005 (effective 2025-11-22)
-
-## Command Parameters
-
-**Topic**: `{{topic}}`
-
-If topic is missing, prompt the user:
-```
-❌ Error: PRD topic required
-
-Usage: /triad.prd <topic>
-
-Example: /triad.prdtask-locking-api
-
-The topic should be a short, descriptive kebab-case name for the feature.
+```text
+$ARGUMENTS
 ```
 
-## PRD Naming Convention
+Consider user input before proceeding (if not empty).
 
-PRDs are stored with sequential numbering for chronological tracking:
+## Overview
 
-**Format**: `NNN-topic-YYYY-MM-DD.md`
+Wraps prd-create skill with automatic Triad triple sign-off.
 
-**Example**: `001-task-locking-api-2025-11-19.md`
+**Flow**: Check vision docs → Validate topic → Classify type → Draft PRD → Reviews → Handle blockers → Inject frontmatter → Update INDEX
 
-**Location**: `docs/product/02_PRD/`
+## Step 0: Check Product Vision (Optional)
 
-## Workflow
+Check if product vision documents exist:
+- `docs/product/01_Product_Vision/product-vision.md`
 
-### Step 1: Determine PRD Number
+**If vision docs DON'T exist** (first PRD for this project):
+1. Use AskUserQuestion:
+   - **Quick Vision**: Answer 3 questions to create vision docs (recommended for new projects)
+   - **Skip**: Proceed directly to PRD creation (for experienced users)
 
-1. List existing PRDs to find the next sequential number:
-```bash
-ls docs/product/02_PRD/*.md | grep -E "^[0-9]" | sort | tail -1
-```
-
-2. Extract the number from the last PRD (e.g., `003-...md` → next is `004`)
-
-3. If no PRDs exist yet, start with `001`
-
-### Step 2: Create PRD Filename
-
-**Pattern**: `{NNN}-{topic}-{YYYY-MM-DD}.md`
-
-**Components**:
-- `NNN`: Zero-padded sequential number (001, 002, 003, ...)
-- `topic`: User-provided topic from command parameter
-- `YYYY-MM-DD`: Today's date (from system)
-
-**Example**:
-- Next number: 004
-- Topic: task-locking-api
-- Date: 2025-11-19
-- Filename: `004-task-locking-api-2025-11-19.md`
-
-### Step 3: Invoke product-manager Agent
-
-You must now spawn the product-manager agent to create the PRD. The agent will:
-
-1. Use the `prd-create` skill to generate an industry-standard PRD
-2. Follow the comprehensive PRD structure from `.claude/skills/prd-create/skill.md`
-3. Gather context from existing product artifacts:
-   - Product vision: `docs/product/01_Product_Vision/`
-   - OKRs: `docs/product/06_OKRs/`
-   - Roadmap: `docs/product/03_Product_Roadmap/`
-   - User Stories: `docs/product/05_User_Stories/`
-   - Customer Journeys: `docs/product/04_Customer_Journey_Maps/`
-
-**Agent Invocation**:
+2. If "Quick Vision" selected, run mini-workshop:
 
 ```
-Invoking product-manager agent to create PRD for: {{topic}}
+🎯 Quick Product Vision (3 questions)
 
-Agent Task:
-1. Use prd-create skill to generate comprehensive PRD
-2. Research existing product context (vision, OKRs, roadmap)
-3. Create PRD following industry-standard template
-4. Save to: docs/product/02_PRD/{NNN}-{topic}-{YYYY-MM-DD}.md
-5. Update PRD index: docs/product/02_PRD/INDEX.md
+Q1: What problem are you solving and for whom?
+(1-2 sentences: the pain point and who experiences it)
 
-Context:
-- Feature/Topic: {{topic}}
-- PRD Filename: {calculated filename}
-- Creation Date: {today's date}
+Q2: What's your solution in one sentence?
+(How your product solves the problem differently)
+
+Q3: What are the 2-3 core features?
+(Brief list of key capabilities)
 ```
 
-### Step 3.5: Auto-Detect Infrastructure Work (NEW - SDLC Triad)
+3. Generate `docs/product/01_Product_Vision/product-vision.md` with their answers:
+   - Mission statement (derived from Q1+Q2)
+   - Problem statement (Q1)
+   - Solution overview (Q2)
+   - Core capabilities table (Q3)
 
-**Check if PRD is infrastructure/deployment work**:
+**If vision docs exist**: Skip to Step 1
 
-Scan topic and PRD content for keywords:
-- "deploy", "deployment", "infrastructure", "production", "staging"
-- "vercel", "database provisioning", "environment setup"
+## Step 1: Validate Topic
 
-**If infrastructure detected** → Use **Infrastructure PRD workflow** (Sequential Triad)
-**If not detected** → Use **Feature PRD workflow** (Parallel Triad)
+1. Parse topic from `$ARGUMENTS` (kebab-case format)
+2. If empty: Error "Usage: /triad.prd <topic>" and exit
+3. Check `docs/product/02_PRD/` for existing PRD with same topic
+4. If exists: Use AskUserQuestion with options: View existing, Create with suffix (v2), Abort
 
-### Step 4: SDLC Triad Workflow (NEW - Constitution v1.4.0)
+## Step 2: Classify PRD Type
 
-**IMPORTANT**: This step is MANDATORY for all PRDs starting PRD-005 (per Constitution Principle XI)
+Use AskUserQuestion to determine workflow type:
 
-#### Infrastructure PRD Workflow (Sequential - ~2-4 hours)
+| Type | Examples | Workflow |
+|------|----------|----------|
+| Infrastructure | deployment, database, migration, CI/CD | Sequential (Architect baseline → PM draft → Team-Lead → Architect final) |
+| Feature | UI, API, dashboard, user-facing | Parallel (PM draft → Architect + Team-Lead reviews in parallel) |
 
-**When**: Infrastructure keywords detected in topic or PRD content
+## Step 3: Draft PRD
 
-**Process**:
+**Infrastructure workflow**:
+1. Launch architect agent for baseline technical assessment
+2. Invoke prd-create skill with architect baseline context
+3. Launch team-lead agent for timeline/feasibility review
+4. Launch architect agent for final technical review
 
-1. **Architect Baseline (Phase 0)** - FIRST
-   ```
-   Invoke architect agent:
-   - Read: docs/architecture/04_deployment_environments/production.md
-   - Read: docs/architecture/04_deployment_environments/staging.md
-   - Read: docs/product/STATUS.md
-   - Read: git log --oneline -20
-   - Create: specs/{feature-id}/architect-baseline.md
-   - Hand baseline to PM
-   ```
+**Feature workflow**:
+1. Invoke prd-create skill directly
+2. Launch **two Task agents in parallel** (single message, two Task tool calls):
 
-2. **PM Incorporates Baseline into PRD**
-   - PM updates draft PRD with "Current State" section
-   - PM uses baseline data to correct infrastructure claims
-   - Mark timeline as "TBD - pending Tech-Lead feasibility"
+| Agent | subagent_type | Focus | Key Criteria |
+|-------|---------------|-------|--------------|
+| Architect | architect | Technical | Feasibility, architecture, scalability, security |
+| Team-Lead | team-lead | Timeline | Realism, resources, dependencies, complexity |
 
-3. **Tech-Lead Feasibility Check (Phase 2)** - SECOND
-   ```
-   Invoke team-lead agent:
-   - Read: Draft PRD at docs/product/02_PRD/{NNN}-{topic}-{date}.md
-   - Read: Architect baseline at specs/{feature-id}/architect-baseline.md
-   - Estimate: Effort, timeline, agent assignments, capacity
-   - Create: specs/{feature-id}/feasibility-check.md
-   - Provide: Optimistic/Realistic/Pessimistic timeline
-   ```
+**Prompt template for each**:
+```
+Review PRD draft for {FOCUS AREA}.
 
-4. **PM Incorporates Timeline into PRD**
-   - PM updates PRD timeline with Tech-Lead's realistic estimate
-   - PM validates product requirements still achievable
+PRD Topic: {topic}
+Draft Content: {prd_draft_content}
 
-5. **Architect Technical Review (Phase 3)** - THIRD
-   ```
-   Invoke architect agent:
-   - Read: Draft PRD at docs/product/02_PRD/{NNN}-{topic}-{date}.md
-   - Cross-check: Infrastructure claims vs baseline
-   - Validate: Technical feasibility, dependency accuracy
-   - Create: docs/agents/architect/{date}_{feature}_prd-review_ARCH.md
-   - Verdict: APPROVED or CHANGES REQUESTED
-   ```
-
-6. **PM Finalizes PRD**
-   - If APPROVED → Finalize PRD, mark Status: Approved
-   - If CHANGES REQUESTED → Address corrections, re-submit for review
-   - Only finalize when Architect verdict is APPROVED
-
-#### Feature PRD Workflow (Parallel - ~1-2 hours)
-
-**When**: No infrastructure keywords detected
-
-**Process**:
-
-1. **PM Drafts PRD** (already done in Step 3)
-
-2. **Parallel Reviews** - Run simultaneously:
-   ```
-   Invoke architect agent (Technical Review):
-   - Read: Draft PRD
-   - Validate: Technical feasibility, technology stack alignment
-   - Create: docs/agents/architect/{date}_{feature}_prd-review_ARCH.md
-   - Verdict: APPROVED or CHANGES REQUESTED
-
-   Invoke team-lead agent (Feasibility Check):
-   - Read: Draft PRD
-   - Estimate: Timeline, agents, capacity
-   - Create: specs/{feature-id}/feasibility-check.md
-   - Provide: Realistic timeline estimate
-   ```
-
-3. **PM Incorporates Feedback**
-   - Update PRD with Tech-Lead timeline
-   - Address Architect corrections (if any)
-   - Re-submit if Architect requested changes
-
-4. **PM Finalizes PRD**
-   - Only finalize when both reviews complete
-   - Only finalize when Architect verdict is APPROVED
-
-#### Triad Success Criteria
-
-All PRDs (starting PRD-005) MUST have:
-- ✅ Architect baseline report (if infrastructure work)
-- ✅ Tech-Lead feasibility check with timeline estimate
-- ✅ Architect technical review with APPROVED verdict
-- ✅ PRD timeline based on Tech-Lead estimate (not PM guess)
-- ✅ PRD infrastructure claims validated by Architect against baseline
-
-**Validation Gates**:
-- PRD cannot be marked "Approved" until Architect verdict is APPROVED
-- PRD timeline must use Tech-Lead's estimate, not PM's guess
-- Infrastructure PRDs must incorporate Architect baseline into "Current State"
-
-### Step 5: Update PRD Index
-
-After PRD creation, update `docs/product/02_PRD/INDEX.md` with:
-
-```markdown
-| PRD # | Topic | Created | Status | Phase | Related Spec |
-|-------|-------|---------|--------|-------|--------------|
-| {NNN} | [{topic}]({filename}) | {date} | Draft | TBD | - |
+Provide sign-off:
+STATUS: [APPROVED | APPROVED_WITH_CONCERNS | CHANGES_REQUESTED | BLOCKED]
+NOTES: [Your detailed feedback]
 ```
 
-**Status Values**:
-- `Draft` - PRD created, not yet reviewed
-- `Approved` - PM approved, ready for spec creation
-- `In Progress` - Spec/plan/tasks being created
-- `Implemented` - Feature delivered
-- `Archived` - Obsolete or replaced
+## Step 4: Handle Review Results
 
-### Step 6: Provide Output Summary
+**All APPROVED/APPROVED_WITH_CONCERNS**: → Proceed to Step 5
 
-After successful PRD creation and Triad validation, output:
+**Any CHANGES_REQUESTED**:
+1. Display feedback from reviewers who requested changes
+2. Use product-manager agent to update PRD addressing the feedback
+3. Re-run reviews only for reviewers who requested changes
+4. Loop until all approved or user aborts (max 5 iterations)
 
-```
-✅ PRD Created Successfully with SDLC Triad Validation!
+**Any BLOCKED**:
+1. Display blocker with veto domain (Architect=technical, Team-Lead=timeline)
+2. Use AskUserQuestion with options:
+   - **Resolve**: Address issues and re-submit to blocked reviewer
+   - **Override**: Provide justification (min 20 chars), mark as BLOCKED_OVERRIDDEN
+   - **Abort**: Cancel PRD creation
 
-PRD: {NNN}-{topic}-{date}
-File: docs/product/02_PRD/{NNN}-{topic}-{date}.md
-Status: {Draft | Approved}
-Created: {date}
-Workflow: {Infrastructure (Sequential) | Feature (Parallel)}
+## Step 5: Assign PRD Number
 
-Triad Validation Results:
-- ✅ Architect Baseline: {specs/{feature-id}/architect-baseline.md} (if infrastructure)
-- ✅ Tech-Lead Feasibility: {specs/{feature-id}/feasibility-check.md}
-- ✅ Architect Review: {docs/agents/architect/{date}_{feature}_prd-review_ARCH.md}
-- ✅ Verdict: {APPROVED | CHANGES REQUESTED}
+1. Scan `docs/product/02_PRD/` for `NNN-*.md` files
+2. Extract max NNN, assign next_number = max + 1 (or 1 if empty)
+3. Format: `{NNN}-{topic}-{YYYY-MM-DD}.md`
 
-Timeline Estimate (from Tech-Lead):
-- Optimistic: {X hours/days}
-- Realistic: {Y hours/days} (RECOMMENDED)
-- Pessimistic: {Z hours/days}
+## Step 6: Write PRD with Frontmatter
 
-Technical Inaccuracies Found: {count} (target: <3)
+1. Build YAML frontmatter with triad sign-offs:
 
-Next Steps:
-1. {If APPROVED}: Create spec from PRD: /speckit.specify
-2. {If CHANGES REQUESTED}: Review architect corrections and revise PRD
-3. View all PRDs: cat docs/product/02_PRD/INDEX.md
-4. View Triad artifacts in specs/{feature-id}/
-
-Constitutional Requirements (v1.4.0):
-- Principle X: This PRD must be approved before creating spec.md
-- Principle XI: SDLC Triad validation complete (Architect + Tech-Lead + PM)
-- Use /speckit.specify only after PRD status is "Approved"
-
-Success Metrics (vs PM-001 baseline):
-- Technical inaccuracies: {count} (target: <3, baseline: 18 in PRD-004)
-- Triad cycle time: {duration} (target: <4 hours for infrastructure, <2 hours for feature)
-- Architect review time: {duration} (target: <30 min, baseline: 2-3 hours for PRD-004)
-```
-
-## Error Handling
-
-### Missing Topic
-
-```
-❌ Error: PRD topic required
-
-Usage: /triad.prd <topic>
-
-Example: /triad.prdtask-locking-api
-```
-
-### Invalid Topic Format
-
-If topic contains invalid characters (spaces, special chars except hyphens):
-
-```
-❌ Error: Invalid topic format
-
-Topic must be kebab-case (lowercase, hyphens only).
-
-Invalid: "Task Locking API"
-Valid:   "task-locking-api"
-```
-
-### Duplicate PRD Topic
-
-If a PRD with similar topic already exists:
-
-```
-⚠️ Warning: Similar PRD may exist
-
-Found existing PRD: 002-task-locking-2025-11-10.md
-
-Do you want to:
-1. Create new PRD anyway (continue)
-2. View existing PRD
-3. Cancel
-
-Your choice:
-```
-
-## PRD Quality Standards
-
-The product-manager agent must ensure the PRD includes:
-
-**Minimum Required Sections**:
-- ✅ Executive Summary (problem, solution, success criteria)
-- ✅ Strategic Alignment (vision, OKRs, roadmap fit)
-- ✅ Target Users & Personas (who benefits?)
-- ✅ User Stories (job stories with acceptance criteria)
-- ✅ Functional Requirements (what does it do?)
-- ✅ Non-Functional Requirements (performance, security, etc.)
-- ✅ Success Metrics (measurable outcomes)
-- ✅ Scope & Boundaries (in scope vs out of scope)
-- ✅ Timeline & Milestones (delivery plan)
-- ✅ Risks & Dependencies (what could go wrong?)
-
-**Quality Checklist**:
-- [ ] Problem statement is clear and user-focused
-- [ ] User stories have testable acceptance criteria
-- [ ] Success metrics are specific and measurable
-- [ ] Scope is realistic for timeline
-- [ ] Dependencies are identified
-- [ ] Aligns with product vision and OKRs
-
-## Integration with Spec Kit Workflow
-
-**PRD → Spec Flow**:
-
-```
-1. /speckit.prd <topic>           → Create PRD (this command)
-2. PM reviews & approves PRD      → Manual review
-3. /speckit.specify               → Create spec.md from PRD
-4. PM signs off on spec.md        → Validates alignment
-5. /speckit.plan                  → Create plan.md from spec
-6. PM signs off on plan.md        → Validates feasibility
-7. /speckit.tasks                 → Create tasks.md from plan
-8. PM signs off on tasks.md       → Validates prioritization
-9. /speckit.implement             → Execute implementation
-```
-
-**Traceability**:
-
-Every spec.md MUST reference its source PRD:
-
-```markdown
+```yaml
 ---
-source_prd: docs/product/02_PRD/004-task-locking-api-2025-11-19.md
+prd:
+  number: {prd_number}
+  topic: {topic}
+  created: {YYYY-MM-DD}
+  status: {Approved|In Review|Blocked|Draft}
+  type: {infrastructure|feature}
+triad:
+  pm_signoff: {agent: product-manager, date: ..., status: ..., notes: ...}
+  architect_signoff: {agent: architect, date: ..., status: ..., notes: ...}
+  techlead_signoff: {agent: team-lead, date: ..., status: ..., notes: ...}
 ---
 ```
 
-## Files Modified by This Command
+2. Write to `docs/product/02_PRD/{filename}`
 
-**Created**:
-- `docs/product/02_PRD/{NNN}-{topic}-{YYYY-MM-DD}.md` - The PRD document
+## Step 7: Update INDEX.md
 
-**Updated**:
-- `docs/product/02_PRD/INDEX.md` - PRD registry with metadata
+1. Read `docs/product/02_PRD/INDEX.md`
+2. Add new row to Active PRDs table with status symbols: ✓=APPROVED, ⚠=CONCERNS, 🔄=CHANGES, ⛔=BLOCKED, ⚠⚡=OVERRIDDEN
+3. Update "Last Updated" date
+4. Write updated INDEX.md
 
-## Related Commands
+## Step 8: Report Completion
 
-- `/speckit.specify` - Create spec.md from PRD (requires PRD approval first)
-- `/speckit.analyze` - Validate PRD-spec alignment
-- `/speckit.clarify` - Ask clarifying questions before finalizing PRD
+Display summary:
+```
+✅ PRD CREATION COMPLETE
 
-## Related Skills
+PRD: {prd_number} - {topic}
+Type: {workflow_type}
+Status: {overall_status}
+File: docs/product/02_PRD/{filename}
 
-- `prd-create` - Industry-standard PRD generation (invoked by product-manager)
-- `kb-query` - Search for similar features before creating PRD
+Triple Sign-offs:
+- PM: {pm_status}
+- Architect: {architect_status}
+- Team-Lead: {techlead_status}
 
-## Related Agents
+Next: /triad.specify
+```
 
-- `product-manager` - Product Manager responsible for PRD creation
+## Quality Checklist
 
-## Success Criteria
-
-You have successfully completed this command when:
-
-1. ✅ PRD file created with correct naming convention
-2. ✅ PRD contains all required sections from prd-create template
-3. ✅ PRD aligns with product vision, OKRs, and roadmap
-4. ✅ PRD INDEX.md updated with new entry
-5. ✅ User informed of next steps (review → approve → /speckit.specify)
-
-## Remember
-
-**Constitutional Mandates (v1.4.0)**:
-- **Principle X**: This PRD is REQUIRED before creating spec.md
-- **Principle XI**: SDLC Triad validation is MANDATORY for all PRDs starting PRD-005
-- Do not proceed to /speckit.specify until:
-  1. Triad workflow complete (Architect + Tech-Lead + PM reviews)
-  2. Architect verdict is APPROVED
-  3. PRD status is "Approved"
-
-**Triad Workflow Reference**: See `docs/core_principles/TRIAD_COLLABORATION.md` for comprehensive guide
-
----
-
-**Now execute the workflow above to create the PRD for topic: {{topic}}**
-
-**IMPORTANT**: After Step 3 (PM drafts PRD), automatically proceed to Step 4 (SDLC Triad Workflow) without waiting for user input. The Triad workflow is mandatory per Constitution v1.4.0 Principle XI.
+- [ ] Topic validated (no duplicates or user-approved suffix)
+- [ ] Workflow type classified (infrastructure or feature)
+- [ ] PRD drafted via prd-create skill
+- [ ] Reviews executed (sequential for infra, parallel for feature)
+- [ ] Blockers handled (resolved, overridden, or aborted)
+- [ ] PRD number assigned sequentially
+- [ ] Frontmatter injected with all three sign-offs
+- [ ] INDEX.md updated with new row
+- [ ] Completion summary displayed

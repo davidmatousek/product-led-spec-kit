@@ -127,7 +127,7 @@ Every feature and deliverable MUST complete all validation steps before being ma
 - Documentation updated and accurate
 
 **Enforcement**:
-- See `docs/core_principles/DEFINITION_OF_DONE.md` for detailed validation procedures
+- See `docs/standards/DEFINITION_OF_DONE.md` for detailed validation procedures
 - Features that skip any step MUST be reverted to in-progress status
 - DoD checklist required in all PRs for feature work
 
@@ -143,7 +143,7 @@ All complex work and debugging sessions MUST capture learnings and patterns for 
 **Rationale**: Observability ensures rapid issue resolution, captures organizational learning, and prevents repeated mistakes. Root cause analysis addresses underlying problems rather than symptoms.
 
 **Requirements**:
-- **Five Whys Methodology**: ALWAYS use Five Whys Root Cause Analysis for complex issues (see `docs/core_principles/FIVE_WHYS_METHODOLOGY.md`)
+- **Five Whys Methodology**: ALWAYS use Five Whys Root Cause Analysis for complex issues (see `docs/core_principles/01-FIVE_WHYS_METHODOLOGY.md`)
 - **Structured Logging**: Required for all critical operations (API requests, task state changes, lock operations, search queries)
 - **Health Checks**: Required for all services (API `/health` endpoint, MCP server status, database connectivity)
 - **Performance Monitoring**: Track API response times, search latency, concurrent agent metrics
@@ -199,7 +199,7 @@ ALL development work MUST use feature branches. Direct commits to main branch ar
 - Branches must be up to date before merging
 - Enforce code review from CODEOWNERS for critical paths
 
-**Reference**: See `docs/core_principles/GIT_WORKFLOW.md` for detailed git workflow guidance
+**Reference**: See `docs/standards/GIT_WORKFLOW.md` for detailed git workflow guidance
 
 ### X. Product-Spec Alignment & Architecture Review (NON-NEGOTIABLE)
 
@@ -427,7 +427,7 @@ Product Manager is responsible for maintaining alignment between:
 - **/speckit.tasks**: Create implementation tasks from plans
 - **/speckit.analyze**: Validate consistency across artifacts
 
-**Reference**: See `.claude/agents/product-manager.md` for PM responsibilities, `.claude/agents/architect.md` for Architect responsibilities, and `docs/core_principles/PRODUCT_SPEC_ALIGNMENT.md` for comprehensive alignment guide
+**Reference**: See `.claude/agents/product-manager.md` for PM responsibilities, `.claude/agents/architect.md` for Architect responsibilities, and `docs/standards/PRODUCT_SPEC_ALIGNMENT.md` for comprehensive alignment guide
 
 ---
 
@@ -537,7 +537,7 @@ All PRDs MUST have:
 | Feasibility Check | `specs/{feature-id}/feasibility-check.md` | Tech-Lead | Timeline, agent assignments, capacity validation |
 | Architect PRD Review | `docs/agents/architect/{date}_{feature}_prd-review_ARCH.md` | Architect | Technical validation report |
 
-**Reference**: See `docs/core_principles/TRIAD_COLLABORATION.md` for comprehensive Triad workflow guide, artifact templates, and practical examples
+**Reference**: See `docs/standards/TRIAD_COLLABORATION.md` for comprehensive Triad workflow guide, artifact templates, and practical examples
 
 ---
 

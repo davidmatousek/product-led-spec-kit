@@ -128,6 +128,5 @@ Provide your review in this exact format:
 
 This skill is invoked during Triad governance workflows:
 - `/triad.tasks` - After task generation (parallel with PM and Architect)
-- `/triad.feasibility` - Standalone feasibility assessment
 
 The skill runs in parallel with PM and Architect reviews when context forking is enabled.

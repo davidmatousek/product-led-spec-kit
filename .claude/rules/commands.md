@@ -16,8 +16,7 @@ Product-Led Spec Kit provides two command sets:
 Use Triad commands when you need governance, quality gates, and multi-agent collaboration.
 
 ```bash
-/triad.vision              # Interactive product vision workshop (START HERE)
-/triad.prd <topic>         # Create PRD with Triad validation
+/triad.prd <topic>         # Create PRD with Triad validation (includes optional vision workshop)
 /triad.specify             # Create spec.md with auto PM sign-off
 /triad.plan                # Create plan.md with auto PM + Architect sign-off
 /triad.tasks               # Create tasks.md with auto triple sign-off
@@ -44,7 +43,6 @@ Use Vanilla commands when you need speed and can skip governance workflows.
 /speckit.implement         # Execute tasks
 /speckit.clarify           # Ask clarification questions
 /speckit.analyze           # Verify consistency
-/team-lead.implement       # Execute with parallel agent orchestration
 ```
 
 **When to Use**:
