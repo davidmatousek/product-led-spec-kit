@@ -9,13 +9,13 @@ Constitutional Reference: Constitution v1.2.0, Principle X
 
 # Product-Spec Alignment Requirements
 
-**CRITICAL: All Spec Kit artifacts (spec.md, plan.md, tasks.md) require Product Manager sign-off before implementation begins**
+**CRITICAL: All Triad artifacts (spec.md, plan.md, tasks.md) require Product Manager sign-off before implementation begins**
 
 ## Constitutional Authority
 
 Per **Constitution v1.2.0, Principle X: Product-Spec Alignment (NON-NEGOTIABLE)**:
 
-> ALL Spec Kit artifacts (spec.md, plan.md, tasks.md) MUST receive Product Manager (product-manager) sign-off before implementation begins. Product artifacts in docs/product/ are the strategic foundation that technical specifications must serve.
+> ALL Triad artifacts (spec.md, plan.md, tasks.md) MUST receive Product Manager (product-manager) sign-off before implementation begins. Product artifacts in docs/product/ are the strategic foundation that technical specifications must serve.
 
 ## Rationale
 
@@ -37,7 +37,7 @@ Per **Constitution v1.2.0, Principle X: Product-Spec Alignment (NON-NEGOTIABLE)*
 ### Required Workflow (NON-NEGOTIABLE)
 
 ```
-1. /speckit.prd <topic>           → Product Manager creates PRD
+1. /triad.prd <topic>             → Product Manager creates PRD
    │
    ├─ PM uses prd-create skill
    ├─ PM researches product context (vision, OKRs, roadmap)
@@ -51,7 +51,7 @@ Per **Constitution v1.2.0, Principle X: Product-Spec Alignment (NON-NEGOTIABLE)*
    ├─ PM addresses feedback and finalizes PRD
    └─ PRD marked as "Approved" in INDEX.md
 
-3. /speckit.specify               → Create spec.md from PRD
+3. /triad.specify                 → Create spec.md from PRD
    │
    ├─ Architect reads approved PRD
    ├─ Architect creates spec.md referencing PRD
@@ -65,7 +65,7 @@ Per **Constitution v1.2.0, Principle X: Product-Spec Alignment (NON-NEGOTIABLE)*
    ├─ PM uses sign-off checklist (see below)
    └─ PM approves OR exercises veto with required changes
 
-5. /speckit.plan                  → Create plan.md from spec
+5. /triad.plan                    → Create plan.md from spec
    │
    ├─ Architect creates technical plan
    ├─ plan.md references product docs
@@ -77,7 +77,7 @@ Per **Constitution v1.2.0, Principle X: Product-Spec Alignment (NON-NEGOTIABLE)*
    ├─ PM checks technical approach serves user stories
    └─ PM approves OR exercises veto
 
-7. /speckit.tasks                 → Create tasks.md from plan
+7. /triad.tasks                   → Create tasks.md from plan
    │
    ├─ Team Lead breaks down implementation
    ├─ tasks.md prioritization considers user value
@@ -89,7 +89,7 @@ Per **Constitution v1.2.0, Principle X: Product-Spec Alignment (NON-NEGOTIABLE)*
    ├─ PM checks MVP scope matches PRD in-scope items
    └─ PM approves OR exercises veto
 
-9. /speckit.implement             → Execute implementation
+9. /triad.implement               → Execute implementation
    │
    └─ Implementation begins ONLY after PM approval
 ```
@@ -221,7 +221,7 @@ Product Manager adds this section to spec.md, plan.md, or tasks.md after validat
 
 **Status**: ✅ Approved for implementation
 
-**Next Step**: [/speckit.plan / /speckit.tasks / /speckit.implement]
+**Next Step**: [/triad.plan / /triad.tasks / /triad.implement]
 
 ---
 ```
@@ -331,7 +331,7 @@ Product Manager is responsible for maintaining alignment between:
 6. **06_OKRs/** - Objectives & Key Results
    - YYYY-QN.md (quarterly OKRs)
 
-### Spec Kit Artifacts (.specify/)
+### Triad Artifacts (.specify/)
 
 1. **constitution.md** - Governance principles
 2. **spec.md** - Feature specification
@@ -390,11 +390,11 @@ Constitution v1.2.0, Principle X makes PM sign-off **NON-NEGOTIABLE**.
 
 ### 2. Workflow Integration
 
-Spec Kit commands enforce PM sign-off:
-- `/speckit.specify` requires approved PRD
-- `/speckit.plan` requires PM-approved spec.md
-- `/speckit.tasks` requires PM-approved plan.md
-- `/speckit.implement` requires PM-approved tasks.md
+Triad commands enforce PM sign-off:
+- `/triad.specify` requires approved PRD
+- `/triad.plan` requires PM-approved spec.md
+- `/triad.tasks` requires PM-approved plan.md
+- `/triad.implement` requires PM-approved tasks.md
 
 ### 3. Pull Request Requirements
 
@@ -405,7 +405,7 @@ PRs without PM approval are blocked from merge:
 
 ### 4. Artifact Metadata
 
-All Spec Kit artifacts include metadata:
+All Triad artifacts include metadata:
 
 ```yaml
 ---
@@ -418,7 +418,7 @@ pm_approver: product-manager
 
 ### 5. Validation Commands
 
-Use `/speckit.analyze` to validate product-spec consistency:
+Use `/triad.analyze` to validate product-spec consistency:
 - Checks PRD → spec → plan → tasks traceability
 - Validates all artifacts have PM sign-off
 - Identifies misalignments and missing approvals
@@ -433,10 +433,10 @@ Use `/speckit.analyze` to validate product-spec consistency:
 - `root-cause-analyzer` - Dig into complex requirement ambiguities
 
 **Commands**:
-- `/speckit.prd <topic>` - Create new PRD
-- `/speckit.specify` - Create spec from PRD
-- `/speckit.analyze` - Validate product-spec consistency
-- `/speckit.clarify` - Ask clarifying questions
+- `/triad.prd <topic>` - Create new PRD
+- `/triad.specify` - Create spec from PRD
+- `/triad.analyze` - Validate product-spec consistency
+- `/triad.clarify` - Ask clarifying questions
 
 **Agents**:
 - `product-manager` - Product Manager with alignment validation expertise
@@ -501,7 +501,7 @@ Use `/speckit.analyze` to validate product-spec consistency:
 Product-Spec Alignment is successful when:
 
 1. ✅ **Every spec has a PRD**: No technical work starts without product context
-2. ✅ **Alignment is maintained**: Product docs and Spec Kit artifacts stay in sync
+2. ✅ **Alignment is maintained**: Product docs and Triad artifacts stay in sync
 3. ✅ **User value is clear**: Every feature has measurable user impact
 4. ✅ **Strategy drives execution**: OKRs and roadmap guide prioritization
 5. ✅ **Quality is high**: Specs are complete, unambiguous, and feasible

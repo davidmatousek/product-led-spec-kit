@@ -1,13 +1,13 @@
-# Spec Kit Triad - Quick Reference Guide
+# SDLC Triad - Quick Reference Guide
 
 **Version**: 2.0.0 (Constitution v1.4.0 Principle XI)
 **Status**: Template
 
 ---
 
-## What is Spec Kit Triad?
+## What is the SDLC Triad?
 
-**Spec Kit Triad** is a lightweight collaboration framework ensuring Product-Architecture-Engineering alignment for all PRDs and specs.
+**The SDLC Triad** is a lightweight collaboration framework ensuring Product-Architecture-Engineering alignment for all PRDs and specs.
 
 **The Three Roles**:
 1. **PM (product-manager)**: Defines **What** & **Why** (user value, business goals)
@@ -235,29 +235,6 @@ Creates `specs/{NNN}-*/research.md` with:
 - ✅ Constitution compliance enforced automatically
 - ✅ Upgrade-safe wrapper architecture (open source commands stay pristine)
 
-### Vanilla Commands (No Governance)
-
-**Use for rapid prototyping, testing, or personal projects**:
-```bash
-/speckit.specify           # Create spec.md (no auto sign-off)
-/speckit.plan              # Create plan.md (no auto sign-off)
-/speckit.tasks             # Create tasks.md (no auto sign-off)
-/speckit.implement         # Execute (no auto checkpoints)
-```
-
-**Trade-off**: Faster (no governance overhead) but no automatic quality gates.
-
-### When to Use Which
-
-| Situation | Command | Governance | Speed |
-|-----------|---------|------------|-------|
-| Production features | `/triad.*` | ✅ Auto | Medium |
-| Team projects | `/triad.*` | ✅ Auto | Medium |
-| Constitution compliance required | `/triad.*` | ✅ Auto | Medium |
-| Rapid prototyping | `/speckit.*` | ❌ None | Fast |
-| Testing workflows | `/speckit.*` | ❌ None | Fast |
-| Personal projects | `/speckit.*` | ❌ None | Fast |
-
 ---
 
 ## Validation
@@ -273,7 +250,7 @@ cat docs/product/02_PRD/INDEX.md | grep {NNN}
 
 ### Run Cross-Artifact Analysis
 ```bash
-/speckit.analyze  # Validates PRD-spec-plan-tasks alignment + Triad completeness
+/triad.analyze  # Validates PRD-spec-plan-tasks alignment + Triad completeness
 ```
 
 ---

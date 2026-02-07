@@ -1,7 +1,5 @@
 ---
 description: Create feature specification with automatic PM sign-off - Streamlined v2
-compatible_with_speckit: ">=1.0.0"
-last_tested_with_speckit: "2.0.0"
 ---
 
 ## User Input
@@ -14,9 +12,9 @@ Consider user input before proceeding (if not empty).
 
 ## Overview
 
-Wraps `/speckit.specify` with automatic PM sign-off (Constitution Principle VIII: Product-Spec Alignment).
+Creates a feature specification with automatic PM sign-off (Constitution Principle VIII: Product-Spec Alignment). Generates spec.md inline with research grounding and governance review.
 
-**Flow**: Validate PRD → **Research** → Generate spec → PM review → Handle blockers → Inject frontmatter
+**Flow**: Validate PRD → **Research** → Generate spec (inline) → PM review → Handle blockers → Inject frontmatter
 
 ## Step 1: Validate Prerequisites
 
@@ -84,13 +82,128 @@ PRD context: {prd_path}
 - [Bullet points of what to include/avoid based on research]
 ```
 
-**Pass research.md to Step 3** so `/speckit.specify` can use it as context.
+**Pass research.md to Step 3** for use as context during spec generation.
 
-## Step 3: Generate Specification
+## Step 3: Generate Specification (Inline)
 
-1. Invoke `/speckit.specify` using the Skill tool, passing `research.md` as context
-2. Verify `spec.md` was created at `specs/{NNN}-*/spec.md`
-3. If not created: Error and exit
+The text the user typed after the command **is** the feature description. Do not ask the user to repeat it unless they provided an empty command.
+
+### 3.1 Setup
+
+1. **Check for Approved PRD** (PRD → Spec Traceability):
+   - Search `docs/product/02_PRD/` for a PRD matching the feature description
+   - Look for status "Approved" or "In Progress" in the PRD registry (INDEX.md)
+   - If found, extract the PRD number (e.g., `006` from `006-phase-production-launch`)
+   - **Use `--number N` flag** with the PRD number:
+     ```bash
+     .specify/scripts/bash/create-new-feature.sh --json --number N "$ARGUMENTS"
+     ```
+   - If no PRD found, warn user:
+     ```
+     ⚠️ Warning: No approved PRD found for this feature.
+     Per Constitution v1.4.0: "No spec.md without an approved PRD"
+     Recommended: Create PRD first with /triad.prd <topic>
+     Continue without PRD? (y/n)
+     ```
+
+2. Run the script `.specify/scripts/bash/create-new-feature.sh --json [--number N] "$ARGUMENTS"` from repo root and parse its JSON output for BRANCH_NAME and SPEC_FILE. All file paths must be absolute.
+   **IMPORTANT** You must only ever run this script once. The JSON is provided in the terminal as output - always refer to it to get the actual content you're looking for. For single quotes in args, use: `"I'm Groot"`.
+
+3. Load `.specify/templates/spec-template.md` to understand required sections.
+
+### 3.2 Execution Flow
+
+1. Parse user description from Input
+   If empty: ERROR "No feature description provided"
+2. Extract key concepts from description
+   Identify: actors, actions, data, constraints
+3. For unclear aspects:
+   - Make informed guesses based on context, industry standards, and research.md findings
+   - Only mark with [NEEDS CLARIFICATION: specific question] if:
+     - The choice significantly impacts feature scope or user experience
+     - Multiple reasonable interpretations exist with different implications
+     - No reasonable default exists
+   - **LIMIT: Maximum 3 [NEEDS CLARIFICATION] markers total**
+   - Prioritize clarifications by impact: scope > security/privacy > user experience > technical details
+4. Fill User Scenarios & Testing section
+   If no clear user flow: ERROR "Cannot determine user scenarios"
+5. Generate Functional Requirements
+   Each requirement must be testable
+   Use reasonable defaults for unspecified details (document assumptions in Assumptions section)
+6. Define Success Criteria
+   Create measurable, technology-agnostic outcomes
+   Include both quantitative metrics and qualitative measures
+   Each criterion must be verifiable without implementation details
+7. Identify Key Entities (if data involved)
+8. Return: SUCCESS (spec ready for review)
+
+### 3.3 Write Specification
+
+Write the specification to SPEC_FILE using the template structure, replacing placeholders with concrete details derived from the feature description (arguments) while preserving section order and headings.
+
+### 3.4 Quality Validation
+
+After writing the initial spec, validate against quality criteria:
+
+a. **Create Spec Quality Checklist**: Generate a checklist file at `FEATURE_DIR/checklists/requirements.md`:
+
+   ```markdown
+   # Specification Quality Checklist: [FEATURE NAME]
+
+   **Purpose**: Validate specification completeness and quality
+   **Created**: [DATE]
+   **Feature**: [Link to spec.md]
+
+   ## Content Quality
+   - [ ] No implementation details (languages, frameworks, APIs)
+   - [ ] Focused on user value and business needs
+   - [ ] Written for non-technical stakeholders
+   - [ ] All mandatory sections completed
+
+   ## Requirement Completeness
+   - [ ] No [NEEDS CLARIFICATION] markers remain
+   - [ ] Requirements are testable and unambiguous
+   - [ ] Success criteria are measurable
+   - [ ] Success criteria are technology-agnostic
+   - [ ] All acceptance scenarios are defined
+   - [ ] Edge cases are identified
+   - [ ] Scope is clearly bounded
+   - [ ] Dependencies and assumptions identified
+
+   ## Feature Readiness
+   - [ ] All functional requirements have clear acceptance criteria
+   - [ ] User scenarios cover primary flows
+   - [ ] Feature meets measurable outcomes defined in Success Criteria
+   - [ ] No implementation details leak into specification
+
+   ## Notes
+   - Items marked incomplete require spec updates before `/triad.clarify` or `/triad.plan`
+   ```
+
+b. **Run Validation Check**: Review the spec against each checklist item
+
+c. **Handle Validation Results**:
+   - **If all items pass**: Mark checklist complete and proceed
+   - **If items fail**: List failing items, update spec, re-validate (max 3 iterations)
+   - **If [NEEDS CLARIFICATION] markers remain**: Present up to 3 clarification questions in table format, wait for user response, update spec
+
+d. **Update Checklist** with current pass/fail status
+
+### 3.5 Verify and Report
+
+1. Verify `spec.md` was created at `specs/{NNN}-*/spec.md`
+2. If not created: Error and exit
+
+**Guidelines**:
+- Focus on **WHAT** users need and **WHY**
+- Avoid HOW to implement (no tech stack, APIs, code structure)
+- Written for business stakeholders, not developers
+- DO NOT create any checklists embedded in the spec
+- Make informed guesses using context and industry standards
+- Document assumptions in the Assumptions section
+- Think like a tester: every requirement should be testable and unambiguous
+
+**NOTE:** The script creates and checks out the new branch and initializes the spec file before writing.
 
 ## Step 4: PM Sign-off
 
@@ -119,7 +232,7 @@ NOTES: [Your detailed feedback]
 
 ## Step 5: Handle Review Results
 
-**APPROVED/APPROVED_WITH_CONCERNS**: → Proceed to Step 5
+**APPROVED/APPROVED_WITH_CONCERNS**: → Proceed to Step 6
 
 **CHANGES_REQUESTED**:
 1. Display PM feedback
@@ -172,7 +285,8 @@ Next: /triad.plan
 - [ ] PRD exists with approved Triad sign-offs
 - [ ] Research phase completed (KB, codebase, architecture, web)
 - [ ] research.md created with findings
-- [ ] spec.md created by /speckit.specify (informed by research)
+- [ ] spec.md created with inline generation (informed by research)
+- [ ] Spec quality validation passed
 - [ ] PM review completed
 - [ ] Blockers handled (resolved, overridden, or aborted)
 - [ ] Frontmatter injected with PM sign-off

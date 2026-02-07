@@ -1,7 +1,5 @@
 ---
 description: Close a completed feature with automatic documentation updates and cleanup (Triad-enhanced)
-compatible_with_speckit: ">=1.0.0"
-last_tested_with_speckit: "2.0.0"
 ---
 
 ## Purpose

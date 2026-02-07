@@ -1,7 +1,5 @@
 ---
 description: Create PRD with Triad governance (PM + Architect + Team-Lead sign-offs) - Streamlined v2
-compatible_with_speckit: ">=1.0.0"
-last_tested_with_speckit: "2.0.0"
 ---
 
 ## User Input

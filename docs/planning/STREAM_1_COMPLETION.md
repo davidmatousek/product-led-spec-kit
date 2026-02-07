@@ -8,7 +8,7 @@
 
 ## Objectives
 
-Create the foundational repository structure and governance framework for the Product-Led Spec Kit template.
+Create the foundational repository structure and governance framework for the Product-Led Triad template.
 
 ---
 
@@ -135,7 +135,7 @@ product-led-spec-kit/
 - ✅ Certificates and keys (*.pem, *.key, NEVER commit)
 - ✅ Cloud credentials (.aws, .gcp, credentials.json, NEVER commit)
 - ✅ MCP and AI tools (.mcp/, .playwright-mcp/)
-- ✅ Spec Kit specific (.specify/local/, .specify/*.lock)
+- ✅ Triad specific (.specify/local/, .specify/*.lock)
 - ✅ Product-led specific (.customize/)
 
 **Security-First Design**:
@@ -158,7 +158,7 @@ product-led-spec-kit/
 - ✅ Quick start guide (fork, customize, deploy)
 - ✅ SDLC Triad workflow explanation
 - ✅ Veto authority matrix
-- ✅ Key commands (Triad vs Vanilla)
+- ✅ Key Triad commands
 - ✅ Core principles summary (11 principles)
 - ✅ Syncing with upstream instructions
 - ✅ Documentation references
@@ -202,7 +202,7 @@ grep "{{TECH_STACK" .specify/memory/constitution.md
 
 **Stream 1 Complete** ✅ → Enables:
 
-- **Stream 2: Core Spec Kit Integration** (copy upstream files)
+- **Stream 2: Core Triad Integration** (copy upstream files)
 - **Stream 3: Product Documentation Structure** (create product/ templates)
 - **Stream 4: Example Feature** (demonstrate workflow)
 - **Stream 5: Testing & Validation** (validate template works)
@@ -259,7 +259,7 @@ grep "{{TECH_STACK" .specify/memory/constitution.md
 
 ## Conclusion
 
-Stream 1 successfully established the foundational repository structure and governance framework for Product-Led Spec Kit template. All deliverables completed with:
+Stream 1 successfully established the foundational repository structure and governance framework for the Product-Led Triad template. All deliverables completed with:
 
 - ✅ Comprehensive templatization (6 template variables)
 - ✅ Clear fork setup and sync strategy
@@ -268,11 +268,11 @@ Stream 1 successfully established the foundational repository structure and gove
 - ✅ Preserved universal governance principles (11 core principles)
 - ✅ Clear file ownership matrix
 
-**Ready for Stream 2: Core Spec Kit Integration**
+**Ready for Stream 2: Core Triad Integration**
 
 ---
 
 **Completed By**: Architect Agent
 **Date**: 2025-12-04
 **Stream**: 1 of 6
-**Next Stream**: 2 - Core Spec Kit Integration
+**Next Stream**: 2 - Core Triad Integration

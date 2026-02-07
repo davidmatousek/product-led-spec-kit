@@ -47,7 +47,7 @@ All functionality MUST be accessible via RESTful API before any UI or MCP interf
 
 ### III. Backward Compatibility (NON-NEGOTIABLE)
 
-The system MUST maintain 100% backward compatibility with local Spec Kit `.specify/` file workflows. Agents can always fall back to local files if the cloud service is unavailable.
+The system MUST maintain 100% backward compatibility with local Triad `.specify/` file workflows. Agents can always fall back to local files if the cloud service is unavailable.
 
 **Rationale**: Forced migrations create adoption barriers and single points of failure. Local-first fallback ensures developers are never blocked by network issues or service outages.
 
@@ -203,7 +203,7 @@ ALL development work MUST use feature branches. Direct commits to main branch ar
 
 ### X. Product-Spec Alignment & Architecture Review (NON-NEGOTIABLE)
 
-ALL Spec Kit artifacts (spec.md, plan.md, tasks.md) MUST receive dual sign-off before implementation begins:
+ALL Triad artifacts (spec.md, plan.md, tasks.md) MUST receive dual sign-off before implementation begins:
 1. **Product Manager (product-manager)** validates product alignment and user value
 2. **Architect** validates technical soundness and architectural consistency
 
@@ -390,7 +390,7 @@ Product Manager is responsible for maintaining alignment between:
 - 02_ADRs/ - Architectural Decision Records
 - 03_patterns/ - Design patterns and conventions
 
-**Spec Kit Artifacts** (.specify/):
+**Triad Artifacts** (.specify/):
 - constitution.md - Governance principles
 - spec.md - Feature specification
 - plan.md - Technical plan
@@ -412,8 +412,8 @@ Product Manager is responsible for maintaining alignment between:
 - Architect ensures technical consistency (architecture ↔ plan.md ↔ tasks.md ↔ code)
 
 **Enforcement**:
-- Use `/speckit.analyze` to validate product-spec-architecture consistency
-- Spec Kit workflows enforce dual sign-off (PM + Architect) before progression
+- Use `/triad.analyze` to validate product-spec-architecture consistency
+- Triad workflows enforce dual sign-off (PM + Architect) before progression
 - PRs without PM and Architect approval are blocked from merge
 - Sign-offs are documented in artifact metadata
 
@@ -421,11 +421,11 @@ Product Manager is responsible for maintaining alignment between:
 - **prd-create skill**: Generate industry-standard PRDs
 - **product-manager agent**: Product Manager with alignment validation expertise
 - **architect agent**: Architect with technical design and review expertise
-- **/speckit.prd**: Create PRD documents
-- **/speckit.specify**: Create specifications from PRD inputs
-- **/speckit.plan**: Create technical plans from specifications
-- **/speckit.tasks**: Create implementation tasks from plans
-- **/speckit.analyze**: Validate consistency across artifacts
+- **/triad.prd**: Create PRD documents
+- **/triad.specify**: Create specifications from PRD inputs
+- **/triad.plan**: Create technical plans from specifications
+- **/triad.tasks**: Create implementation tasks from plans
+- **/triad.analyze**: Validate consistency across artifacts
 
 **Reference**: See `.claude/agents/product-manager.md` for PM responsibilities, `.claude/agents/architect.md` for Architect responsibilities, and `docs/standards/PRODUCT_SPEC_ALIGNMENT.md` for comprehensive alignment guide
 
@@ -629,7 +629,7 @@ All PRDs MUST have:
 
 - All pull requests MUST verify compliance with constitution principles
 - Architecture decisions MUST reference relevant principles
-- Use `/speckit.analyze` to verify consistency across spec, plan, and tasks
+- Use `/triad.analyze` to verify consistency across spec, plan, and tasks
 - Constitution supersedes all other practices and conventions
 
 ### Living Document

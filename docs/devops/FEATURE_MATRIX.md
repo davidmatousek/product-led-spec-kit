@@ -1,6 +1,6 @@
-# Spec Kit Feature Availability Matrix
+# Triad Feature Availability Matrix
 
-This document details which Spec Kit features are available based on Claude Code version.
+This document details which Triad features are available based on Claude Code version.
 
 ## Quick Reference
 
@@ -184,7 +184,7 @@ generate_feature_status
 
 Output example:
 ```
-## Spec Kit Feature Status
+## Triad Feature Status
 
 **Claude Code Version**: 2.1.16
 **Detection Method**: cli

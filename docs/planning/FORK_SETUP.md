@@ -26,7 +26,7 @@
 2. Click "Fork" button (top-right)
 3. Choose your GitHub account or organization
 4. Rename fork to: `product-led-spec-kit`
-5. Optional: Update description to "Product-led Spec Kit template with SDLC Triad governance"
+5. Optional: Update description to "Product-led template with SDLC Triad governance"
 6. Click "Create fork"
 
 ### Step 2: Clone Your Fork Locally
@@ -81,7 +81,7 @@ git branch -vv
 
 Sync with upstream when:
 - Upstream spec-kit releases new templates or commands
-- Upstream fixes bugs in core Spec Kit functionality
+- Upstream fixes bugs in core Triad functionality
 - You want to pull in new features from base spec-kit
 - Monthly maintenance (recommended schedule)
 
@@ -148,8 +148,8 @@ git mergetool path/to/file
 | File/Directory | Owner | Sync Strategy | Rationale |
 |----------------|-------|---------------|-----------|
 | `.specify/memory/constitution.md` | product-led-spec-kit | KEEP OURS | Templatized constitution with product-led governance |
-| `.claude/` | upstream | ACCEPT THEIRS | Core Spec Kit agents, skills, commands |
-| `.specify/templates/` | upstream | ACCEPT THEIRS | Base Spec Kit templates |
+| `.claude/` | upstream | ACCEPT THEIRS | Core Triad agents, skills, commands |
+| `.specify/templates/` | upstream | ACCEPT THEIRS | Base Triad templates |
 | `docs/core_principles/` | upstream | ACCEPT THEIRS | Core methodology (Five Whys, DoD, etc.) |
 | `docs/planning/FORK_SETUP.md` | product-led-spec-kit | KEEP OURS | Fork-specific documentation |
 | `docs/product/` | product-led-spec-kit | KEEP OURS | Product-led additions |
@@ -196,7 +196,7 @@ grep "{{PROJECT_NAME}}" .specify/memory/constitution.md
 ls docs/core_principles/
 # Should show latest upstream methodology files
 
-# 3. Spec Kit commands work
+# 3. Triad commands work
 ls .claude/commands/
 # Should show latest upstream commands
 
@@ -274,7 +274,7 @@ git commit -m "fix: restore product-led documentation"
 
 ## Contributing Back to Upstream
 
-If you discover improvements that benefit **all** Spec Kit users (not just product-led):
+If you discover improvements that benefit **all** Triad users (not just product-led):
 
 1. Fork upstream spec-kit (separate from this fork)
 2. Create feature branch
@@ -283,7 +283,7 @@ If you discover improvements that benefit **all** Spec Kit users (not just produ
 5. After upstream accepts, sync to product-led-spec-kit
 
 **Examples of upstream contributions**:
-- Bug fixes in core Spec Kit templates
+- Bug fixes in core Triad templates
 - Performance improvements in agents/skills
 - New slash commands useful for all workflows
 

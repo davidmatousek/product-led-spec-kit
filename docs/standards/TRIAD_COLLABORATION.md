@@ -126,7 +126,7 @@ Step 4: PM Finalizes PRD
 ├─ Incorporate: Tech-Lead timeline + Architect feedback
 ├─ Validate: Product requirements still achievable
 ├─ Publish: Approved PRD with triple validation
-└─ Output: Final PRD ready for /speckit.specify
+└─ Output: Final PRD ready for /triad.specify
 ```
 
 **Timeline**: ~2-4 hours for full Triad review cycle
@@ -402,7 +402,7 @@ Step 3: PM Finalizes PRD
 **Automated Triad (Future)**:
 ```bash
 # Auto-invoke Triad for PRD creation
-/speckit.prd <topic> --triad
+/triad.prd <topic>
 
 # What it does:
 # 1. Auto-detect infrastructure vs feature work

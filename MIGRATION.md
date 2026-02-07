@@ -96,7 +96,7 @@ EOF
 cat > .claude/rules/commands.md << 'EOF'
 # Commands
 
-<!-- Triad and Vanilla command reference -->
+<!-- Triad command reference -->
 EOF
 
 # Create context-loading.md
@@ -195,7 +195,7 @@ Copy "Scope Boundaries" section to `.claude/rules/scope.md`:
 
 #### 3e. Extract Commands
 
-Copy "Commands" sections (Triad + Vanilla) to `.claude/rules/commands.md`:
+Copy "Commands" section to `.claude/rules/commands.md`:
 
 ```markdown
 # Commands
@@ -207,9 +207,9 @@ Copy "Commands" sections (Triad + Vanilla) to `.claude/rules/commands.md`:
 [... rest of commands ...]
 ```
 
-## Vanilla Commands (No Governance - Fast Prototyping)
+## Utility Commands
 
-[... vanilla commands ...]
+[... utility commands ...]
 ```
 
 #### 3f. Extract Context Loading
@@ -369,7 +369,7 @@ The SDLC Triad ensures Product-Architecture-Engineering alignment:
 ## Core Constraints
 - Product-Led: Start with product vision, PRDs, and user stories
 - Source of Truth: `.specify/spec.md`
-- Validation Required: Run `/speckit.analyze` before PRs
+- Validation Required: Run `/triad.analyze` before PRs
 - Local-First: Always supports local `.specify/` file workflows
 
 ## Git Workflow
@@ -726,7 +726,7 @@ The modular structure supports custom rules beyond the 6 core files.
 - **git-workflow.md**: Branch naming, commit standards, PR policies
 - **deployment.md**: DevOps agent requirements, verification procedures
 - **scope.md**: Project boundaries, what this is/isn't
-- **commands.md**: Triad and Vanilla command reference
+- **commands.md**: Triad command reference
 - **context-loading.md**: Context loading guide by domain
 
 If content doesn't fit these 6 categories, create a custom rule file.

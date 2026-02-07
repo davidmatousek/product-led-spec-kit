@@ -19,9 +19,9 @@ This file defines mandatory governance workflows for Product-Led Spec Kit. All a
 | plan.md | PM + Architect | product-manager, architect |
 | tasks.md | PM + Architect + Team-Lead | product-manager, architect, team-lead |
 
-### Before `/speckit.specify` (Research Phase - Triad Only):
+### Before `/triad.specify` (Research Phase):
 
-When using `/triad.specify`, a **mandatory research phase** runs before spec generation:
+A **mandatory research phase** runs before spec generation:
 
 1. **Knowledge Base**: Query for similar patterns, lessons learned, past bug fixes
 2. **Codebase**: Explore existing implementations, naming conventions, reusable utilities
@@ -32,20 +32,20 @@ When using `/triad.specify`, a **mandatory research phase** runs before spec gen
 
 **Purpose**: Ground specifications in codebase reality and industry best practices, avoiding reinvention and ensuring alignment with existing patterns.
 
-### After `/speckit.specify` Completes:
+### After `/triad.specify` Completes:
 1. **Automatically** invoke product-manager agent for PM review using Task tool
 2. Present review results (APPROVED or CHANGES REQUESTED)
 3. If CHANGES REQUESTED: Address issues, re-submit for review
 4. Do NOT declare "ready for planning" until PM sign-off: APPROVED
 
-### After `/speckit.plan` Completes:
+### After `/triad.plan` Completes:
 1. Invoke product-manager for PM review
 2. Invoke architect for technical review
 3. Require **both approvals** before declaring ready
 
 **Parallel Review (Claude Code v2.1.16+)**: If context forking is available, PM and Architect reviews run simultaneously in isolated contexts. Use a single message with two Task calls for parallel execution.
 
-### After `/speckit.tasks` Completes:
+### After `/triad.tasks` Completes:
 1. Invoke product-manager, architect, and team-lead
 2. Team-lead generates `agent-assignments.md` with parallel execution waves
 3. Require **all three approvals** before implementation

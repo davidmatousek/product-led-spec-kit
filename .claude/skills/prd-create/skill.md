@@ -1,40 +1,12 @@
 ---
 name: prd-create
-
 description: >
   Industry-standard Product Requirements Document (PRD) creation skill that guides
   Product Managers through creating comprehensive, research-backed PRDs. Uses proven
   frameworks from Google, Amazon, and Intercom to ensure PRDs provide all details
-  needed for superior Spec Kit specifications.
-
-triggers:
-  - "create prd"
-  - "write prd"
-  - "product requirements"
-  - "new feature prd"
-  - "document requirements"
-  - "product spec"
-  - "feature requirements"
-  - "prd template"
-
-allowed-tools: [Bash, Write, Read, Edit, Grep, Glob, WebFetch]
-
-color: "#9333EA"
-
-expertise:
-  - prd-creation
-  - product-requirements
-  - requirements-gathering
-  - stakeholder-alignment
-  - user-story-writing
-
-examples:
-  - "Create a PRD for user authentication"
-  - "Write product requirements for task locking API"
-  - "Document requirements for RAG search feature"
-  - "Generate PRD for team collaboration features"
-
-boundaries: "Creates PRD documentation only. Does not create technical specifications, code, or architecture. Use /speckit.specify for technical specs."
+  needed for superior Triad specifications. Use this skill when you need to create a PRD,
+  write product requirements, document feature requirements, or generate a PRD template.
+  Creates PRD documentation only — use /triad.specify for technical specs.
 ---
 
 # PRD Creation Skill
@@ -723,14 +695,14 @@ Use this checklist:
 
 Once PRD is approved:
 
-1. **Create spec.md** using `/speckit.specify`
+1. **Create spec.md** using `/triad.specify`
 2. **Provide PRD as input**: Reference PRD location in spec creation
 3. **Validate alignment**: Ensure spec.md reflects PRD requirements
 4. **Sign-off on spec**: Product Manager approves spec.md before implementation
 
 ---
 
-## Integration with Spec Kit
+## Integration with Triad Workflow
 
 ### PRD → Spec Mapping
 
@@ -884,7 +856,7 @@ You've used this skill successfully when:
 2. **PRD is Clear**: Non-technical stakeholders understand the problem and value
 3. **PRD is Aligned**: References product vision, OKRs, roadmap, user stories
 4. **PRD is Feasible**: Technical team confirms it's buildable in timeline
-5. **PRD Enables Great Specs**: `/speckit.specify` produces superior spec.md from this PRD
+5. **PRD Enables Great Specs**: `/triad.specify` produces superior spec.md from this PRD
 6. **PRD Gets Approved**: Stakeholders sign off without major revisions
 
 ---
@@ -899,10 +871,10 @@ You've used this skill successfully when:
 /skill kb-query
 
 # Create spec from PRD
-/speckit.specify
+/triad.specify
 
 # Validate PRD-spec alignment
-/speckit.analyze
+/triad.analyze
 ```
 
 ---
@@ -911,7 +883,7 @@ You've used this skill successfully when:
 
 - **kb-query**: Search knowledge base for similar features or patterns
 - **root-cause-analyzer**: Dig into complex requirement ambiguities
-- **speckit-validator**: Validate consistency between PRD and spec
+- **spec-validator**: Validate consistency between PRD and spec
 
 ---
 

@@ -13,7 +13,7 @@ Successfully copied and templatized the complete agent orchestration infrastruct
 **Total Deliverables**:
 - ✅ **12 Agents** - Templatized with 7 template variables
 - ✅ **9 Skills** - Domain-agnostic automation capabilities
-- ✅ **16 Commands** - Complete Triad + Vanilla + Orchestration workflows
+- ✅ **12 Commands** - Complete Triad + Utility + Orchestration workflows
 - ✅ **Documentation** - Comprehensive README with customization guide
 
 ---
@@ -116,7 +116,7 @@ All agents include 7 template variables for project customization:
    - Validate architectural decisions and consistency
    - Before finalizing plan.md
 
-4. **speckit-validator/**
+4. **spec-validator/**
    - Validate spec.md, plan.md, tasks.md consistency
    - Before PRs, after task generation
 
@@ -148,9 +148,9 @@ All agents include 7 template variables for project customization:
 
 ---
 
-## Deliverable 3: Commands (16 Total)
+## Deliverable 3: Commands (12 Total)
 
-### Triad Commands (6) - Automatic Governance ⭐
+### Triad Commands (6) - Automatic Governance
 
 **RECOMMENDED for production features**
 
@@ -178,26 +178,20 @@ All agents include 7 template variables for project customization:
    - Close feature with parallel documentation updates
    - Automated cleanup and documentation
 
-### Vanilla SpecKit Commands (8) - Fast Prototyping
+### Utility Commands (4)
 
-**For rapid prototyping without governance overhead**
-
-7. **speckit.specify.md** - Create spec.md (manual validation)
-8. **speckit.plan.md** - Create plan.md (manual validation)
-9. **speckit.tasks.md** - Create tasks.md (manual validation)
-10. **speckit.implement.md** - Execute tasks (manual validation)
-11. **speckit.clarify.md** - Ask 5 clarification questions
-12. **speckit.analyze.md** - Cross-artifact consistency check
-13. **speckit.checklist.md** - Generate custom task checklist
-14. **speckit.constitution.md** - Create/update project constitution
+7. **triad.clarify.md** - Ask 5 clarification questions
+8. **triad.analyze.md** - Cross-artifact consistency check
+9. **triad.checklist.md** - Generate custom task checklist
+10. **triad.constitution.md** - Create/update project constitution
 
 ### Orchestration Commands (2)
 
-15. **execute.md**
+11. **execute.md**
     - Execute any task with optimal agent orchestration
     - General-purpose task execution with quality gates
 
-16. **continue.md**
+12. **continue.md**
     - Generate session continuation prompt
     - Long features spanning multiple sessions
 
@@ -218,12 +212,12 @@ All agents include 7 template variables for project customization:
 5. **Commands Reference** - All 15 commands organized by category
 6. **Workflow Examples** - 2 complete examples:
    - Full Feature Development (Triad)
-   - Rapid Prototyping (Vanilla)
+   - Workflow Examples
 7. **Customization Guide** - Step-by-step instructions
 8. **Agent Invocation Patterns** - Best practices for Task/SlashCommand tools
 9. **Directory Structure** - Visual hierarchy
 10. **Key Principles** - 5 core principles for agent orchestration
-11. **Tips** - When to use Triad vs Vanilla, parallel orchestration, etc.
+11. **Tips** - Parallel orchestration, best practices, etc.
 
 ---
 
@@ -235,7 +229,7 @@ All agents include 7 template variables for project customization:
 |----------|-------|---------|
 | Agents | 12 | 6 core development + 6 specialized support |
 | Skills | 9 | 2 product + 2 validation + 2 KB + 3 dev support |
-| Commands | 16 | 6 Triad + 8 Vanilla + 2 Orchestration |
+| Commands | 12 | 6 Triad + 4 Utility + 2 Orchestration |
 | Documentation | 2 | README.md + this summary |
 
 ### Lines of Code
@@ -270,7 +264,7 @@ All agents include 7 template variables for project customization:
 ✅ **File Integrity**
 - All 12 agents copied successfully
 - All 9 skills copied with subdirectory structure intact
-- All 19 commands copied successfully
+- All 12 commands copied successfully
 
 ✅ **Templatization Accuracy**
 - 7 unique template variables found in agents
@@ -289,7 +283,7 @@ All agents include 7 template variables for project customization:
 .claude/
 ├── agents/           (12 files, ~7,885 lines)
 ├── skills/           (9 directories, ~21 files)
-├── commands/         (19 files, ~2,400 lines)
+├── commands/         (12 files, ~2,400 lines)
 ├── README.md         (~300 lines)
 └── INFRASTRUCTURE_SETUP_SUMMARY.md (this file)
 ```
@@ -311,7 +305,7 @@ All agents include 7 template variables for project customization:
 
 2. **Choose Workflow**:
    - **Production Features**: Use `/triad.*` commands (automatic governance)
-   - **Prototypes**: Use `/speckit.*` commands (fast, manual validation)
+   - **Utility**: Use `/triad.clarify`, `/triad.analyze`, `/triad.checklist`, `/triad.constitution` for support tasks
 
 3. **Start Development**:
    ```bash
@@ -352,7 +346,7 @@ sed -i 's/{{PROJECT_NAME}}/enterprise-app/g' .claude/agents/*.md .claude/skills/
 |--------|--------|--------|--------|
 | Agents Copied | 12 | 12 | ✅ |
 | Skills Copied | 9 | 9 | ✅ |
-| Commands Copied | 16 | 16 | ✅ |
+| Commands Copied | 12 | 12 | ✅ |
 | Template Variables | 7+ | 7 | ✅ |
 | Documentation | Complete | README + Summary | ✅ |
 | Tech Stack Neutrality | 100% | 100% | ✅ |
@@ -364,7 +358,7 @@ sed -i 's/{{PROJECT_NAME}}/enterprise-app/g' .claude/agents/*.md .claude/skills/
 **For Template Users**:
 1. Clone product-led-spec-kit template
 2. Replace template variables with your tech stack
-3. Start using `/triad.*` or `/speckit.*` commands
+3. Start using `/triad.*` commands
 4. Customize agents for project-specific conventions
 
 **For Template Maintainers**:
@@ -402,7 +396,7 @@ Stream 2 (Agent & Skills Infrastructure) is **100% complete** with all deliverab
 
 ✅ **12 templatized agents** covering all development roles
 ✅ **9 domain-agnostic skills** for automation
-✅ **19 slash commands** for Triad + Vanilla workflows
+✅ **12 slash commands** for Triad + Utility + Orchestration workflows
 ✅ **Comprehensive documentation** for customization and usage
 
 The infrastructure is **technology-agnostic**, **production-ready**, and **fully documented** for distribution as a template.

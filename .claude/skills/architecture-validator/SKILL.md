@@ -129,7 +129,7 @@ Constitution check: 7/7 passed ✓
 Design artifacts present ✓
 Spec alignment validated ✓
 
-Your architecture is ready for /speckit.tasks!
+Your architecture is ready for /triad.tasks!
 
 Highlights:
 - Comprehensive data model (5 entities)

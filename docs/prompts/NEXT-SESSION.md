@@ -1,4 +1,4 @@
-# Session Continuation: Spec Kit Enhancements
+# Session Continuation: Triad Enhancements
 
 **Generated**: 2026-02-03 (Session End)
 **Branch**: main
@@ -54,5 +54,5 @@
 ## Resume Command
 
 ```bash
-claude "Continue Spec Kit development. Last: added research phase to triad.specify and fixed agent discoverability. Ready for testing or next feature."
+claude "Continue Triad development. Last: added research phase to triad.specify and fixed agent discoverability. Ready for testing or next feature."
 ```

@@ -1,7 +1,5 @@
 ---
 description: Generate session handoff file for seamless work resumption
-compatible_with_speckit: ">=1.0.0"
-last_tested_with_speckit: "2.0.0"
 ---
 
 ## Purpose

@@ -22,7 +22,7 @@ def parse_tasks_file(file_path: str) -> Dict[str, Any]:
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Extract feature ID from path (e.g., "001-spec-kit-ops")
+    # Extract feature ID from path (e.g., "001-my-feature")
     feature_id = Path(file_path).parent.name
 
     # Count tasks

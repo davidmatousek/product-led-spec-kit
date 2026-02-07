@@ -1,9 +1,9 @@
 ---
-name: speckit-validator
+name: spec-validator
 description: Validates specification completeness and quality by checking for mandatory sections, [NEEDS CLARIFICATION] markers, testable criteria, and clear scope boundaries. Use this skill when you need to check if spec is complete, validate specifications, review spec.md, or check specification quality. Ensures specifications are ready for architecture and implementation phases.
 ---
 
-# SpecKit Validator Skill
+# Spec Validator Skill
 
 ## Purpose
 
@@ -19,7 +19,7 @@ Automatically validates specification files (spec.md) for completeness, quality,
 
 ### Step 2: Validate Mandatory Sections
 
-Check for required sections per Speckit specification template:
+Check for required sections per specification template:
 
 - **User Scenarios & Testing** (mandatory)
   - User stories with acceptance scenarios
@@ -63,7 +63,7 @@ Check for required sections per Speckit specification template:
 
 Report format:
 ```
-✅ Specification Validation Report
+Specification Validation Report
 
 File: specs/{feature-id}/spec.md
 
@@ -104,7 +104,7 @@ Recommendations:
 
 **Result**:
 ```
-✅ Specification Validation: READY
+Specification Validation: READY
 
 File: specs/005-create-a-specification/spec.md
 
@@ -113,7 +113,7 @@ No clarification markers found ✓
 All requirements testable ✓
 Scope clearly bounded ✓
 
-Your specification is ready for /speckit.plan!
+Your specification is ready for /triad.plan!
 ```
 
 ### Example 2: Incomplete Specification
@@ -128,7 +128,7 @@ Your specification is ready for /speckit.plan!
 
 **Result**:
 ```
-✗ Specification Validation: NOT READY
+Specification Validation: NOT READY
 
 Issues Found:
 1. Missing mandatory section: Success Criteria
@@ -142,10 +142,10 @@ Issues Found:
 
 Recommendations:
 1. Add Success Criteria section with measurable outcomes
-2. Resolve all [NEEDS CLARIFICATION] markers using /speckit.clarify
+2. Resolve all [NEEDS CLARIFICATION] markers using /triad.clarify
 3. Add specific validation criteria to FR-003 and FR-007
 
-Run /speckit.clarify to resolve clarification markers.
+Run /triad.clarify to resolve clarification markers.
 ```
 
 ## Integration
@@ -163,7 +163,7 @@ Run /speckit.clarify to resolve clarification markers.
 
 ### Invokes
 
-- Can suggest using /speckit.clarify command if clarifications needed
+- Can suggest using /triad.clarify command if clarifications needed
 
 ## Validation Logic
 

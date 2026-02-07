@@ -5,15 +5,15 @@
 
 ## Overview
 
-Product-Led Spec Kit provides two command sets:
-- **Triad Commands**: Automatic governance with PM/Architect/Team-Lead sign-offs (RECOMMENDED)
-- **Vanilla Commands**: Fast prototyping without governance workflows
+Product-Led Spec Kit provides the **Triad Commands** with automatic governance, PM/Architect/Team-Lead sign-offs, and full SDLC workflow support.
 
 ---
 
-## Triad Commands (Automatic Governance - RECOMMENDED)
+## Triad Commands
 
-Use Triad commands when you need governance, quality gates, and multi-agent collaboration.
+Use Triad commands for governance, quality gates, and multi-agent collaboration.
+
+### SDLC Workflow Commands
 
 ```bash
 /triad.prd <topic>         # Create PRD with Triad validation (includes optional vision workshop)
@@ -24,29 +24,18 @@ Use Triad commands when you need governance, quality gates, and multi-agent coll
 /triad.close-feature {NNN} # Close feature with parallel doc updates
 ```
 
+### Utility Commands
+
+```bash
+/triad.clarify             # Ask clarification questions about current feature
+/triad.analyze             # Verify spec/plan/task consistency
+/triad.checklist           # Run Definition of Done checklist
+/triad.constitution        # View or update governance constitution
+```
+
 **When to Use**:
 - Production features requiring quality gates
 - Multi-stakeholder projects needing sign-offs
 - Complex features with architecture review requirements
 - When you need documented governance trail
-
----
-
-## Vanilla Commands (No Governance - Fast Prototyping)
-
-Use Vanilla commands when you need speed and can skip governance workflows.
-
-```bash
-/speckit.specify           # Create spec.md
-/speckit.plan              # Create plan.md
-/speckit.tasks             # Create tasks.md
-/speckit.implement         # Execute tasks
-/speckit.clarify           # Ask clarification questions
-/speckit.analyze           # Verify consistency
-```
-
-**When to Use**:
-- Quick prototypes or experiments
-- Solo developer projects
-- Internal tools with lower quality bar
-- When you trust agent output without review
+- Clarifying requirements or verifying consistency at any phase

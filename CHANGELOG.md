@@ -7,6 +7,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.0.0] - 2026-02-07
+
+### BREAKING CHANGES
+
+#### SpecKit Commands Removed — Unified Triad Workflow
+
+All `/speckit.*` commands have been removed and consolidated into the `/triad.*` command set. The dual command architecture (Triad + Vanilla) has been replaced with a single, unified workflow.
+
+**Command Mapping:**
+
+| Former Command | New Command | Notes |
+|----------------|-------------|-------|
+| `/speckit.specify` | `/triad.specify` | Logic inlined with research + PM sign-off |
+| `/speckit.plan` | `/triad.plan` | Logic inlined with PM + Architect sign-off |
+| `/speckit.tasks` | `/triad.tasks` | Logic inlined with triple sign-off |
+| `/speckit.implement` | `/triad.implement` | Logic inlined with Architect checkpoints |
+| `/speckit.clarify` | `/triad.clarify` | Direct transfer with reference updates |
+| `/speckit.analyze` | `/triad.analyze` | Direct transfer with reference updates |
+| `/speckit.checklist` | `/triad.checklist` | Direct transfer with reference updates |
+| `/speckit.constitution` | `/triad.constitution` | Direct transfer with reference updates |
+
+**Migration**: Replace all `/speckit.*` commands with their `/triad.*` equivalents. No other changes needed.
+
+### Added
+- 4 new triad commands: `/triad.clarify`, `/triad.analyze`, `/triad.checklist`, `/triad.constitution`
+- Archive tag `v2.0.0-pre-speckit-removal` preserves historical state
+
+### Removed
+- All 8 `/speckit.*` command files
+- "Vanilla Commands" sections from all documentation
+- `compatible_with_speckit` and `last_tested_with_speckit` frontmatter from all command files
+
+### Changed
+- 4 core triad commands now self-contained (no Skill tool coupling to speckit commands)
+- All documentation, rules, skills, and agents reference only `/triad.*` commands
+- CLAUDE.md updated with unified command set (10 triad commands)
+- Renamed `speckit-validator` skill to `spec-validator` (removes speckit branding)
+
+---
+
 ## [2.1.0] - 2026-01-31
 
 ### Added - Agent Refactoring (Feature 003)
@@ -134,20 +174,22 @@ See [MIGRATION.md](MIGRATION.md) for detailed upgrade instructions from v1.x to 
 
 ## Version Comparison
 
-| Feature | v1.0.0 | v1.1.0 | v2.0.0 | v2.1.0 |
-|---------|--------|--------|--------|--------|
-| Triad Governance | Sequential | Sequential | Parallel | Parallel |
-| CLAUDE.md Size | 192 lines | 70 lines | 70 lines | 70 lines |
-| Context Loading | Manual | @-references | @-references | @-references |
-| Version Detection | - | - | Automatic | Automatic |
-| Feature Flags | - | - | Supported | Supported |
-| Degradation | - | - | Graceful | Graceful |
-| Agent Count | 13 | 13 | 13 | 13 (refactored) |
-| Agent Line Reduction | - | - | - | 58% |
-| Agent Best Practices | - | - | - | Documented |
+| Feature | v1.0.0 | v1.1.0 | v2.0.0 | v2.1.0 | v3.0.0 |
+|---------|--------|--------|--------|--------|--------|
+| Command Set | Triad + Vanilla | Triad + Vanilla | Triad + Vanilla | Triad + Vanilla | Triad only (10 commands) |
+| Triad Governance | Sequential | Sequential | Parallel | Parallel | Parallel |
+| CLAUDE.md Size | 192 lines | 70 lines | 70 lines | 70 lines | ~80 lines |
+| Context Loading | Manual | @-references | @-references | @-references | @-references |
+| Version Detection | - | - | Automatic | Automatic | Automatic |
+| Feature Flags | - | - | Supported | Supported | Supported |
+| Degradation | - | - | Graceful | Graceful | Graceful |
+| Agent Count | 13 | 13 | 13 | 13 (refactored) | 13 |
+| Agent Line Reduction | - | - | - | 58% | 58% |
+| Skill Tool Coupling | - | - | 3 cross-calls | 3 cross-calls | 0 (self-contained) |
 
 ---
 
+[3.0.0]: https://github.com/davidmatousek/product-led-spec-kit/compare/v2.1.0...v3.0.0
 [2.1.0]: https://github.com/davidmatousek/product-led-spec-kit/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/davidmatousek/product-led-spec-kit/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/davidmatousek/product-led-spec-kit/compare/v1.0.0...v1.1.0

@@ -107,7 +107,7 @@ This directory contains the strategic product vision documents for {{PROJECT_NAM
 
 ---
 
-## Integration with Spec Kit
+## Integration with Triad Workflow
 
 ### PRD References
 All PRDs in `docs/product/02_PRD/` must reference this vision:
@@ -116,7 +116,7 @@ All PRDs in `docs/product/02_PRD/` must reference this vision:
 - PRD user stories must serve defined personas
 
 ### Spec Validation
-When creating `spec.md` with `/speckit.specify`:
+When creating `spec.md` with `/triad.specify`:
 - product-manager validates spec aligns with product vision
 - Architect ensures technical approach serves user needs
 - Team-lead prioritizes work based on persona value

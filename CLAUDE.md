@@ -5,7 +5,7 @@
 ## Core Constraints
 - **Product-Led**: Start with product vision, PRDs, and user stories
 - **Source of Truth**: `.specify/spec.md`
-- **Validation Required**: Run `/speckit.analyze` before PRs
+- **Validation Required**: Run `/triad.analyze` before PRs
 - **Local-First**: Always supports local `.specify/` file workflows
 
 ## Git Workflow
@@ -35,11 +35,15 @@ product-led-spec-kit/
 - **Constitution**: `.specify/memory/constitution.md`
 
 ## Commands
-**Triad (with governance)**:
+**Triad workflow**:
 - `/triad.prd` → `/triad.specify` → `/triad.plan` → `/triad.tasks` → `/triad.implement`
 
-**Vanilla (fast, no governance)**:
-- `/speckit.specify` → `/speckit.plan` → `/speckit.tasks` → `/speckit.implement`
+**Supporting commands**:
+- `/triad.clarify` — Resolve spec ambiguities
+- `/triad.analyze` — Cross-artifact consistency check
+- `/triad.checklist` — Generate quality checklist
+- `/triad.constitution` — Manage governance principles
+- `/triad.close-feature` — Close completed feature
 
 ## SDLC Triad Governance
 | Role | Defines | Authority |
