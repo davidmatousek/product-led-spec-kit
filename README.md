@@ -152,18 +152,6 @@ Full governance with automatic sign-offs at each stage.
 | `/triad.implement` | Execute with checkpoints | Architect gates |
 | `/triad.close-feature` | Close with doc updates | — |
 
-### Vanilla Commands
-
-Fast prototyping without governance gates.
-
-| Command | Description |
-|---------|-------------|
-| `/speckit.specify` | Create spec.md |
-| `/speckit.plan` | Create plan.md |
-| `/speckit.tasks` | Create tasks.md |
-| `/speckit.implement` | Execute tasks |
-| `/speckit.analyze` | Verify consistency |
-
 ---
 
 ## 🔄 How It Works
@@ -225,7 +213,7 @@ product-led-spec-kit/
 ├── .claude/
 │   ├── agents/           # 13 specialized agents
 │   ├── skills/           # Automation capabilities
-│   ├── commands/         # Triad + Vanilla commands
+│   ├── commands/         # Triad commands
 │   └── rules/            # Modular governance rules
 │       ├── governance.md
 │       ├── git-workflow.md

@@ -23,7 +23,7 @@ boundaries: >
 
 triad-governance: null
 
-speckit-integration: >
+spec-integration: >
   Read specs/{feature-id}/spec.md for user stories and acceptance criteria.
   Create Gherkin scenarios that map 1:1 to acceptance criteria.
   Reuse existing step definitions from tests/step-definitions/common/.

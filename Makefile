@@ -11,18 +11,18 @@ init: ## Initialize project (first-time setup)
 check: ## Verify setup and prerequisites
 	@./scripts/check.sh
 
-# Spec Kit Workflow shortcuts
-spec: ## Run /speckit.specify
-	@echo "Use /speckit.specify or /triad.specify in Claude Code"
+# Triad Workflow shortcuts
+spec: ## Run /triad.specify
+	@echo "Use /triad.specify in Claude Code"
 
-plan: ## Run /speckit.plan
-	@echo "Use /speckit.plan or /triad.plan in Claude Code"
+plan: ## Run /triad.plan
+	@echo "Use /triad.plan in Claude Code"
 
-tasks: ## Run /speckit.tasks
-	@echo "Use /speckit.tasks or /triad.tasks in Claude Code"
+tasks: ## Run /triad.tasks
+	@echo "Use /triad.tasks in Claude Code"
 
-analyze: ## Run /speckit.analyze
-	@echo "Use /speckit.analyze in Claude Code"
+analyze: ## Run /triad.analyze
+	@echo "Use /triad.analyze in Claude Code"
 
 # Governance shortcuts
 review-spec: ## Review spec.md with PM

@@ -4,7 +4,7 @@ This guide helps you upgrade Product-Led Spec Kit to leverage Claude Code v2.1.1
 
 ## Overview
 
-Claude Code v2.1.16 introduces powerful new capabilities that Spec Kit can leverage:
+Claude Code v2.1.16 introduces powerful new capabilities that Triad can leverage:
 
 - **Parallel Execution**: Run PM and Architect reviews simultaneously
 - **Context Forking**: Isolate agent contexts to prevent pollution
@@ -16,7 +16,7 @@ Claude Code v2.1.16 introduces powerful new capabilities that Spec Kit can lever
 
 ## Prerequisites
 
-- Existing Spec Kit installation
+- Existing Product-Led Spec Kit installation
 - Access to upgrade Claude Code
 
 ---
@@ -43,7 +43,7 @@ Close and reopen your terminal to ensure environment variables are refreshed.
 
 ### Step 4: Verify Features
 
-Run the Spec Kit feature check:
+Run the Triad feature check:
 
 ```bash
 source .claude/lib/version/detect.sh
@@ -105,10 +105,10 @@ PM and Architect reviews run in parallel with isolated contexts. Results merge a
 
 ## Backward Compatibility
 
-Spec Kit maintains full backward compatibility with v2.1.15:
+Triad maintains full backward compatibility with v2.1.15:
 
 - **All workflows continue to work**: `/triad.specify`, `/triad.plan`, `/triad.tasks`, `/triad.implement`
-- **Automatic detection**: Spec Kit detects your Claude Code version at runtime
+- **Automatic detection**: Triad detects your Claude Code version at runtime
 - **Graceful degradation**: Unavailable features fall back to sequential execution
 - **Clear messaging**: Users see informative messages about limited functionality
 
@@ -193,7 +193,7 @@ export SPECKIT_FEATURE_CONTEXT_FORKING=false
 
 ### Version Detection Method
 
-Spec Kit detects Claude Code version using:
+Triad detects Claude Code version using:
 
 1. **CLAUDECODE env var**: Presence indicates running in Claude Code
 2. **CLI parsing**: `claude --version` output is parsed
@@ -231,7 +231,7 @@ agent: Explore
 
 **Q: Do I need to change my workflow commands?**
 
-A: No. All `/triad.*` commands work identically. Spec Kit automatically uses the best available features.
+A: No. All `/triad.*` commands work identically. Triad automatically uses the best available features.
 
 **Q: Will old specs/plans/tasks still work?**
 
@@ -243,7 +243,7 @@ A: Yes, as long as Claude Code v2.1.16+ is installed in your CI environment.
 
 **Q: What if team members have different versions?**
 
-A: Each user's Spec Kit instance detects their local version. Artifacts are version-agnostic.
+A: Each user's Triad instance detects their local version. Artifacts are version-agnostic.
 
 ---
 

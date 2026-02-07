@@ -1,7 +1,5 @@
 ---
-description: Execute ad-hoc tasks with automatic agent assignment and parallel orchestration without requiring full spec-kit workflow.
-compatible_with_speckit: ">=1.0.0"
-last_tested_with_speckit: "2.0.0"
+description: Execute ad-hoc tasks with automatic agent assignment and parallel orchestration without requiring full Triad workflow.
 ---
 
 ## User Input

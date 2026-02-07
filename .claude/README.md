@@ -1,6 +1,6 @@
 # Claude Agent Infrastructure
 
-This directory contains the complete agent orchestration infrastructure for product-led spec kit development, including 13 specialized agents, 10 automation skills, and 16 slash commands for streamlined feature development.
+This directory contains the complete agent orchestration infrastructure for product-led spec kit development, including 13 specialized agents, 10 automation skills, and 10 slash commands for streamlined feature development.
 
 ## Overview
 
@@ -8,7 +8,7 @@ The infrastructure is organized into three main components:
 
 1. **Agents** (`agents/`) - 13 specialized AI agents for different development roles
 2. **Skills** (`skills/`) - 9 reusable automation capabilities
-3. **Commands** (`commands/`) - 16 slash commands for workflow automation
+3. **Commands** (`commands/`) - 10 slash commands for workflow automation
 
 ---
 
@@ -75,7 +75,7 @@ Skills are reusable automation capabilities that agents can invoke to perform sp
 | Skill | Purpose | When to Use |
 |-------|---------|-------------|
 | **architecture-validator** | Validate architectural decisions and consistency | Before finalizing plan.md, after major design changes |
-| **speckit-validator** | Validate spec.md, plan.md, tasks.md consistency | Before PRs, after task generation |
+| **spec-validator** | Validate spec.md, plan.md, tasks.md consistency | Before PRs, after task generation |
 
 ### Knowledge Management Skills
 
@@ -117,20 +117,14 @@ The **SDLC Triad** ensures Product-Architecture-Engineering alignment with autom
 | `/triad.implement` | Execute with architect checkpoints | Architect checkpoints at milestones |
 | `/triad.close-feature {NNN}` | Close feature with parallel doc updates | Automatic documentation |
 
-### Vanilla Commands (Fast Prototyping - No Governance)
-
-For rapid prototyping without automatic governance:
+### Utility Commands
 
 | Command | Purpose | Governance |
 |---------|---------|-----------|
-| `/speckit.specify` | Create spec.md | Manual |
-| `/speckit.plan` | Create plan.md | Manual |
-| `/speckit.tasks` | Create tasks.md | Manual |
-| `/speckit.implement` | Execute tasks | Manual |
-| `/speckit.clarify` | Ask 5 clarification questions | N/A |
-| `/speckit.analyze` | Cross-artifact consistency check | N/A |
-| `/speckit.checklist` | Generate custom task checklist | N/A |
-| `/speckit.constitution` | Create/update project constitution | N/A |
+| `/triad.clarify` | Ask 5 clarification questions | N/A |
+| `/triad.analyze` | Cross-artifact consistency check | N/A |
+| `/triad.checklist` | Generate custom task checklist | N/A |
+| `/triad.constitution` | Create/update project constitution | N/A |
 
 ### Orchestration Commands
 
@@ -166,18 +160,6 @@ For rapid prototyping without automatic governance:
 ```
 
 **Automatic Sign-offs**: PM approves product requirements, Architect approves technical design, Tech-Lead optimizes task assignment for parallel execution.
-
-### Example 2: Rapid Prototyping (Vanilla Workflow)
-
-```bash
-# Skip governance for speed
-/speckit.specify
-/speckit.plan
-/speckit.tasks
-/speckit.implement
-```
-
-**No Automatic Sign-offs**: Faster but requires manual validation.
 
 ---
 
@@ -268,7 +250,7 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 │   ├── prd-create/
 │   ├── implementation-checkpoint/
 │   ├── architecture-validator/
-│   ├── speckit-validator/
+│   ├── spec-validator/
 │   ├── kb-create/
 │   ├── kb-query/
 │   ├── root-cause-analyzer/
@@ -276,21 +258,17 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 │   ├── git-workflow-helper/
 │   └── thinking-lens/
 │
-├── commands/         → 16 slash commands
+├── commands/         → 10 slash commands
 │   ├── triad.prd.md
 │   ├── triad.specify.md
 │   ├── triad.plan.md
 │   ├── triad.tasks.md
 │   ├── triad.implement.md
 │   ├── triad.close-feature.md
-│   ├── speckit.specify.md
-│   ├── speckit.plan.md
-│   ├── speckit.tasks.md
-│   ├── speckit.implement.md
-│   ├── speckit.clarify.md
-│   ├── speckit.analyze.md
-│   ├── speckit.checklist.md
-│   ├── speckit.constitution.md
+│   ├── triad.clarify.md
+│   ├── triad.analyze.md
+│   ├── triad.checklist.md
+│   ├── triad.constitution.md
 │   ├── execute.md
 │   └── continue.md
 │
@@ -311,8 +289,7 @@ Task(subagent_type="tester", prompt="Implement T050-T060")
 
 ## Tips
 
-- **Start with Triad**: Use `/triad.*` commands for production features (automatic governance)
-- **Use Vanilla for Prototypes**: Use `/speckit.*` commands for quick experiments (no governance overhead)
+- **Start with Triad**: Use `/triad.*` commands for all features (automatic governance)
 - **Parallel Orchestration**: Use `/triad.implement` for features with architect checkpoints
 - **Research First**: Use `web-researcher` agent before implementing with unfamiliar libraries
 - **Checkpoint Long Features**: Use `implementation-checkpoint` skill for features spanning multiple sessions

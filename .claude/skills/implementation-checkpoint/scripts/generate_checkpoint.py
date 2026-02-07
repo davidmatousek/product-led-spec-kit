@@ -4,8 +4,8 @@ Generate checkpoint report from template.
 
 Usage:
     python generate_checkpoint.py \
-        --tasks-file specs/001-spec-kit-ops/tasks.md \
-        --output-dir specs/001-spec-kit-ops \
+        --tasks-file specs/001-my-feature/tasks.md \
+        --output-dir specs/001-my-feature \
         --description "Phase1-2-Complete"
 """
 

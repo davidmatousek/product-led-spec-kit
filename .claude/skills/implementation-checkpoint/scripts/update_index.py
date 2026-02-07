@@ -4,7 +4,7 @@ Update CHECKPOINTS_README.md with new checkpoint entry.
 
 Usage:
     python update_index.py \
-        --checkpoints-readme specs/001-spec-kit-ops/CHECKPOINTS_README.md \
+        --checkpoints-readme specs/001-my-feature/CHECKPOINTS_README.md \
         --checkpoint-file CHECKPOINT-02_US1-Complete_T001-T039.md \
         --checkpoint-num 02 \
         --progress 33

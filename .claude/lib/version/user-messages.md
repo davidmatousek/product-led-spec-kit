@@ -131,7 +131,7 @@ Display at the start of Triad commands:
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║                  Spec Kit Triad Governance                   ║
+║                  SDLC Triad Governance                   ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  Claude Code: v{VERSION}                                     ║
 ║  Features: {FEATURE_LIST}                                    ║
@@ -142,7 +142,7 @@ Display at the start of Triad commands:
 Example (full features):
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║                  Spec Kit Triad Governance                   ║
+║                  SDLC Triad Governance                   ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  Claude Code: v2.1.16                                        ║
 ║  Features: context_forking, parallel_execution, dependencies ║
@@ -153,7 +153,7 @@ Example (full features):
 Example (limited):
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║                  Spec Kit Triad Governance                   ║
+║                  SDLC Triad Governance                   ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  Claude Code: v2.1.15                                        ║
 ║  Features: graceful_degradation (LIMITED MODE)               ║

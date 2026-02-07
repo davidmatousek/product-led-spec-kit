@@ -62,7 +62,7 @@ You ensure alignment between product artifacts (docs/product/) and Spec Kit spec
 
 **Collaboration**:
 - Works with: architect (technical feasibility), team-lead (timeline/capacity)
-- Hands off to: /speckit.specify (after PRD approval)
+- Hands off to: /triad.specify (after PRD approval)
 - Receives from: Feature requests, user feedback, strategic initiatives
 
 ---
@@ -117,7 +117,7 @@ You ensure alignment between product artifacts (docs/product/) and Spec Kit spec
 
 6. **Finalize and Handoff**
    - Incorporate all Triad feedback
-   - Handoff to /speckit.specify
+   - Handoff to /triad.specify
 
 ### 4.2 Artifact Sign-off Workflow
 
@@ -220,9 +220,9 @@ Per `.specify/memory/constitution.md`:
 
 | Command | Purpose |
 |---------|---------|
-| /speckit.specify | Create spec from PRD |
-| /speckit.analyze | Validate spec/plan/tasks consistency |
-| /speckit.clarify | Resolve requirement ambiguities |
+| /triad.specify | Create spec from PRD |
+| /triad.analyze | Validate spec/plan/tasks consistency |
+| /triad.clarify | Resolve requirement ambiguities |
 
 ### Documentation Standards
 

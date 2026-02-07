@@ -51,7 +51,7 @@ When a backlog item is ready to build:
 1. Create a PRD: `/triad.prd <feature-name>`
 2. Reference the backlog item in the PRD
 3. Move or delete the backlog file
-4. Follow normal Spec Kit workflow
+4. Follow normal Triad workflow
 
 ## Review Cadence
 

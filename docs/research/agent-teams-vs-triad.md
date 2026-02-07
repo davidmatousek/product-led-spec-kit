@@ -1,4 +1,4 @@
-# Research: Claude Code Agent Teams vs. Spec Kit Triad
+# Research: Claude Code Agent Teams vs. SDLC Triad
 
 **Date**: 2026-02-06
 **Source**: https://code.claude.com/docs/en/agent-teams
@@ -9,7 +9,7 @@
 
 ## Summary
 
-Claude Code Agent Teams is an experimental feature for coordinating multiple Claude Code instances as a team with shared tasks, inter-agent messaging, and centralized management. This research compares it against our Spec Kit Triad multi-agent orchestration process.
+Claude Code Agent Teams is an experimental feature for coordinating multiple Claude Code instances as a team with shared tasks, inter-agent messaging, and centralized management. This research compares it against our SDLC Triad multi-agent orchestration process.
 
 **Finding**: Our Triad process is a more sophisticated orchestration system. Agent Teams offers two capabilities we lack (persistent teammate context and inter-agent messaging), but everything else — agent specialization, task assignment, parallel strategy, quality gates, governance separation — we already handle more thoroughly.
 
@@ -68,7 +68,7 @@ Claude Code Agent Teams is an experimental feature for coordinating multiple Cla
 
 ## Comparison: Orchestration Models
 
-| Capability | Claude Code Agent Teams | Spec Kit Triad |
+| Capability | Claude Code Agent Teams | SDLC Triad |
 |-----------|------------------------|----------------|
 | **Agent specialization** | Ad-hoc roles (described by prompt) | **13 pre-defined agents** with 210-291 line role definitions |
 | **Task assignment** | Lead assigns or teammates self-claim | **Team-lead creates `agent-assignments.md`** with task-to-agent mapping, rationale, workload % |
@@ -184,7 +184,7 @@ Our governance rules (sign-off matrices, artifact handoffs, research phases) sho
 - **Agent Teams docs**: https://code.claude.com/docs/en/agent-teams
 - **Subagents docs**: https://code.claude.com/docs/en/sub-agents
 - **Agent Teams token costs**: https://code.claude.com/docs/en/costs#agent-team-token-costs
-- **Spec Kit Triad guide**: [docs/SPEC_KIT_TRIAD.md](../SPEC_KIT_TRIAD.md)
+- **SDLC Triad guide**: [docs/SPEC_KIT_TRIAD.md](../SPEC_KIT_TRIAD.md)
 - **Triad Collaboration standard**: [docs/standards/TRIAD_COLLABORATION.md](../standards/TRIAD_COLLABORATION.md)
 - **Agent registry**: [.claude/agents/_README.md](../../.claude/agents/_README.md)
 - **Orchestrator agent**: [.claude/agents/orchestrator.md](../../.claude/agents/orchestrator.md)
