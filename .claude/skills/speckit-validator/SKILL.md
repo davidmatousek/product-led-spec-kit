@@ -1,38 +1,6 @@
 ---
 name: speckit-validator
-
-description: >
-  Validates specification completeness and quality by checking for mandatory sections,
-  [NEEDS CLARIFICATION] markers, testable criteria, and clear scope boundaries.
-  Ensures specifications are ready for architecture and implementation phases.
-
-triggers:
-  - "Is my spec complete?"
-  - "Check spec"
-  - "Validate specification"
-  - "spec validation"
-  - "review spec.md"
-  - "spec quality check"
-  - "is my specification ready"
-  - "validate spec.md"
-  - "check specification completeness"
-
-allowed-tools: [Read, Grep, Glob, TodoWrite]
-
-color: "#3B82F6"
-
-expertise:
-  - specification-validation
-  - requirements-quality
-  - spec-driven-development
-
-examples:
-  - "Is my spec complete?"
-  - "Check if my specification is ready"
-  - "Validate spec.md"
-  - "Review my feature specification"
-
-boundaries: "Does not write specifications - only validates existing spec.md files for completeness and quality"
+description: Validates specification completeness and quality by checking for mandatory sections, [NEEDS CLARIFICATION] markers, testable criteria, and clear scope boundaries. Use this skill when you need to check if spec is complete, validate specifications, review spec.md, or check specification quality. Ensures specifications are ready for architecture and implementation phases.
 ---
 
 # SpecKit Validator Skill

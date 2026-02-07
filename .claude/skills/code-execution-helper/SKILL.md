@@ -1,24 +1,6 @@
 ---
 name: code-execution-helper
-
-description: >
-  Guide for using code execution capabilities to perform parallel batch processing, conditional filtering, and data aggregation. This skill should be used when agents need to analyze multiple files efficiently, validate large result sets, aggregate data from multiple sources, or reduce token consumption through execution-based filtering. Provides reusable templates for quota-aware workflows, error handling patterns, and token-efficient data processing.
-
-triggers:
-  - "use code execution"
-  - "execute code for"
-  - "batch scan"
-  - "parallel analysis"
-  - "quota check before"
-  - "filter results before returning"
-  - "token efficient workflow"
-  - "aggregate data"
-  - "scan multiple files"
-  - "validation without loading full results"
-  - "conditional filtering"
-  - "reduce token usage"
-
-license: MIT
+description: Guide for using code execution capabilities to perform parallel batch processing, conditional filtering, and data aggregation. This skill should be used when agents need to analyze multiple files efficiently, validate large result sets, aggregate data from multiple sources, or reduce token consumption through execution-based filtering. Provides reusable templates for quota-aware workflows, error handling patterns, and token-efficient data processing.
 ---
 
 # Code Execution Helper

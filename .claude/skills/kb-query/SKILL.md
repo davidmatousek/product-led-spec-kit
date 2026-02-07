@@ -1,40 +1,6 @@
 ---
 name: kb-query
-
-description: >
-  Interactive Knowledge Base search with natural language queries. Searches patterns and bug fixes
-  with relevance ranking, quality scoring, and fuzzy matching for typo tolerance. Helps users find
-  solutions quickly without manual browsing through institutional knowledge.
-
-triggers:
-  - "search kb"
-  - "find pattern"
-  - "search knowledge base"
-  - "kb search"
-  - "look for solution"
-  - "find bug fix"
-  - "search patterns"
-  - "query knowledge base"
-  - "find in kb"
-  - "search for pattern"
-
-allowed-tools: [Bash, Read, Grep, Glob]
-
-color: "#10B981"
-
-expertise:
-  - knowledge-base
-  - search
-  - problem-solving
-  - pattern-discovery
-
-examples:
-  - "Search KB for database connection issues"
-  - "Find authentication patterns"
-  - "Look for existing bug fixes for this error"
-  - "Search patterns for performance optimization"
-
-boundaries: "Only searches existing KB content - does not create new patterns. Use kb-create skill to add new patterns."
+description: Interactive Knowledge Base search with natural language queries. Use this skill when you need to search KB, find patterns, search knowledge base, look for solutions, find bug fixes, or query institutional knowledge. Searches patterns and bug fixes with relevance ranking, quality scoring, and fuzzy matching for typo tolerance. Helps users find solutions quickly without manual browsing.
 ---
 
 # KB Query Skill

@@ -1,42 +1,6 @@
 ---
 name: git-workflow-helper
-
-description: >
-  Automates git workflow tasks including status checks, branch creation, file staging,
-  conventional commit message generation, and pull request creation with gh CLI.
-  Ensures proper git workflow and commit standards.
-
-triggers:
-  - "commit my changes"
-  - "create PR"
-  - "git status"
-  - "create branch"
-  - "push changes"
-  - "generate commit message"
-  - "create pull request"
-  - "push my code"
-  - "commit changes"
-  - "make a commit"
-  - "let's checkin"
-  - "commit to git"
-  - "merge and delete branch"
-
-allowed-tools: [Bash, Read, Grep, TodoWrite]
-
-color: "#F59E0B"
-
-expertise:
-  - git-workflow
-  - version-control
-  - commit-standards
-
-examples:
-  - "Commit my changes"
-  - "Create a pull request"
-  - "Check git status"
-  - "Push my code"
-
-boundaries: "Does not force push or run destructive git commands without explicit confirmation. Follows constitutional git workflow principles."
+description: Automates git workflow tasks including status checks, branch creation, file staging, conventional commit message generation, and pull request creation with gh CLI. Use this skill when you need to commit changes, create PRs, check git status, create branches, push code, or generate commit messages. Ensures proper git workflow and commit standards.
 ---
 
 # Git Workflow Helper Skill

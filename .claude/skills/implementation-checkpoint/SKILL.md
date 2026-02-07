@@ -1,18 +1,6 @@
 ---
 name: implementation-checkpoint
-description: >
-  Generate standardized checkpoint reports for multi-phase implementation projects.
-  This skill should be used when pausing implementation at strategic milestones
-  (phase completion, user story completion, critical features) to create comprehensive
-  progress reports with task breakdowns, metrics, knowledge base entries, and
-  resume instructions.
-triggers:
-  - "create checkpoint"
-  - "generate checkpoint report"
-  - "implementation checkpoint"
-  - "create progress report"
-  - "checkpoint report"
-  - "make checkpoint"
+description: Generate standardized checkpoint reports for multi-phase implementation projects. Use this skill when pausing implementation at strategic milestones (phase completion, user story completion, critical features) to create comprehensive progress reports with task breakdowns, metrics, knowledge base entries, and resume instructions.
 ---
 
 # Implementation Checkpoint Skill

@@ -1,37 +1,6 @@
 ---
 name: architecture-validator
-
-description: >
-  Validates architecture documentation completeness by checking for technology stack,
-  API specifications, database schema, security architecture, and alignment with
-  feature specification. Ensures plan.md is complete before implementation.
-
-triggers:
-  - "Is my plan complete?"
-  - "validate architecture"
-  - "check plan.md"
-  - "architecture validation"
-  - "review technical plan"
-  - "is my architecture ready"
-  - "validate plan.md"
-  - "check architecture completeness"
-
-allowed-tools: [Read, Grep, Glob, TodoWrite]
-
-color: "#8B5CF6"
-
-expertise:
-  - architecture-validation
-  - technical-planning
-  - system-design
-
-examples:
-  - "Is my plan.md complete?"
-  - "Validate my architecture"
-  - "Check if technical plan is ready"
-  - "Review architecture documentation"
-
-boundaries: "Does not write architecture plans - only validates existing plan.md files for completeness"
+description: Validates architecture documentation completeness by checking for technology stack, API specifications, database schema, security architecture, and alignment with feature specification. Use this skill when you need to check if plan.md is complete before implementation, validate architecture documentation, or review technical plans for completeness.
 ---
 
 # Architecture Validator Skill

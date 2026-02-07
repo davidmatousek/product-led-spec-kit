@@ -1,34 +1,6 @@
 ---
 name: thinking-lens
-
-description: >
-  Routes to structured thinking methodologies (lenses) for systematic analysis.
-  Auto-selects appropriate lens: 5 Whys for failures, Pre-Mortem for risks,
-  First Principles for assumptions, Systems Thinking for architecture.
-
-triggers:
-  - "think about"
-  - "think through"
-  - "help me think"
-  - "apply thinking lens"
-  - "reason through this"
-  - "systematic analysis"
-
-allowed-tools: [Read, Write, Glob, TodoWrite, AskUserQuestion]
-
-color: "#8B5CF6"
-
-expertise:
-  - structured-thinking
-  - problem-analysis
-  - decision-making
-
-examples:
-  - "Think about why this keeps failing"
-  - "Help me think through the risks"
-  - "Think about this architecture"
-
-boundaries: "For one-time analysis. For recurring issues needing KB documentation, use retrospective. For code fixes, use debugger."
+description: Routes to structured thinking methodologies (lenses) for systematic analysis. Use this skill when you need to think through problems, apply thinking lenses, reason through decisions, or perform systematic analysis. Auto-selects appropriate lens based on context - 5 Whys for failures, Pre-Mortem for risks, First Principles for assumptions, Systems Thinking for architecture.
 ---
 
 # Thinking Lens Skill

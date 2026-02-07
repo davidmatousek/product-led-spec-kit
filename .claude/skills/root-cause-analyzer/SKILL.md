@@ -1,39 +1,6 @@
 ---
 name: root-cause-analyzer
-
-description: >
-  Implements 5 Whys root cause analysis methodology for systematic debugging and
-  problem resolution. Guides developers through structured analysis, documents
-  findings in institutional knowledge system, and prevents recurring issues.
-
-triggers:
-  - "Why does this keep happening?"
-  - "root cause"
-  - "5 whys"
-  - "analyze this problem"
-  - "systematic debugging"
-  - "find root cause"
-  - "run 5 whys analysis"
-  - "identify root cause"
-  - "why does this keep failing"
-
-allowed-tools: [Read, Write, Grep, Glob, TodoWrite]
-
-color: "#EF4444"
-
-expertise:
-  - debugging
-  - root-cause-analysis
-  - institutional-knowledge
-  - problem-solving
-
-examples:
-  - "Why does this keep happening?"
-  - "Help me find the root cause"
-  - "Run 5 whys analysis"
-  - "Analyze this recurring problem"
-
-boundaries: "Does not fix issues directly - only identifies root causes and documents findings for institutional knowledge"
+description: Implements 5 Whys root cause analysis methodology for systematic debugging and problem resolution. Use this skill when you need to find root cause, run 5 whys analysis, analyze recurring problems, or perform systematic debugging. Guides developers through structured analysis, documents findings in institutional knowledge system, and prevents recurring issues.
 ---
 
 # Root Cause Analyzer Skill

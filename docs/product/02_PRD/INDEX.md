@@ -1,8 +1,8 @@
 # PRD Index - Product-Led-Spec-Kit
 
-**Last Updated**: 2026-01-31
+**Last Updated**: 2026-02-07
 **Owner**: Product Manager (product-manager)
-**Total PRDs**: 3
+**Total PRDs**: 4
 
 ---
 
@@ -20,6 +20,7 @@ This directory contains Product Requirements Documents (PRDs) for Product-Led-Sp
 | 001 | [Claude Code Memory Features Enhancement](001-claude-code-memory-features-2025-12-15.md) | Approved | 2025-12-15 | product-manager | TBD |
 | 002 | [Anthropic Claude Code Updates Integration](002-anthropic-updates-integration-2026-01-24.md) | ✅ Approved | 2026-01-24 | product-manager | specs/002-anthropic-updates-integration/ |
 | 003 | [Agent Refactoring - Implement CISO_Agent Best Practices](003-agent-refactoring-all-agents-2026-01-31.md) | ✅ Delivered | 2026-01-31 | product-manager | specs/003-agent-refactoring/ |
+| 004 | [Remove SpecKit Commands & Transfer to Triad](004-remove-speckit-commands-2026-02-07.md) | ✅ Approved | 2026-02-07 | product-manager | TBD |
 
 ---
 

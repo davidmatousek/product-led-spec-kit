@@ -1,43 +1,6 @@
 ---
 name: kb-create
-
-description: >
-  Guided pattern and bug creation with interactive prompts and automatic quality validation.
-  Helps users create high-quality KB entries with proper structure, scoring, and categorization.
-  Provides improvement suggestions for entries below quality thresholds.
-
-triggers:
-  - "create pattern"
-  - "document solution"
-  - "add to kb"
-  - "create kb entry"
-  - "document bug fix"
-  - "save this solution"
-  - "add pattern"
-  - "create knowledge base entry"
-  - "document this pattern"
-  - "add this to knowledge base"
-  - "retrospective report"
-  - "insight"
-  - "save to KB"
-
-allowed-tools: [Bash, Write, Read, Edit, Grep]
-
-color: "#8B5CF6"
-
-expertise:
-  - knowledge-base
-  - documentation
-  - pattern-creation
-  - quality-assurance
-
-examples:
-  - "Create a pattern for this solution"
-  - "Document this bug fix in KB"
-  - "Add this to the knowledge base"
-  - "Save this pattern for future use"
-
-boundaries: "Creates new KB patterns and bug entries only. Does not modify existing patterns or delete entries. Use kb-query to search existing patterns."
+description: Guided pattern and bug creation with interactive prompts and automatic quality validation. Use this skill when you need to create patterns, document solutions, add KB entries, document bug fixes, save solutions, or create knowledge base entries. Helps users create high-quality KB entries with proper structure, scoring, and categorization. Provides improvement suggestions for entries below quality thresholds.
 ---
 
 # KB Create Skill
