@@ -612,6 +612,17 @@ Before starting, collect:
    - Search knowledge base for similar features
    - **Identify dependencies AND verify which are already satisfied vs pending**
 
+4. **PDL Source Check** (optional — if PDL is in use):
+   - Check if `docs/product/_backlog/02_USER_STORIES.md` exists
+   - If it exists and contains entries with status "Ready for PRD", present them to the user
+   - If user selects a backlog item, populate `source.idea_id` and `source.story_id` in PRD frontmatter:
+     ```yaml
+     source:           # Optional — populated when PRD originates from PDL
+       idea_id: null   # IDEA-NNN reference
+       story_id: null  # US-NNN reference
+     ```
+   - If user starts fresh (no backlog item selected), leave source fields as null
+
 ### Step 2: Draft PRD Sections
 
 Work through the PRD structure systematically:

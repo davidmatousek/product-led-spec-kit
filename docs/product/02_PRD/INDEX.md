@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-02-07
 **Owner**: Product Manager (product-manager)
-**Total PRDs**: 4
+**Total PRDs**: 5
 
 ---
 
@@ -21,6 +21,7 @@ This directory contains Product Requirements Documents (PRDs) for Product-Led-Sp
 | 002 | [Anthropic Claude Code Updates Integration](002-anthropic-updates-integration-2026-01-24.md) | ✅ Approved | 2026-01-24 | product-manager | specs/002-anthropic-updates-integration/ |
 | 003 | [Agent Refactoring - Implement CISO_Agent Best Practices](003-agent-refactoring-all-agents-2026-01-31.md) | ✅ Delivered | 2026-01-31 | product-manager | specs/003-agent-refactoring/ |
 | 004 | [Remove SpecKit Commands & Transfer to Triad](004-remove-speckit-commands-2026-02-07.md) | ✅ Approved | 2026-02-07 | product-manager | [Spec](../../../specs/004-remove-speckit-commands/spec.md) |
+| 005 | [Product Discovery Lifecycle (PDL)](005-product-discovery-lifecycle-2026-02-07.md) | ⚠ Approved | 2026-02-07 | product-manager | [Spec](../../../specs/005-product-discovery-lifecycle/spec.md) |
 
 ---
 

@@ -35,6 +35,9 @@ product-led-spec-kit/
 - **Constitution**: `.specify/memory/constitution.md`
 
 ## Commands
+**PDL workflow** (optional, before Triad):
+- `/pdl.run` → `/pdl.idea` → `/pdl.score` → `/pdl.validate`
+
 **Triad workflow**:
 - `/triad.prd` → `/triad.specify` → `/triad.plan` → `/triad.tasks` → `/triad.implement`
 
