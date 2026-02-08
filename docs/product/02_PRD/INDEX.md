@@ -22,7 +22,7 @@ This directory contains Product Requirements Documents (PRDs) for Product-Led-Sp
 | 003 | [Agent Refactoring - Implement CISO_Agent Best Practices](003-agent-refactoring-all-agents-2026-01-31.md) | ✅ Delivered | 2026-01-31 | product-manager | specs/003-agent-refactoring/ |
 | 004 | [Remove SpecKit Commands & Transfer to Triad](004-remove-speckit-commands-2026-02-07.md) | ✅ Approved | 2026-02-07 | product-manager | [Spec](../../../specs/004-remove-speckit-commands/spec.md) |
 | 005 | [Product Discovery Lifecycle (PDL)](005-product-discovery-lifecycle-2026-02-07.md) | ⚠ Approved | 2026-02-07 | product-manager | [Spec](../../../specs/005-product-discovery-lifecycle/spec.md) |
-| 006 | [PDL + Triad Guide Consolidation](006-pdl-triad-guides-2026-02-07.md) | ⚠ Approved | 2026-02-07 | product-manager | TBD |
+| 006 | [PDL + Triad Guide Consolidation](006-pdl-triad-guides-2026-02-07.md) | ✅ Delivered | 2026-02-07 | product-manager | [Spec](../../../specs/006-pdl-triad-guides/spec.md) |
 
 ---
 
