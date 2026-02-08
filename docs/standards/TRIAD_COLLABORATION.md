@@ -101,8 +101,8 @@ Step 0.5: Architect Provides Baseline (INFRASTRUCTURE ONLY)
 ├─ Create: specs/{feature-id}/architect-baseline.md
 └─ Output: Infrastructure baseline report handed to PM
 
-Step 1: PM Drafts PRD
-├─ Use prd-create skill (reads architecture docs)
+Step 1: PM Drafts PRD (via /triad.prd)
+├─ Reads architecture docs
 ├─ Incorporate Architect baseline into "Current State" section
 ├─ Define product requirements (What & Why) but NOT timeline
 ├─ Mark timeline as "TBD - pending Tech-Lead feasibility"
@@ -143,8 +143,7 @@ Step 4: PM Finalizes PRD
 Step 0: PM Analyzes Product Need
 └─ Same as infrastructure workflow
 
-Step 1: PM Drafts PRD
-├─ Use prd-create skill
+Step 1: PM Drafts PRD (via /triad.prd)
 ├─ Define product requirements
 ├─ Mark timeline as "TBD"
 └─ Output: Draft PRD

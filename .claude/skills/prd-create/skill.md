@@ -1,12 +1,6 @@
 ---
 name: prd-create
-description: >
-  Industry-standard Product Requirements Document (PRD) creation skill that guides
-  Product Managers through creating comprehensive, research-backed PRDs. Uses proven
-  frameworks from Google, Amazon, and Intercom to ensure PRDs provide all details
-  needed for superior Triad specifications. Use this skill when you need to create a PRD,
-  write product requirements, document feature requirements, or generate a PRD template.
-  Creates PRD documentation only — use /triad.specify for technical specs.
+description: "Internal skill invoked by /triad.prd to generate industry-standard PRD content using proven frameworks from Google, Amazon, and Intercom. Do NOT invoke directly — use /triad.prd instead, which wraps this skill with Triad governance and sign-offs."
 ---
 
 # PRD Creation Skill
@@ -618,6 +612,17 @@ Before starting, collect:
    - Search knowledge base for similar features
    - **Identify dependencies AND verify which are already satisfied vs pending**
 
+4. **PDL Source Check** (optional — if PDL is in use):
+   - Check if `docs/product/_backlog/02_USER_STORIES.md` exists
+   - If it exists and contains entries with status "Ready for PRD", present them to the user
+   - If user selects a backlog item, populate `source.idea_id` and `source.story_id` in PRD frontmatter:
+     ```yaml
+     source:           # Optional — populated when PRD originates from PDL
+       idea_id: null   # IDEA-NNN reference
+       story_id: null  # US-NNN reference
+     ```
+   - If user starts fresh (no backlog item selected), leave source fields as null
+
 ### Step 2: Draft PRD Sections
 
 Work through the PRD structure systematically:
@@ -864,11 +869,8 @@ You've used this skill successfully when:
 ## Command Reference
 
 ```bash
-# Create a new PRD
-/skill prd-create
-
-# Search for similar features before creating PRD
-/skill kb-query
+# Create a new PRD (invokes this skill automatically)
+/triad.prd <topic>
 
 # Create spec from PRD
 /triad.specify

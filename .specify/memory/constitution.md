@@ -214,7 +214,7 @@ Product artifacts in docs/product/ are the strategic foundation, and project arc
 - **Architecture Review**: Sound product strategy without technical consistency creates fragmented systems. The Architect ensures every technical decision aligns with project architecture, maintains system integrity, and avoids technical debt.
 
 **Non-Negotiable Requirements**:
-- ALWAYS create PRD before spec.md (use prd-create skill)
+- ALWAYS create PRD before spec.md (use `/triad.prd`)
 - ALWAYS validate spec.md aligns with product vision, OKRs, and user stories
 - ALWAYS get PM sign-off on spec.md before creating plan.md
 - ALWAYS get Architect review on plan.md for technical decisions and architecture alignment
@@ -418,7 +418,6 @@ Product Manager is responsible for maintaining alignment between:
 - Sign-offs are documented in artifact metadata
 
 **Tools & Skills**:
-- **prd-create skill**: Generate industry-standard PRDs
 - **product-manager agent**: Product Manager with alignment validation expertise
 - **architect agent**: Architect with technical design and review expertise
 - **/triad.prd**: Create PRD documents
@@ -455,7 +454,7 @@ Product Manager is responsible for maintaining alignment between:
 
 0. **PM**: Analyze product need (What & Why) - read product vision, OKRs, user stories
 0.5. **Architect**: Provide baseline report documenting current infrastructure state
-1. **PM**: Draft PRD using prd-create skill, incorporating Architect baseline into "Current State" section
+1. **PM**: Draft PRD via `/triad.prd`, incorporating Architect baseline into "Current State" section
 2. **Tech-Lead**: Feasibility review - estimate timeline, identify agents needed, validate capacity
 3. **Architect**: Technical review - validate infrastructure claims match baseline, confirm technical feasibility
 4. **PM**: Finalize PRD incorporating all Triad feedback
@@ -463,7 +462,7 @@ Product Manager is responsible for maintaining alignment between:
 **For Feature PRDs** (greenfield work):
 
 0. **PM**: Analyze product need (What & Why)
-1. **PM**: Draft PRD using prd-create skill
+1. **PM**: Draft PRD via `/triad.prd`
 2. **[Parallel]** Architect + Tech-Lead: Review PRD for technical feasibility and timeline accuracy
 3. **PM**: Finalize PRD incorporating Triad feedback
 

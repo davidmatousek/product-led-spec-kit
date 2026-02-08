@@ -39,3 +39,22 @@ Use Triad commands for governance, quality gates, and multi-agent collaboration.
 - Complex features with architecture review requirements
 - When you need documented governance trail
 - Clarifying requirements or verifying consistency at any phase
+
+---
+
+## PDL Commands (Optional Discovery)
+
+Use PDL commands for lightweight product discovery before the Triad workflow. PDL is optional — you can start directly at `/triad.prd` if you prefer.
+
+```bash
+/pdl.run <idea>            # Full discovery flow: capture → score → validate → backlog
+/pdl.idea <idea>           # Capture idea + ICE scoring
+/pdl.score IDEA-NNN        # Re-score an existing idea
+/pdl.validate IDEA-NNN     # PM validation gate + user story generation
+```
+
+**When to Use**:
+- Capturing feature ideas during brainstorming or development
+- Evaluating ideas with ICE scoring before committing to PRD creation
+- Maintaining a prioritized product backlog of validated user stories
+- Running PM validation gates on ideas before heavy Triad governance

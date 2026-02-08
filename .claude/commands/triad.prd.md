@@ -133,10 +133,23 @@ triad:
   pm_signoff: {agent: product-manager, date: ..., status: ..., notes: ...}
   architect_signoff: {agent: architect, date: ..., status: ..., notes: ...}
   techlead_signoff: {agent: team-lead, date: ..., status: ..., notes: ...}
+source:           # Optional — populated when PRD originates from PDL
+  idea_id: null   # IDEA-NNN reference (from PDL backlog)
+  story_id: null  # US-NNN reference (from PDL backlog)
 ---
 ```
 
 2. Write to `docs/product/02_PRD/{filename}`
+
+## Step 6b: Update PDL Backlog Status (if applicable)
+
+After the PRD is written, if the frontmatter contains a non-null `source.story_id`:
+
+1. Read `docs/product/_backlog/02_USER_STORIES.md`
+2. Find the row matching the `source.story_id` (e.g., `US-001`)
+3. Update the Status column from "Ready for PRD" to "In PRD"
+4. If the story ID is not found in `02_USER_STORIES.md` (e.g., file was manually edited or story ID is incorrect), skip gracefully with a warning: `"Warning: {story_id} not found in 02_USER_STORIES.md — status not updated"`
+5. If `02_USER_STORIES.md` does not exist, skip silently (PDL is optional)
 
 ## Step 7: Update INDEX.md
 

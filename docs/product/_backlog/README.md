@@ -1,8 +1,45 @@
 # Product Backlog
 
-**Purpose**: Features and ideas that didn't make the current MVP or release cut.
+**Purpose**: Centralized product backlog with structured idea management and prioritized user stories.
 
 ---
+
+## PDL Table-Based Backlog (Recommended)
+
+The Product Discovery Lifecycle (PDL) provides structured backlog management through two consolidated tables:
+
+| File | Purpose | Managed By |
+|------|---------|------------|
+| `01_IDEAS.md` | All captured ideas with ICE scores and status | `/pdl.idea`, `/pdl.run`, `/pdl.score` |
+| `02_USER_STORIES.md` | PM-validated user stories prioritized for development | `/pdl.validate`, `/pdl.run` |
+
+### How It Works
+
+1. **Capture**: Run `/pdl.idea` or `/pdl.run` to add ideas with ICE scoring
+2. **Score**: Ideas are scored on Impact, Confidence, and Effort (1-10 each)
+3. **Validate**: Run `/pdl.validate` to submit ideas for PM review
+4. **Backlog**: Approved ideas become user stories in `02_USER_STORIES.md`
+5. **Handoff**: Run `/triad.prd` to create a PRD from a backlog item
+
+### Single-User Assumption
+
+PDL assumes single-user/single-agent editing of backlog files. No concurrent editing safeguards are in place. If multiple users need to edit backlog files simultaneously, coordinate manually to avoid conflicts.
+
+### Migration from Individual Files
+
+Existing individual backlog files (e.g., `feature-idea-name.md`) are preserved alongside the new table-based files. To migrate:
+
+1. Run `/pdl.idea` for each existing backlog item to add it to `01_IDEAS.md`
+2. Run `/pdl.validate` for items ready for development to add them to `02_USER_STORIES.md`
+3. Optionally archive or delete the original individual files after migration
+
+New ideas should use `/pdl.idea` or `/pdl.run` to add entries directly to the consolidated tables.
+
+---
+
+## Individual Backlog Files (Legacy)
+
+For projects not using PDL, individual backlog files are still supported.
 
 ## What Goes Here
 
@@ -56,9 +93,10 @@ When a backlog item is ready to build:
 ## Review Cadence
 
 Review the backlog:
-- **Quarterly**: During OKR planning
-- **After MVP Launch**: Prioritize next wave of features
-- **When Capacity Opens**: Look for quick wins
+- **Quarterly**: During OKR planning — re-score deferred ideas with `/pdl.score`
+- **After MVP Launch**: Prioritize next wave of features from `02_USER_STORIES.md`
+- **When Capacity Opens**: Look for quick wins — check P2 items in `01_IDEAS.md`
+- **Monthly**: Review deferred ideas for changed circumstances
 
 ---
 
