@@ -1,6 +1,39 @@
 # PDL + Triad Complete Lifecycle Guide
 
+**Version**: 1.0.0
+**Read Time**: ~8 minutes
+
+**Related**:
+- [PDL + Triad Quickstart](PDL_TRIAD_QUICKSTART.md) -- Unified onboarding guide
+- [PDL + Triad Infographic](PDL_TRIAD_INFOGRAPHIC.md) -- Visual workflow at a glance
+- [SDLC Triad Reference](../SPEC_KIT_TRIAD.md) -- Comprehensive Triad documentation
+
 This guide covers the complete product lifecycle from raw idea to shipped feature, integrating the Product Discovery Lifecycle (PDL) with the Triad workflow.
+
+---
+
+## Visual Flow
+
+```
+PDL Discovery                                          Triad Delivery
+─────────────────────────────────────    ─────────────────────────────────────────
+┌────────┐   ┌────────┐   ┌──────────┐    ┌────────┐   ┌────────┐   ┌────────┐
+│  IDEA  │──▶│ SCORE  │──▶│ VALIDATE │══▶│  PRD   │──▶│SPECIFY │──▶│  PLAN  │
+│        │   │ (ICE)  │   │   (PM)   │    │        │   │        │   │        │
+└────────┘   └────────┘   └──────────┘    └────────┘   └────────┘   └────────┘
+ Stage 1      Stage 2      Stage 3         Stage 5      Stage 6      Stage 7
+                              │                                          │
+              ┌──────────┐    │                                          ▼
+              │ BACKLOG  │◀───┘                          ┌────────┐   ┌────────┐
+              │          │                               │DEPLOYED│◀──│IMPLEMENT│
+              └──────────┘                               │        │   │        │
+               Stage 4                                   └────────┘   └────────┘
+                                            ┌────────┐    Stage 10    Stage 9
+                                            │ TASKS  │──────────────────▲
+                                            │        │
+                                            └────────┘
+                                             Stage 8
+```
 
 ---
 
@@ -36,6 +69,11 @@ Idea Capture → ICE Scoring → PM Validation → Triad Handoff → PRD → Spe
 
 **Output**: A new row in the Ideas Backlog table.
 
+**Example Entry**:
+```
+| IDEA-001 | Add dark mode to dashboard | Brainstorm | 2026-01-29 | Scoring | 24 (I:9 C:9 E:6) |
+```
+
 ---
 
 ## Stage 2: ICE Scoring
@@ -69,6 +107,12 @@ Idea Capture → ICE Scoring → PM Validation → Triad Handoff → PRD → Spe
 
 **PM Override**: For auto-deferred ideas (score < 12), PM can approve with documented rationale.
 
+**Example User Story**:
+```
+"As a Template Adopter, I want dark mode support for the dashboard,
+so that I can reduce eye strain during extended sessions."
+```
+
 ---
 
 ## Stage 4: Product Backlog
@@ -101,6 +145,8 @@ Ready for PRD → In PRD → In Development → Delivered
    ```
 3. The user story status updates from "Ready for PRD" to "In PRD"
 
+This source traceability ensures every PRD can be traced back to the original idea and validated user story, creating an unbroken audit trail from discovery through delivery.
+
 ---
 
 ## Stages 6-10: Triad Workflow
@@ -114,6 +160,77 @@ Once the PRD is created, the standard Triad workflow takes over:
 | 8 | `/triad.tasks` | tasks.md | PM + Architect + Team-Lead |
 | 9 | `/triad.implement` | Code/Files | Architect checkpoints |
 | 10 | `/triad.close-feature` | Docs updated | Final validation |
+
+### Sign-off Details by Stage
+
+| Stage | Phase | Sign-offs | What Gets Validated |
+|-------|-------|-----------|---------------------|
+| 6 | Specify | PM | Requirements alignment, user story coverage, scope boundaries |
+| 7 | Plan | PM + Architect | Technical feasibility, architecture decisions, risk assessment |
+| 8 | Tasks | PM + Architect + Team-Lead | Task completeness, agent assignments, parallel execution plan |
+| 9 | Implement | Architect (checkpoints) | Code quality, architecture compliance at wave boundaries |
+| 10 | Close | Auto | Documentation completeness, feature library update |
+
+**Review Outcomes**:
+- **APPROVED**: Proceed to next phase
+- **CHANGES REQUESTED**: Revise and re-submit for review
+- **BLOCKED**: Critical issue -- halt until resolved
+
+### Artifact Examples
+
+**spec.md** (Stage 6):
+```
+## Functional Requirements
+### FR-1: Dark Mode Toggle
+- System shall provide a toggle in the dashboard settings panel
+- Acceptance: Theme switches within 200ms without page reload
+
+## User Scenarios
+### Scenario 1: Enable Dark Mode
+Given the user is on the dashboard
+When they toggle dark mode in settings
+Then all UI elements switch to the dark color scheme
+```
+
+**plan.md** (Stage 7):
+```
+## Technical Approach
+### Component: ThemeProvider
+- Pattern: React Context with CSS custom properties
+- Risk: Third-party component compatibility (Medium)
+
+## Architecture Decisions
+- ADR-001: CSS custom properties over CSS-in-JS for theme switching
+```
+
+**tasks.md** (Stage 8):
+```
+## Wave 1 (Parallel)
+- [ ] T-001: Create ThemeProvider context (frontend-developer)
+- [ ] T-002: Define dark color tokens (ux-ui-designer)
+
+## Wave 2 (Depends on Wave 1)
+- [ ] T-003: Update dashboard components (frontend-developer)
+```
+
+---
+
+## Commands by Stage
+
+| Stage | PDL Command | Triad Command | Output |
+|-------|-------------|---------------|--------|
+| 1. Idea Capture | `/pdl.idea <idea>` | -- | 01_IDEAS.md entry |
+| 2. ICE Scoring | (integrated) | -- | ICE score in IDEAS.md |
+| 3. PM Validation | `/pdl.validate IDEA-NNN` | -- | User story in 02_USER_STORIES.md |
+| 4. Product Backlog | (automatic) | -- | Status: Ready for PRD |
+| 5. Triad Handoff | -- | `/triad.prd <topic>` | PRD with source traceability |
+| 6. Specify | -- | `/triad.specify` | spec.md |
+| 7. Plan | -- | `/triad.plan` | plan.md |
+| 8. Tasks | -- | `/triad.tasks` | tasks.md + agent-assignments.md |
+| 9. Implement | -- | `/triad.implement` | Code/Files |
+| 10. Close | -- | `/triad.close-feature NNN` | Documentation updates |
+
+**Full flow shortcut**: `/pdl.run <idea>` covers stages 1-4 in one command.
 
 ---
 
@@ -203,3 +320,20 @@ Ready for PRD → In PRD → In Development → Delivered
 ```
 
 Feature delivered with full traceability from original idea to shipped code.
+
+---
+
+## Summary
+
+| Stage | Artifact | Purpose | Owner |
+|-------|----------|---------|-------|
+| 1 | 01_IDEAS.md | Raw concept + ICE score | PM |
+| 2 | (integrated) | ICE scoring during capture | PM |
+| 3 | 02_USER_STORIES.md | PM-validated user story | PM |
+| 4 | 02_USER_STORIES.md | Prioritized product backlog | PM |
+| 5 | PRD | Business context, scope, metrics | PM + Architect + Team-Lead |
+| 6 | spec.md | Functional requirements | PM |
+| 7 | plan.md | Technical architecture | PM + Architect |
+| 8 | tasks.md | Work breakdown + agent assignments | PM + Architect + Team-Lead |
+| 9 | Code | Implementation | Agents |
+| 10 | Feature Library | Production record | Auto |
