@@ -195,7 +195,7 @@ docs/product/01_Product_Vision/
 
 **Agent Tools**:
 - `.claude/agents/product-manager.md` - Product Manager agent
-- `.claude/skills/prd-create/` - PRD creation skill
+- `/triad.prd` - Create PRD with Triad governance
 
 ---
 

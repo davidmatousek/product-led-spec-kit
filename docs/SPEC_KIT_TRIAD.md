@@ -53,7 +53,7 @@ with Triad          Creates spec.md      with architecture   with breakdown     
 - Feature keywords (UI, component, API, feature) → Parallel Triad
 
 **What happens automatically**:
-1. PM drafts PRD using prd-create skill
+1. PM drafts PRD (via `/triad.prd`)
 2. Architect creates baseline (if infrastructure) or reviews (if feature)
 3. Tech-Lead performs feasibility check with timeline estimate
 4. Architect performs technical review

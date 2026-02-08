@@ -1,12 +1,6 @@
 ---
 name: prd-create
-description: >
-  Industry-standard Product Requirements Document (PRD) creation skill that guides
-  Product Managers through creating comprehensive, research-backed PRDs. Uses proven
-  frameworks from Google, Amazon, and Intercom to ensure PRDs provide all details
-  needed for superior Triad specifications. Use this skill when you need to create a PRD,
-  write product requirements, document feature requirements, or generate a PRD template.
-  Creates PRD documentation only — use /triad.specify for technical specs.
+description: "Internal skill invoked by /triad.prd to generate industry-standard PRD content using proven frameworks from Google, Amazon, and Intercom. Do NOT invoke directly — use /triad.prd instead, which wraps this skill with Triad governance and sign-offs."
 ---
 
 # PRD Creation Skill
@@ -864,11 +858,8 @@ You've used this skill successfully when:
 ## Command Reference
 
 ```bash
-# Create a new PRD
-/skill prd-create
-
-# Search for similar features before creating PRD
-/skill kb-query
+# Create a new PRD (invokes this skill automatically)
+/triad.prd <topic>
 
 # Create spec from PRD
 /triad.specify

@@ -103,8 +103,8 @@ All approved PRDs must have:
 - `docs/product/01_Product_Vision/` - Strategic vision and personas
 - `docs/SPEC_KIT_TRIAD.md` - Triad workflow guide
 - `docs/standards/PRODUCT_SPEC_ALIGNMENT.md` - Sign-off requirements
-- `.claude/skills/prd-create/` - PRD creation skill
 - `.claude/agents/product-manager.md` - Product Manager agent
+- `/triad.prd` - Create PRD with Triad governance
 
 ---
 

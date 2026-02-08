@@ -67,7 +67,7 @@ Skills are reusable automation capabilities that agents can invoke to perform sp
 
 | Skill | Purpose | When to Use |
 |-------|---------|-------------|
-| **prd-create** | Create Product Requirements Documents (PRDs) | Starting new features, defining product scope |
+| **prd-create** *(internal)* | PRD content generation (called by `/triad.prd`) | Invoked automatically — use `/triad.prd` instead |
 | **implementation-checkpoint** | Create implementation checkpoints for long features | Mid-feature progress tracking, wave completion |
 
 ### Architecture & Validation Skills

@@ -39,7 +39,6 @@ Per **Constitution v1.2.0, Principle X: Product-Spec Alignment (NON-NEGOTIABLE)*
 ```
 1. /triad.prd <topic>             → Product Manager creates PRD
    │
-   ├─ PM uses prd-create skill
    ├─ PM researches product context (vision, OKRs, roadmap)
    ├─ PM documents requirements in industry-standard format
    └─ PRD saved to docs/product/02_PRD/NNN-topic-YYYY-MM-DD.md
@@ -428,7 +427,6 @@ Use `/triad.analyze` to validate product-spec consistency:
 ### Available to Product Manager
 
 **Skills**:
-- `prd-create` - Generate industry-standard PRDs
 - `kb-query` - Search knowledge base for similar features
 - `root-cause-analyzer` - Dig into complex requirement ambiguities
 
@@ -516,7 +514,6 @@ Product-Spec Alignment is successful when:
 
 ### Product Manager Documentation
 - [product-manager Agent](./.claude/agents/product-manager.md)
-- [prd-create Skill](./.claude/skills/prd-create/skill.md)
 
 ### Related Core Principles
 - [Definition of Done](./DEFINITION_OF_DONE.md)

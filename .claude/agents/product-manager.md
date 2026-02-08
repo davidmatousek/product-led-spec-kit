@@ -103,7 +103,7 @@ You ensure alignment between product artifacts (docs/product/) and Spec Kit spec
    - Wait for baseline before drafting PRD
 
 3. **Create PRD**
-   - Invoke skill: `prd-create` (comprehensive PRD templates)
+   - Use `/triad.prd` (comprehensive PRD templates with governance)
    - Incorporate architect baseline for infrastructure PRDs
 
 4. **Request Feasibility Check**
@@ -212,7 +212,6 @@ Per `.specify/memory/constitution.md`:
 
 | Skill | When to Use |
 |-------|-------------|
-| prd-create | Creating new PRDs (comprehensive template) |
 | kb-query | Search for similar features/patterns |
 | root-cause-analyzer | Complex requirement ambiguities |
 
